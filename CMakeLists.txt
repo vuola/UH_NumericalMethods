@@ -11,10 +11,9 @@ set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
-# Find the library (use find_library for non-CMake libraries)
-include_directories(/usr/local/include/eigen3)
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
-# Add each subdirectory containing main.cpp
+# Add each subdirectory containing main()
 add_subdirectory(exercise01)
 add_subdirectory(test)
 
