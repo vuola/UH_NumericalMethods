@@ -12,9 +12,12 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(eigenpy)
 
 # Add each subdirectory containing main()
 add_subdirectory(exercise01)
-add_subdirectory(test)
+add_subdirectory(test_eigen)
+add_subdirectory(test_eigenpy)
+
 
 

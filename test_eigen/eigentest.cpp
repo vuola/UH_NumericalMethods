@@ -1,5 +1,6 @@
 #include <iostream>
 #include <Eigen/Dense>
+#include <stdlib.h>
  
 using Eigen::MatrixXd;
  
