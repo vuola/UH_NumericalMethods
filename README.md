@@ -104,6 +104,15 @@ At the time of writing the highests python version label in eigenpy apt package 
 
 `sudo apt install robotpkg-py38-eigenpy`
 
+Check out what the install location is for package 'eigenpy' with command
+
+`sudo find / -name "eigenpy" | grep cmake`
+
+Edit the following line in file *CMakeLists.txt* to point into the eigenpy install location.
+
+`set(eigenpy_DIR /opt/openrobots/lib/cmake/eigenpy)`
+
+CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
 
 
 

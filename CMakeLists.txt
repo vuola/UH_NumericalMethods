@@ -11,6 +11,7 @@ set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
+set(eigenpy_DIR /opt/openrobots/lib/cmake/eigenpy)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(eigenpy)
 

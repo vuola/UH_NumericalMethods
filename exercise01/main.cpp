@@ -9,7 +9,7 @@ int main(int argc, char** argv){
         return (1);
     }
 
-    auto result = (10 <=> 20) > 0;
+    auto result = false;
     cout << argv[1] << endl;
     cout << argv[2] << endl;
     cout << argv[3] << endl;
