@@ -27,18 +27,48 @@ Required dependencies and installation instructions are given below. The code ha
 
 ## Links to exercise Submittals
 
-Exercise 1 Problem 1
+- Exercise 1 
+  - [Problem 1](exercise01/exercise1_1.pdf) 
+  - [Problem 2]()
+  - [Problem 3](exercise01/exercise1_3.pdf)
+  - [Problem 4]()
+  - [Problem 5]()
 
-## Dependencies
 
-### CMake
-CMake has been used to package the code into transportable format  and to compile / link efficiently.  
+
+## Dependencies and installation instructions for Ubuntu
+
+### Visual Studio & CMake extensions
+Visual Studio Code for Ubuntu - installation instructions can be found for example here
+
+https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
+
+CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio, select View - Extensions and install extension named **CMake** and **CMake Tools**.  
 
 ### C++
-Compilations have been done using Visual Studio Code with CMake Tools extension. MacOS was running Clang 13.1.6 and Ubuntu had gcc 9.3.0 as the C++ compiler. 
+During testing MacOS was running Clang 13.1.6 and Ubuntu had gcc 9.3.0 as the C++ compiler.
 
 ### Python 3
 The Python version used was 3.11. Eigenpy library requires at least Python version 3.5.
+
+#### Python 3.11
+`sudo add-apt-repository ppa:deadsnakes/ppa`
+
+`sudo apt update`
+
+`sudo apt install python3.11`
+
+Package manager **pip** installation
+
+`curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11`
+
+Check versions
+
+`python3.11 -V`
+
+`pip3.11 -V`
+
+
 
 ### Libraries
 
@@ -50,11 +80,33 @@ Install and extract the eigen archive file into the root of this repository.
 
 `tar -xvjf eigen-3.4.0.tar.bz2`
 
-Installation instructions are in file `<repository root>/eigen-3.4.0/INSTALL`. I managed  to create a functional eigen package using Visual Studio Code with CMake extension and the following commands
+Installation instructions are in file `<repository root>/eigen-3.4.0/INSTALL`. Following these instructions with CMake build tool:
 
-`cmake eigen-3.4.0`
+`mkdir eigen3`
 
-`make install`
+`cd eigen3`
+
+`cmake ../eigen-3.4.0`
+
+#### boost
+
+The following command will install all boost libraries (a lot more than just boost-python)
+
+`sudo apt install libboost-all-dev`
+
+#### eigenpy
+
+`sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg' >> /etc/apt/sources.list.d/robotpkg.list"`
+
+`curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -`
+
+At the time of writing the highests python version label in eigenpy apt package was 3.8
+
+`sudo apt install robotpkg-py38-eigenpy`
+
+
+
+
 
 
 
