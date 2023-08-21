@@ -58,13 +58,13 @@ Visual Studio Code for Ubuntu - installation instructions can be found for examp
 
 https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 
-CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio, select View - Extensions and install extension named **CMake** and **CMake Tools**.  
+CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake** and **CMake Tools**.  
 
 ### C++
-During testing MacOS was running Clang 13.1.6 and Ubuntu had gcc 9.3.0 as the C++ compiler.
+During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler.
 
 ### Python 3
-The Python version used was 3.11. Eigenpy library requires at least Python version 3.5.
+The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8,
 
 #### Python 3.11
 `sudo add-apt-repository ppa:deadsnakes/ppa`
@@ -95,7 +95,7 @@ Install and extract the eigen archive file into the root of this repository.
 
 `tar -xvjf eigen-3.4.0.tar.bz2`
 
-Installation instructions are in file `<repository root>/eigen-3.4.0/INSTALL`. Following these instructions with CMake build tool:
+Eigen installation instructions are located in file `<repository root>/eigen-3.4.0/INSTALL`. You can apply these instructions for CMake build system as follows:
 
 `mkdir eigen3`
 
@@ -127,13 +127,14 @@ Check out what the install location is for package 'eigenpy' with command
 
 `sudo find / -name "eigenpy" | grep cmake`
 
-Edit the following line in file *CMakeLists.txt* to point into the eigenpy install location.
+Edit the following line of the repository root folder file *CMakeLists.txt* to point into the eigenpy install location.
 
 `set(eigenpy_DIR /opt/openrobots/lib/cmake/eigenpy)`
 
 CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
 
-The executables are located in folders /build/excercise[nn]
+If everything is working, running *Build* from the footer menu of Visual Studio Code will place the executables into folders /build/excercise[nn].
+
 
 
 
