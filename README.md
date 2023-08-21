@@ -100,6 +100,10 @@ The following command will install all boost libraries (a lot more than just boo
 
 `curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -`
 
+At this point you need to update package lists
+
+`sudo apt update`
+
 At the time of writing the highests python version label in eigenpy apt package was 3.8
 
 `sudo apt install robotpkg-py38-eigenpy`
