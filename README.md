@@ -34,9 +34,23 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4]()
   - [Problem 5]()
 
+## Running the algorithms
 
+The easiest way to run the algorithms is via Docker. A container with executables and python scripts is available in Docker Hub. 
+
+Install Docker and pull the container. The container opens a terminal prompt with executables and scripts in the opening directory. That's it !
+
+### install Docker
+
+`sudo apt install docker.io -y`
+
+### pull the container from Docker Hub and run
+
+`docker run -it vuolahti/nmsc`
 
 ## Dependencies and installation instructions for Ubuntu
+
+This chapter contains instructions for installing the full development environment. If you are familiar with Docker, you can also check docker/Dockerfile to see the same information in a Docker build script format.
 
 ### Visual Studio & CMake extensions
 Visual Studio Code for Ubuntu - installation instructions can be found for example here
@@ -117,6 +131,8 @@ Edit the following line in file *CMakeLists.txt* to point into the eigenpy insta
 `set(eigenpy_DIR /opt/openrobots/lib/cmake/eigenpy)`
 
 CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
+
+The executables are located in folders /build/excercise[nn]
 
 
 

@@ -4,7 +4,6 @@ FROM ubuntu:focal AS build
 # Avoid interactive menus when installing dependencies
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 RUN apt update
 RUN apt-get -y upgrade
 RUN apt -y install build-essential 
@@ -41,6 +40,10 @@ RUN rm -R /var/www/html/UH_NumericalMethods/build/exercise*/Makefile
 
 # Final container
 FROM ubuntu:focal AS final
+
+# Install python to the final container
+RUN apt update
+RUN apt -y install python3
 
 # Copy compiled artifacts from the build container
 COPY --from=build /var/www/html/UH_NumericalMethods/build/exercise*/* /app/executables/
