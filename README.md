@@ -1,8 +1,7 @@
 # UH_NumericalMethods
 ### University of Helsinki course Numerical Methods In Scientific  Programming MATR322 
 
-These are personal excercise solutions. Do not re-distribute exercises or submit as your own. The development environment
-is open source.
+These are personal excercise solutions. Do not re-distribute exercises or submit solutions as your own. The development environment is open source.
 
 ## Development Environment
 The algorithms are written with C++ using the Eigen mathemathical library. 
