@@ -94,7 +94,7 @@ Install and extract the eigen archive file into the root of this repository.
 
 `tar -xvjf eigen-3.4.0.tar.bz2`
 
-Eigen installation instructions are located in file `<repository root>/eigen-3.4.0/INSTALL`. You can apply these instructions for CMake build system as follows:
+Eigen installation instructions are located in file `<repository root>/eigen-3.4.0/INSTALL`, you can run the steps of CMake users as follows:
 
 `mkdir eigen3`
 
