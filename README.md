@@ -1,7 +1,8 @@
 # UH_NumericalMethods
 ### University of Helsinki course Numerical Methods In Scientific  Programming MATR322. 
 
-These are personal excercise solutions. Do not copy or re-distribute.
+These are personal excercise solutions. Do not re-distribute exercises or submit as your own. Development environment
+is freely available.
 
 ## Development Environment
 The algorithms are written with C++ using the Eigen mathemathical library. 
