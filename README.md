@@ -52,12 +52,21 @@ Install Docker and pull the container. The container opens a terminal prompt wit
 
 This chapter contains instructions for installing the full development environment. If you are familiar with Docker, you can also check docker/Dockerfile to see the same information in a Docker build script format.
 
+### Pull the repository
+
+`git clone https://github.com/vuola/UH_NumericalMethods.git ./UH_NumericalMethods`
+
 ### Visual Studio & CMake extensions
 Visual Studio Code for Ubuntu - installation instructions can be found for example here
 
 https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 
 CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake** and **CMake Tools**.  
+
+Once Visual Studio Code is installed, cd into the repository *UH_NumericalMethods* and run
+
+`code .`
+
 
 ### C++
 During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler.
