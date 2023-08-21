@@ -39,7 +39,7 @@ Required dependencies and installation instructions are given below. The code ha
 
 The easiest way to run the algorithms is via Docker. A container with executables and python scripts is available in Docker Hub. 
 
-Install Docker and pull the container. The container opens a terminal prompt with executables and scripts in the opening directory. That's it !
+Install Docker and pull the container. The container opens a terminal prompt with executables and scripts in the opening directory. Only two steps are required:
 
 ### install Docker
 
@@ -133,7 +133,7 @@ Edit the following line of the repository root folder file *CMakeLists.txt* to p
 
 CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
 
-If everything is working, running *Build* from the footer menu of Visual Studio Code will place the executables into folders /build/excercise[nn].
+If everything is working, running *Build* from the footer menu of Visual Studio Code will place the target files into folders /build/excercise[nn].
 
 
 
