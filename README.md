@@ -29,10 +29,12 @@ Required dependencies and installation instructions are given below. The code ha
 
 - Exercise 1 
   - [Problem 1](exercise01/exercise1_1.pdf) 
-  - [Problem 2]()
+  - [Problem 2](exercise01/harmonic.cpp)
+    - executable: /build/exercise01/harmonic
   - [Problem 3](exercise01/exercise1_3.pdf)
   - [Problem 4]()
   - [Problem 5]()
+
 
 ## Running the algorithms
 
