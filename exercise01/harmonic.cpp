@@ -6,7 +6,7 @@ using namespace std;
 float harmonic(int N){
     float sum=0;
     for (int i=0; i<N; i++){
-        sum += 1/(i+1);
+        sum += 1.0/(i+1);
     }
     return sum; 
 }
