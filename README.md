@@ -28,19 +28,20 @@ Required dependencies and installation instructions are given below. The code ha
 ## Links to exercise Submittals
 
 - Exercise 1 
-  - [Problem 1](exercise01/exercise1_1.pdf) 
+  - [Problem 1 pen & paper](exercise01/exercise1_1.pdf) 
   - [Problem 2 code](exercise01/harmonic.cpp)
   - [Problem 2 test](exercise01/exercise1_2.txt)
-  - [Problem 3](exercise01/exercise1_3.pdf)
-  - [Problem 4]()
-  - [Problem 5]()
+  - [Problem 3 pen & paper](exercise01/exercise1_3.pdf)
+  - [Problem 4 code](exercise01/funks.cpp)
+  - [Problem 4 pen & paper](exercise01/exercise1_4.pdf)
+  - [Problem 4 test](exercise01/exercise1_4.txt)
 
 
 ## Running the algorithms
 
 The easiest way to run the algorithms is via Docker. A container with executables and python scripts is available in Docker Hub. 
 
-Install Docker and pull the container. The container opens a terminal prompt with executables and scripts in the opening directory. Only two steps are required:
+Install Docker and pull the container. The container opens a terminal prompt with executables and scripts in the opening directory. All executables can be called with flag --help. Only two install steps are required:
 
 ### install Docker
 

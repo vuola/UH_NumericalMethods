@@ -49,7 +49,7 @@ float harmonic(){
 float harmonic_bunch(int N){
 
     float groupsum = 0;
-    int Nmax = 100000000;
+    int Nmax = 1000000000;
     int Cmax = Nmax / N;
     float sum;
     float previous_sum;
