@@ -1,1 +1,3 @@
-add_executable(ex1 main.cpp)
+add_executable(harmonic harmonic.cpp)
+
+# target_link_libraries(harmonic Eigen3::Eigen)
