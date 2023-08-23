@@ -9,11 +9,11 @@ The algorithms are written with C++ using the Eigen mathemathical library.
 Since Python has a rich visualization library available with NumPy, the approach has been the following:
 
 1. If the excercise does not require visualization, the C++ algorithm has been compiled into a command-line executable.
-2. If a visualization is required in the excercise, the C++ algorithm has been compiled into a library binary in a format which can be called from Python. Visualization has been implemented using Python code and a Python script has been used as the entry point for running both the algorithm and visualization.
+2. If a visualization is required in the excercise, the C++ algorithm has also been compiled into a library binary in a format which can be called from Python. Visualization has been implemented using Python code and a Python script has been used as the entry point for running both the algorithm and visualization.
 
 Two interface libraries have been used to make Python and C++ interoperable. The first one is called **boost-python**. It is a well established, highly efficient C++ library which is intended for users wanting to call optimized C/C++ routines from Python scripts. 
 
-The second interface library is called **eigenpy**. It is a fairly recent addition to the eigen C++ mathematical toolkit. Eigenpy creates a direct one-to-one linkage between eigen data structures and Python/NumPy data structures, removing the need to pass data via files or to create duplicate copies of the data structures in memory.
+The second interface library is called **eigenpy**. It is a fairly recent addition to the eigen C++ mathematical toolkit. Eigenpy creates a direct one-to-one linkage between eigen C++ data structures and Python/NumPy data structures, removing the need to pass data via files or to create duplicate copies of the data structures in memory.
 
 Required dependencies and installation instructions are given below. The code has been tested in MacOs and Ubuntu.
 
@@ -70,14 +70,17 @@ Once Visual Studio Code is installed, cd into the repository *UH_NumericalMethod
 
 `code .`
 
-
 ### C++
 During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler.
 
 ### Python 3
-The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8,
+The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8
 
 #### Python 3.11
+
+If you have a Python version 3.8 or newer, it is safer to keep it that way. Some
+linux distributions have symlinks to python. If you manage the Python3 symlink -> Python3.xx executable go ahead and upgrade to the latest Python version. 
+
 `sudo add-apt-repository ppa:deadsnakes/ppa`
 
 `sudo apt update`
@@ -94,9 +97,11 @@ Check versions
 
 `pip3.11 -V`
 
+#### Python3 libraries
 
+'pip3 install numpy'
 
-### Libraries
+### C++ libraries
 
 #### Eigen
 
