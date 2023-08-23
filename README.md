@@ -34,7 +34,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3 pen & paper](exercise01/exercise1_3.pdf)
   - [Problem 4 code](exercise01/funks.cpp)
   - [Problem 4 pen & paper](exercise01/exercise1_4.pdf)
-  - [Problem 4 test](exercise01/exercise1_4.txt)
+  - [Problem 4 test](exercise01/exercise1_4.png)
 
 
 ## Running the algorithms
