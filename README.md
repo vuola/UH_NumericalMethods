@@ -106,7 +106,9 @@ Check if these commands are pointing to desired versions of executables. Instruc
 
 #### Python3 libraries
 
-'pip3 install numpy'
+`pip3 install numpy`
+
+`pip3 install matplotlib`
 
 ### C++ libraries
 
@@ -128,7 +130,7 @@ Eigen installation instructions are located in file `<repository root>/eigen-3.4
 
 #### boost
 
-The following command will install all boost libraries (a lot more than just boost-python)
+The following command will install all boost libraries (a lot more than just boost-python). In Ubuntu 22.04 the boost-python binary is already included so boost installation is not required.
 
 `sudo apt install libboost-all-dev`
 
@@ -147,20 +149,3 @@ Edit the following line of the repository root folder file *CMakeLists.txt* to p
 CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
 
 If everything is working, running *Build* from the footer menu of Visual Studio Code will place the target files into folders /build/excercise[nn].
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
