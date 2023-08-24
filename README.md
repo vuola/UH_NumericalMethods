@@ -136,7 +136,17 @@ The following command will install all boost libraries (a lot more than just boo
 
 #### eigenpy
 
-`pip3 install eigenpy`
+`sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg' >> /etc/apt/sources.list.d/robotpkg.list"`
+
+`curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -`
+
+At this point you need to update package lists
+
+`sudo apt update`
+
+The following command is for Python 3.8, replace the version code with your Python version (without dot)
+
+`sudo apt install robotpkg-py38-eigenpy`
 
 Check out what the install location is for package 'eigenpy' with command
 
