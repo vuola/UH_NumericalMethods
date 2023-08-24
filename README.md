@@ -144,7 +144,7 @@ Check out what the install location is for package 'eigenpy' with command
 
 Edit the following line of the repository root folder file *CMakeLists.txt* to point into the eigenpy install location.
 
-`set(eigenpy_DIR /opt/openrobots/lib/cmake/eigenpy)`
+`find_package(eigenpy PATHS /opt/openrobots/lib/cmake/eigenpy)`
 
 CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
 
