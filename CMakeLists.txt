@@ -11,7 +11,7 @@ set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
-set(eigenpy_DIR /opt/openrobots/lib/cmake/eigenpy)
+set(eigenpy_DIR /home/vuola/.local/lib/python3.10/site-packages/cmeel.prefix/lib/cmake/eigenpy)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(eigenpy)
 

@@ -76,10 +76,15 @@ During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C
 ### Python 3
 The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8
 
+### Pip3
+
+If you have *python3* but not the package manager *pip3*, run
+
+`sudo apt install python3-pip`
+
 #### Python 3.11
 
-If you have a Python version 3.8 or newer, it is safer to keep it that way. Some
-linux distributions have symlinks to python. If you manage the Python3 symlink -> Python3.xx executable go ahead and upgrade to the latest Python version. 
+If you have a Python version 3.8 or newer, **it is safer to use the current version**. Some linux distributions control the symlinks to python. If you manage the symlink *Python3->Python3.xx* yourself and want the latest and greatest go ahead and upgrade to the latest Python version. 
 
 `sudo add-apt-repository ppa:deadsnakes/ppa`
 
@@ -87,15 +92,17 @@ linux distributions have symlinks to python. If you manage the Python3 symlink -
 
 `sudo apt install python3.11`
 
-Package manager **pip** installation
+Package manager **pip3.11** installation
 
 `curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11`
 
-Check versions
+Check symlinked versions
 
-`python3.11 -V`
+`python3 -V`
 
-`pip3.11 -V`
+`pip3 -V`
+
+Check if these commands are pointing to desired versions of executables. Instructions for either dynamic version selection or updating static links *Python3* and *pip3* are available online.
 
 #### Python3 libraries
 
@@ -127,17 +134,7 @@ The following command will install all boost libraries (a lot more than just boo
 
 #### eigenpy
 
-`sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg' >> /etc/apt/sources.list.d/robotpkg.list"`
-
-`curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -`
-
-At this point you need to update package lists
-
-`sudo apt update`
-
-At the time of writing the highests python version label in eigenpy apt package was 3.8
-
-`sudo apt install robotpkg-py38-eigenpy`
+`pip3 install eigenpy`
 
 Check out what the install location is for package 'eigenpy' with command
 
