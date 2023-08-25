@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * funks - displays two trigonometric functions 
+ * funks - displays a trigonometric and an exponential function 
  * first function: (cos(x)-1)/x^2   second function: (exp(x)-exp(-x))/2*x
  * @return a pair of function values: <first_function, second_function>
  * @throws None

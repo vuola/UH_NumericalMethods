@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/exercise01/funks",
-            "args": ["--range","-2.0","2.0","10"],
+            "args": ["1.5"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

@@ -37,6 +37,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 test funks_Taylor plot](exercise01/exercise1_4_Taylor.png)
   - [Problem 4 test funks_Taylor plot near zero](exercise01/exercise1_4_NearZero.png)
   - [Problem 4 test funks_Taylor numbers](exercise01/exercise1_4_Taylor.txt)
+  - [Problem 4 test funks_Taylor errors f1](exercise01/exercise1_4_ef1.png)
+  - [Problem 4 test funks_Taylor errors f2](exercise01/exercise1_4_ef2.png)
 
 
 ## Running the algorithms
@@ -66,7 +68,7 @@ Visual Studio Code for Ubuntu - installation instructions can be found for examp
 
 https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 
-CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake** and **CMake Tools**.  
+CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake** and **CMake Tools**. For debugging you will also need extension **C/C++ Extension Pack** from Microsoft. 
 
 Once Visual Studio Code is installed, cd into the repository *UH_NumericalMethods* and run
 
