@@ -4,6 +4,7 @@
 #include <Eigen/Core>
 
 std::pair<double, double> funks(double x);
+std::pair<double, double> funks_Taylor(double x);
 Eigen::MatrixXd funksRange(double first, double last, int N);
 
 using namespace std;
@@ -12,15 +13,17 @@ using namespace std;
 void displayHelp() {
     cout << endl;
     cout << "funks - compute a trigonometric and exponent function" << endl;
-    cout << "first: (cos(x)-1)/x^2   second: (exp(x)-exp(-x))/2*x" << endl << endl;
+    cout << "        and a Taylor series value of both." << endl;
+    cout << "        first function: (cos(x)-1)/x^2   second function: (exp(x)-exp(-x))/2*x" << endl << endl;
     cout << "Usage:" << endl;
     cout << "  funks [flags] <args...>" << endl << endl;
     cout << "Flags:" << endl;
     cout << "  --help        display help message" << endl;
-    cout << "  --range       compute x and function values in range" << endl << endl;
+    cout << "  --range       generate x vector and corresponding function and Taylor series values." << endl;
+    cout << "                The output order as row vectors is [x, f1, f1_Taylor, f2, f2_Taylor]' " << endl << endl;
     cout << "Arguments:" << endl;
-    cout << "  x                     variable x of both functions" << endl;
-    cout << "  --range xmin xmax N   evaluate functions between xmin, xmax with N points -> [3,N]" << endl;
+    cout << "  x                     single evaluation point x" << endl;
+    cout << "  --range xmin xmax N   evaluate functions and Taylor series between xmin, xmax with N points -> [5,N]" << endl;
 }
 
 // Helper function to generate an error message for incorrect argument count
@@ -61,7 +64,9 @@ int main(int argc, char** argv){
 
     // Convert command-line argument to the appropriate type
     double arg1 = stod(argv[1]);
-    pair<double, double> result = funks(arg1);
-    cout << result.first << " " << result.second << endl;
+    pair<double, double> resultF = funks(arg1);
+    pair<double, double> resultT = funks_Taylor(arg1);
+    cout << "functions:     " << resultF.first << " " << resultF.second << endl;
+    cout << "Taylor series: " << resultT.first << " " << resultT.second << endl;
     return 0;
 }
