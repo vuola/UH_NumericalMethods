@@ -17,9 +17,11 @@ using namespace std;
  */
 float harmonic(){
 
+    /* Maximum number of terms */
+    const int Nmax = 10000000;
+
     float sum=0;
     float previous_sum=0;
-    int Nmax = 10000000;
 
     for (int i=1; i<=Nmax; ++i){
         previous_sum = sum;
@@ -48,8 +50,10 @@ float harmonic(){
  */
 float harmonic_bunch(int N){
 
-    float groupsum = 0;
+    /* Maximum number of terms */
     int Nmax = 1000000000;
+
+    float groupsum = 0;    
     int Cmax = Nmax / N;
     float sum;
     float previous_sum;

@@ -54,7 +54,7 @@ unsigned long long factorial(int n) {
  * @endcode
  */
 
-/* Highest term index in Taylor series */
+/* Order of Taylor series */
 const int N = 3;
 
 pair<double, double> funks_Taylor(double x) {
