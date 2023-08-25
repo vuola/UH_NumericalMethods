@@ -35,7 +35,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 code](exercise01/funks.cpp)
   - [Problem 4 pen & paper](exercise01/exercise1_4.pdf)
   - [Problem 4 test funks](exercise01/exercise1_4.png)
-  - [Problem 4 test funks_Taylor](exercise01/exercise1_4_Taylor.png)
+  - [Problem 4 test funks_Taylor plot](exercise01/exercise1_4_Taylor.png)
+  - [Problem 4 test funks_Taylor near zero](exercise01/exercise1_4_Taylor.txt)
 
 
 ## Running the algorithms

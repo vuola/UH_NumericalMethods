@@ -1,0 +1,35 @@
+> > These values are okay:
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0.1
+functions:     -0.499583 1.00167
+Taylor series: -0.499583 1.00167
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0.01
+functions:     -0.499996 1.00002
+Taylor series: -0.499996 1.00002
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0.001
+functions:     -0.5 1
+Taylor series: -0.5 1
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0.0001
+functions:     -0.5 1
+Taylor series: -0.5 1
+
+> > Here function 1 (trigonometric) falls apart:
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0.000000001
+functions:     0 1
+Taylor series: -0.5 1
+
+> > Here also function 2 (exponential) behaves inconsistently
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0.000000000001
+functions:     0 1.00003
+Taylor series: -0.5 1
+
+> > Here both functions give undefined values (as expected)
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./funks 0
+functions:     -nan -nan
+Taylor series: -0.5 1
