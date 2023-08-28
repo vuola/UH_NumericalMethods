@@ -40,6 +40,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 test funks_Taylor errors f1](exercise01/exercise1_4_ef1.png)
   - [Problem 4 test funks_Taylor errors f2](exercise01/exercise1_4_ef2.png)
 
+- Exercise 1 
+  - [Problem 1 pen & paper](exercise01/exercise2_1.pdf) 
+
 
 ## Running the algorithms
 
