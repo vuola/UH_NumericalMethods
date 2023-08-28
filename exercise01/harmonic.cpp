@@ -18,7 +18,7 @@ using namespace std;
 float harmonic(){
 
     /* Maximum number of terms */
-    const int Nmax = 10000000;
+    const int Nmax = 1000000000;
 
     float sum=0;
     float previous_sum=0;
@@ -27,11 +27,11 @@ float harmonic(){
         previous_sum = sum;
         sum += 1.0/i;
 
-        if (previous_sum == sum){
-            cout << "float resolution limit at iteration " << i << endl;
-            break;
-        } 
-    }
+/*        if (previous_sum == sum){
+*            cout << "float resolution limit at iteration " << i << endl;
+*            break;
+*        } 
+*/  }
 
     return sum;
 }

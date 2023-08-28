@@ -16,8 +16,10 @@ find_package(eigenpy PATHS /opt/openrobots/lib/cmake/eigenpy)
 
 # Add each subdirectory containing main()
 add_subdirectory(exercise01)
-add_subdirectory(test_eigen)
-add_subdirectory(test_eigenpy)
+add_subdirectory(exercise02)
+
+#add_subdirectory(test_eigen)
+#add_subdirectory(test_eigenpy)
 
 
 

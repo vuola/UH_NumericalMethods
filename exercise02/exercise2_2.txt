@@ -1,0 +1,11 @@
+Result with harmonic():
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./harmonic
+15.4037
+
+Result with harmonic_kahan(N):
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./harmonic_kahan 1000000000
+21.3005
+
+The output converges with both algorithms but is bigger with harmonic_kahan. The compensation of cumulative summation error in 
+Kahan method makes the algorithm progress further in the series adding more small terms before the output value saturates. 
+
