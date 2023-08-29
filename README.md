@@ -43,7 +43,9 @@ Required dependencies and installation instructions are given below. The code ha
 - Exercise 2 
   - [Problem 1 pen & paper](exercise02/exercise2_1.pdf) 
   - [Problem 2 code](exercise02/harmonic_kahan.cpp) 
-  - [Problem 2 test](exercise02/exercise2_2.txt) 
+  - [Problem 2 test](exercise02/exercise2_2.txt)
+  - [Problem 3 test](exercise02/exercise2_3.txt)
+
 
 
 ## Running the algorithms
