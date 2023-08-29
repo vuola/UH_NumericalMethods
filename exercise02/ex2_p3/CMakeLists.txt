@@ -1,0 +1,3 @@
+find_package(LAPACK)
+add_executable(ex2_p3 ex2_p3.c)
+target_link_libraries(ex2_p3 LAPACK::LAPACK)

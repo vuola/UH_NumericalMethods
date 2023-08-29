@@ -139,7 +139,7 @@ Eigen installation instructions are located in file `<repository root>/eigen-3.4
 
 #### boost
 
-The following command will install all boost libraries (a lot more than just boost-python). In Ubuntu 22.04 the boost-python binary is already included so boost installation is not required.
+The following command will install all boost libraries (a lot more than just boost-python). In Ubuntu 22.04 distribution with Python 3.10 included the boost-python binary is already included so boost installation is not required.
 
 `sudo apt install libboost-all-dev`
 
@@ -161,10 +161,14 @@ Check out what the install location is for package 'eigenpy' with command
 
 `sudo find / -name "eigenpy" | grep cmake`
 
-Edit the following line of the repository root folder file *CMakeLists.txt* to point into the eigenpy install location.
+If the location path starts with */opt/openrobots* everything should be fine. Otherwise
+consider editing the main *CMakeLists.txt* file in the repository root. The 
+directives for setting *eigenpy* search path are the following:
 
-`find_package(eigenpy PATHS /opt/openrobots/lib/cmake/eigenpy)`
+`cmake_policy(SET CMP0074 NEW)`
+`set(eigenpy_ROOT /opt/openrobots)`
+`find_package(eigenpy)`
 
-CMake is expecting to find file *eigenpyConfig.cmake* from the above directory.
+CMake is expecting to find file *eigenpyConfig.cmake* from one of the subdirectories.
 
 If everything is working, running *Build* from the footer menu of Visual Studio Code will place the target files into folders /build/excercise[nn].

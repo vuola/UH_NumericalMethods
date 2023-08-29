@@ -12,14 +12,18 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(eigenpy PATHS /opt/openrobots/lib/cmake/eigenpy)
+
+# The policy setting allows using <packagename>_ROOT variable
+cmake_policy(SET CMP0074 NEW)
+set(eigenpy_ROOT /opt/openrobots)
+find_package(eigenpy)
+
 
 # Add each subdirectory containing main()
 add_subdirectory(exercise01)
 add_subdirectory(exercise02)
+add_subdirectory(exercise02/ex2_p3)
 
-#add_subdirectory(test_eigen)
-#add_subdirectory(test_eigenpy)
 
 
 
