@@ -4,7 +4,7 @@
 
 using namespace std;
 
-float harmonic_kahan(unsigned long long int);
+float harmonic_kahan(int);
 
 // Function to display help message
 void displayHelp() {

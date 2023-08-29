@@ -22,17 +22,18 @@ float harmonic(){
 
     float sum=0;
     float previous_sum=0;
+    int saturated=0;
 
     for (int i=1; i<=Nmax; ++i){
         previous_sum = sum;
         sum += 1.0/i;
 
-/*        if (previous_sum == sum){
-*            cout << "float resolution limit at iteration " << i << endl;
-*            break;
-*        } 
-*/  }
+        if (previous_sum == sum){
+            saturated++;
+        } 
+    }
 
+    cout << "times of saturation: " << saturated << endl;
     return sum;
 }
 

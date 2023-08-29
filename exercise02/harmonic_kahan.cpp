@@ -16,12 +16,13 @@ using namespace std;
  * float sum = harmonic_kahan(N);
  * @endcode
  */
-float harmonic_kahan(unsigned long long int N){
+float harmonic_kahan(int N){
 
     float x,y,t;
     float sum=0.0;
     float e = 0.0;
     float previous_sum=0.0;
+    int saturated = 0;
 
     for (int i=1; i<=N; ++i){
         previous_sum = sum;
@@ -31,10 +32,11 @@ float harmonic_kahan(unsigned long long int N){
         e = (t - sum) - y;
         sum = t;
 
-/*        if (previous_sum == sum){
-*           cout << "float resolution limit at iteration " << i << endl;
-*           break;
-*        } 
-*/  }
+        if (previous_sum == sum){
+            saturated++;
+        } 
+    }
+
+    cout << "times of saturation: " << saturated << endl;
     return sum;
 }
