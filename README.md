@@ -44,7 +44,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 1 pen & paper](exercise02/exercise2_1.pdf) 
   - [Problem 2 code](exercise02/harmonic_kahan.cpp) 
   - [Problem 2 test](exercise02/exercise2_2.txt)
-  - [Problem 3 test](exercise02/exercise2_3.txt)
+  - [Problem 3A test](exercise02/exercise2_3.txt)
+  - [Problem 3A matrix100 solution](exercise02/output.txt)
+  
 
 
 
@@ -168,7 +170,9 @@ consider editing the main *CMakeLists.txt* file in the repository root. The
 directives for setting *eigenpy* search path are the following:
 
 `cmake_policy(SET CMP0074 NEW)`
+
 `set(eigenpy_ROOT /opt/openrobots)`
+
 `find_package(eigenpy)`
 
 CMake is expecting to find file *eigenpyConfig.cmake* from one of the subdirectories.
