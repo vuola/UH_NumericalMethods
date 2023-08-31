@@ -1,5 +1,6 @@
 find_package(LAPACK)
 add_executable(ex2_p3 ex2_p3.c)
 target_link_libraries(ex2_p3 LAPACK::LAPACK)
-# target_include_directories(ex2_p3 PRIVATE /usr/local/Cellar/openblas/0.3.23/include)
-# target_include_directories(ex2_p3 PRIVATE /usr/local/opt/lapack/include)
+# target_link_libraries(ex2_p3 Eigen3::Eigen)
+# target_include_directories(ex2_p3 PRIVATE /usr/include/eigen3/Eigen/src/misc)
+target_include_directories(ex2_p3 PRIVATE /home/vuola/matres/UH_NumericalMethods/eigen-3.4.0/Eigen/src/misc)
