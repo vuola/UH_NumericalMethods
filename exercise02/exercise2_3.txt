@@ -51,6 +51,9 @@ b
 x
 2.9929028e+15 -1.6514997e+15 -3.9600231e+15 1.3304269e+15 2.8218544e+15 -1.3990926e+15 
 
+This is not a stable solution, all of the x vector elements have huge values.
+A is an ill-conditioned matrix
+
 
 
 Testing what happens if two columns of A are the same:
