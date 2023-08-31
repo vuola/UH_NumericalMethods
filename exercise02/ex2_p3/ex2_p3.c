@@ -18,6 +18,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+extern void dgesv_(const int*, const int*, double*, const int*, int*, double*, const int*, int*);
+
 int main()
 {
   int n,i,j,c1,c2,*pivot,ok;
