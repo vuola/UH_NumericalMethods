@@ -56,9 +56,11 @@ int main()
   for (i=0;i<n;i++) printf("%12.8g ", b[i]);	
   printf("\n\n");
 
-  double anorm = LAPACKE_dlange(LAPACK_COL_MAJOR, norm, n, n, A, c1);
+  double anorm = dlange_(&norm, &n, &n, A, &c1, work);
 
-  info = LAPACKE_dgecon(LAPACK_COL_MAJOR, norm, n, A, c1, anorm, &rcond);
+  dgecon_(&norm, &n, A, &c1, &anorm, &rcond, work, iwork, &info);
+
+  printf("Norm: %lf\n", anorm);
 
   if (info == 0) {
       printf("Reciprocal condition number: %lf\n", rcond);
