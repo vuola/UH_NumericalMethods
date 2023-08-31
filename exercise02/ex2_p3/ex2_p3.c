@@ -17,13 +17,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-extern void dgesv_(const int*, const int*, double*, const int*, int*, double*, const int*, int*);
+#include <lapacke.h>
 
 int main()
 {
   int n,i,j,c1,c2,*pivot,ok;
   double *A,*b;
+  double rcond;
   
   scanf("%d",&n);
   printf("\nn %d\n",n);
@@ -45,6 +45,10 @@ int main()
 
   c1=n;
   c2=1;
+  double work[4*n];
+  int iwork[n];
+  int info;
+  char norm = '1';
   
   dgesv_(&c1, &c2, A, &c1, pivot, b, &c1, &ok);      
   
@@ -52,6 +56,15 @@ int main()
   for (i=0;i<n;i++) printf("%12.8g ", b[i]);	
   printf("\n\n");
 
+  double anorm = LAPACKE_dlange(LAPACK_COL_MAJOR, norm, n, n, A, c1);
+
+  info = LAPACKE_dgecon(LAPACK_COL_MAJOR, norm, n, A, c1, anorm, &rcond);
+
+  if (info == 0) {
+      printf("Reciprocal condition number: %lf\n", rcond);
+  } else {
+      printf("Error occurred: info = %d\n", info);
+  }
   return 0;
 }  
 
