@@ -26,7 +26,8 @@ int main()
   double rcond;
   
   scanf("%d",&n);
-  printf("\nn %d\n",n);
+  printf("\nN\n");
+  printf("  %d\n",n);
   A=(double *)malloc((size_t)n*n*sizeof(double));
   b=(double *)malloc((size_t)n*sizeof(double));
   pivot=(int *)malloc((size_t)n*sizeof(int));
@@ -39,7 +40,7 @@ int main()
     for (j=0;j<n;j++) printf("%12.8g ",A[j*n+i]);
     printf("\n");
     }
-  printf("\nb\n");
+  printf("b\n");
   for (i=0;i<n;i++) printf("%12.8g ",b[i]);
   printf("\n");
 
