@@ -47,7 +47,11 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3A test](exercise02/exercise2_3.txt)
   - [Problem 3A matrix100 solution](exercise02/output.txt)
   - [Problem 4A code](exercise02/residual.cpp) 
-  - [Problem 4B test](exercise02/exercise2_4.txt) 
+  - [Problem 4B test](exercise02/exercise2_4.txt)
+
+- Exercise 3 
+  - [Problem 1 pen & paper](exercise02/exercise3_1.pdf) 
+
   
   
 
