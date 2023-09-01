@@ -50,7 +50,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4B test](exercise02/exercise2_4.txt)
 
 - Exercise 3 
-  - [Problem 1 pen & paper](exercise02/exercise3_1.pdf) 
+  - [Problem 1 pen & paper](exercise03/exercise3_1.pdf) 
 
   
   
