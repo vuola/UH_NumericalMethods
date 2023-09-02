@@ -50,11 +50,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4B test](exercise02/exercise2_4.txt)
 
 - Exercise 3 
-  - [Problem 1 pen & paper](exercise03/exercise3_1.pdf) 
-
-  
-  
-
+  - [Problem 1 pen & paper](exercise03/exercise3_1.pdf)
+  - [Problem 2A code](exercise03/jacobi.cpp)
+  - [Problem 2B test](exercise03/exercise3_2.txt)
 
 
 ## Running the algorithms
@@ -129,6 +127,8 @@ Check if these commands are pointing to desired versions of executables. Instruc
 `pip3 install numpy`
 
 `pip3 install matplotlib`
+
+`pip3 install scipy`
 
 ### C++ libraries
 
