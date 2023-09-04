@@ -6,15 +6,14 @@
 using namespace std;
 
 /**
- * funksError - displays Taylor n-series errors of two functions 
- * first function: (cos(x)-1)/x^2   second function: (exp(x)-exp(-x))/2*x
- * @return a pair of error values: <first_function, second_function>
+ * @brief
+ * funksError - displays Taylor n-series errors of functions (cos(z)-1)/z^2 
+ * and (exp(z)-exp(-z))/2*z
+ * @return a pair of error values: <err_first_function, err_second_function>
  * @throws None
  *
- * Example:
- * @code
- * pair<double, double> result = funksError(x, n);
- * @endcode
+ * @param z input variable
+ * @param n degree of Taylor series, values 1,2, and 3 allowed
  */
 pair<double, double> funksError(double z, int n){
 

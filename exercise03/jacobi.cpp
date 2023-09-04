@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include "residual.cpp"
 #include <Eigen/Core>
  
 using Eigen::MatrixXd;
@@ -44,16 +46,13 @@ inline MatrixXd Q_(int N, pair<double, double> &cs, int &p, int &q) {
 }
 
 /**
- * jacobi - Matrix eigenvalues computed with Jacobi method 
- *
- * @return Returns an N-vector of eigenvalues, computed from input N x N matrix Q.  
+ * @brief jacobi - Matrix eigenvalues computed with Jacobi method 
+ * @return Returns an N-vector of eigenvalues, computed from input N x N matrix A.  
  *  
  * @throws None.
  *
- * Example:
- * @code
- * VectorXd e = jacobi(Q, N);
- * @endcode
+ * @param A input matrix (N x N), typically coefficients of linear equation
+ * @param N row and col dimension of A
  */
 VectorXd jacobi(MatrixXd A, int N)
 {
@@ -84,4 +83,50 @@ VectorXd jacobi(MatrixXd A, int N)
     }
     x = B.diagonal();
     return x;
+}
+
+// double mNorm(int m, VectorXd v);
+
+/**
+ * @brief
+ * err_propag - Relative error propagation factor of jacobi for testing quality of jacobi algorithm. 
+ * 
+ * A random symmetric N x N matrix A is used as jacobi input to calculate eigenvalue vector
+ * [e_1, ... e_N]. A random single-element perturbation A(i,j) = (1 + dq) * A(i,j) is applied to A and jacobi is 
+ * re-run with perturbed A. The output of jacobi changes now by [d e_1, ..., d e_N].  
+ * @return  
+ * Relative error measured by euclidean vector norms: 
+ * || [d e_1, ..., d e_N] || / ( || [e_1, ... , e_N] || * dq )
+ * 
+ * @throws None.
+ * @param N Dimension of (N,N) random matrix 
+ * @param dq Relative perturbation: A_perturbed (i,j) = (1 + dq) * A(i,j)
+ * 
+ **/
+double err_propag(int N, double dq) {
+    double de_norm;
+    double e_norm;
+    VectorXd eig;
+    MatrixXd A(N,N);
+    int randi;
+    int randj;
+
+    // random A matrix
+    A.setRandom(N, N);
+
+    // random index of perturbed A-element
+    srand((unsigned) time(NULL));
+    randi = 0 + (rand() % N);
+    randj = 0 + (rand() % N);
+
+    // original eigenvalues and their norm
+    eig = jacobi(A, N);
+    e_norm = mNorm(2,eig);
+
+    // perturbed eigenvalues, norm of difference to originals
+    A(randi,randj) *= (1 + dq);
+    de_norm = mNorm(2, eig-jacobi(A, N));
+
+    // relative error
+    return de_norm / (dq * e_norm);
 }

@@ -5,16 +5,14 @@
 using namespace std;
 
 /**
- * harmonic_kahan - sum of series with general term (1/k) with Kahan compensation
+ * @brief harmonic_kahan - sum of series with general term (1/k) with Kahan compensation
  *
  * @return Sum of (1/k) where k = { 1, ..., Nmax }, stops summing when float(1/k) == 0
- * or when N terms have been summed.
- * @throws None.
+ * or when N terms have been summed. Reports in stdout the number of times when consecutive
+ * intermediate sums have been equal.
+ * @throws none
  *
- * Example:
- * @code
- * float sum = harmonic_kahan(N);
- * @endcode
+ * @param N number of terms in sum
  */
 float harmonic_kahan(int N){
 

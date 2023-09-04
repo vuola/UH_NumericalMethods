@@ -9,3 +9,8 @@ target_link_libraries(jacobi_lib eigenpy::eigenpy)
 set_target_properties(jacobi_lib PROPERTIES OUTPUT_NAME "jacobi")
 set_target_properties(jacobi_lib PROPERTIES PREFIX "")
 set_target_properties(jacobi_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+
+# err_propag executable
+add_executable(err_propag err_propagMain.cpp jacobi.cpp)
+target_link_libraries(err_propag Eigen3::Eigen)
+target_include_directories(err_propag PRIVATE ../exercise02)

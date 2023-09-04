@@ -6,15 +6,13 @@
 using namespace std;
 
 /**
- * funks - displays a trigonometric and an exponential function 
- * first function: (cos(x)-1)/x^2   second function: (exp(x)-exp(-x))/2*x
+ * @brief
+ * funks - displays a trigonometric and an exponential function where 
+ * first function is (cos(x)-1)/x^2 and second function is (exp(x)-exp(-x))/2*x
  * @return a pair of function values: <first_function, second_function>
  * @throws None
  *
- * Example:
- * @code
- * pair<double, double> result = funks(x);
- * @endcode
+ * @param x input variable of both functions
  */
 pair<double, double> funks(double x){
 
@@ -25,14 +23,12 @@ pair<double, double> funks(double x){
 }
 
 /**
- * factorial - calculates factorial of argument
+ * @brief
+ * factorial - calculates factorial n! of argument
  * @return factorial n! = n(n-1)(n-2)... where 0! = 1! = 1
  * @throws None 
  *
- * Example:
- * @code
- * unsigned long long result = factorial(n);
- * @endcode
+ * @param n variable of the factorial
  */
 unsigned long long factorial(int n) {
     if (n <= 1) {
@@ -42,21 +38,18 @@ unsigned long long factorial(int n) {
     }
 }
 
-/**
- * funks_Taylor - displays Taylor series of functions in funks(x) 
- * first function: (cos(x)-1)/x^2   second function: (exp(x)-exp(-x))/2*x
- * @return a pair of function values: <first_function, second_function>
- * @throws None
- *
- * Example:
- * @code
- * pair<double, double> result = funks_Taylor(x);
- * @endcode
- */
-
 /* Order of Taylor series */
 const int N = 3;
 
+/**
+ * @brief
+ * funks_taylor - Taylor series value of functions in funks(x). 
+ * first function is (cos(x)-1)/x^2 and second function is (exp(x)-exp(-x))/2*x
+ * @return a pair of function values: <first_function, second_function>
+ * @throws None
+ *
+ * @param x input variable of both functions
+ */
 pair<double, double> funks_Taylor(double x) {
 
     /* Function 1: trigonometric function */

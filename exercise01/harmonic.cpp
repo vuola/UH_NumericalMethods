@@ -5,15 +5,12 @@
 using namespace std;
 
 /**
- * harmonic - sum of series with general term (1/k)
+ * @brief harmonic - sum of series with general term (1/k)
  *
- * @return Sum of (1/k) where k = { 1, ..., Nmax }, stops summing when float(1/k) == 0
- * @throws None.
+ * @return Sum of (1/k) where k = { 1, ..., Nmax }. Reports to stdout the number events when consecutive
+ * intermediate sums have been equal
+ * @throws none
  *
- * Example:
- * @code
- * float sum = harmonic;
- * @endcode
  */
 float harmonic(){
 
@@ -38,16 +35,13 @@ float harmonic(){
 }
 
 /**
- * harmonic_bunch - sum of series with general term (1/k), terms summed in batches
+ * @brief harmonic_bunch - sum of series with general term (1/k), terms summed in non-overlapping
+ * batches
  *
  * @param N Number of terms in a batch
  * @return Sum of subsequent batches. A batch is sum of terms (1/k) where k = { n, ..., (n+N)-1) }
- * @throws None.
+ * @throws none
  *
- * Example:
- * @code
- * float sum = harmonic(N);
- * @endcode
  */
 float harmonic_bunch(int N){
 
