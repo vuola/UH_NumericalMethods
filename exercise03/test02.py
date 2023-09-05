@@ -10,5 +10,6 @@ D = j.jacobiRange(N, dq, 100)
 np.set_printoptions(suppress='true')
 np.set_printoptions(precision=3)
 
-print("Data: ", np.transpose(D))
+print("Data:")
+print(np.transpose(D))
 
