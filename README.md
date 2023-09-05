@@ -53,7 +53,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 1 pen & paper](exercise03/exercise3_1.pdf)
   - [Problem 2A code](exercise03/jacobi.cpp)
   - [Problem 2B test](exercise03/exercise3_2.txt)
-
+  - [Problem 3A code](exercise03/jacobi.cpp)
+  - [Problem 3B test](exercise03/exercise3_3B.txt)
 
 ## Running the algorithms
 

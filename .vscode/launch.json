@@ -5,10 +5,31 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(gdb) Attach",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "/usr/bin/python3.10",
+            "additionalSOLibSearchPath": "${workspaceFolder}/build/exercise03",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
             "name": "Debug CMake Executable",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/exercise03/err_propag",
+            "additionalSOLibSearchPath": "${workspaceFolder}/build/exercise03",
             "args": ["3","0.1"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

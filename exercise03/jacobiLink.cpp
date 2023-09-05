@@ -3,6 +3,7 @@
 #include "eigenpy/eigenpy.hpp"
 
 Eigen::VectorXd jacobi(Eigen::MatrixXd Q, int N);
+Eigen::MatrixXd jacobiRange(Eigen::VectorXi xN, Eigen::VectorXd xdq, int k);
 
 BOOST_PYTHON_MODULE(jacobi) {
   using namespace Eigen;
@@ -10,4 +11,5 @@ BOOST_PYTHON_MODULE(jacobi) {
   eigenpy::enableEigenPy();
 
   bp::def("jacobi", jacobi);
+  bp::def("jacobiRange", jacobiRange);
 }
