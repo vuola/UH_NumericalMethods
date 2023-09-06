@@ -56,6 +56,10 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3A code](exercise03/jacobi.cpp)
   - [Problem 3B test](exercise03/exercise3_3B.txt)
 
+- Exercise 4
+  - [Problem 1A code](exercise04/root.cpp)
+  - [Problem 1A test](exercise04/exercise4_1A.txt)
+
 ## Running the algorithms
 
 The easiest way to run the algorithms is via Docker. A container with executables and python scripts is available in Docker Hub. 
