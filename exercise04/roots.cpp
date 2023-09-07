@@ -12,6 +12,16 @@ inline double f(double x) {
     return sin(3*pi*pow(x,3)/(pow(x,2)-1))+0.5;
 }
 
+// Hard-coded function derivative for newton_f
+inline double df(double x) {
+    double x2 = pow(x,2);
+    double x3 = pow(x,3);
+    double term1 = cos(3*pi*x3/(x2-1));
+    double term2 = (3*pi*x2*(x2-3))/(pow(x2-1,2));
+    return term1 * term2;
+}
+
+
 /**
  * @brief bisect_f - find solution to f(x) = 0 between x = [a, ..., b] 
  * @return Returns x fulfilling f(x) = 0. Function f is hard-coded.  
@@ -24,6 +34,7 @@ inline double f(double x) {
 double bisect_f(double a, double b) {
 
     int imax = 60;
+    double tolerance = 1.0e-9; 
     double dx, xmid, rtbis, fl, fmid;
 
     // initialize
@@ -55,7 +66,7 @@ double bisect_f(double a, double b) {
         if (fmid <= 0.0) rtbis = xmid;
         cout << i << "\t" << xmid << "\t" << fmid << endl;
         // check if root is close enough
-        if (abs(fmid) < 1.0e-9) break;
+        if (abs(fmid) < tolerance) break;
     }
     return xmid;
 }
@@ -70,5 +81,23 @@ double bisect_f(double a, double b) {
  * 
  **/
 double newton_f(double x0) {
-    return f(x0);
+
+    int imax = 60;
+    double tolerance = 1.0e-9; 
+    double fmid;
+
+    // initialize
+    double xmid = x0;
+
+    cout << "round\t" << "x\t\t" << "f(x)" << endl;
+
+    // main loop       
+    for (int i=0; i<imax; ++i) {
+        fmid = f(xmid);
+        cout << i << "\t" << xmid << "\t" << fmid << endl;
+        xmid = xmid - (fmid / df(xmid));
+        // check if root is close enough
+        if (abs(fmid) < tolerance) break;
+    }
+    return xmid;
 }

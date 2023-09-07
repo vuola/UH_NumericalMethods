@@ -11,5 +11,6 @@ np.set_printoptions(suppress='true')
 np.set_printoptions(precision=3)
 
 print("Data:")
+print("   N\t","  dq\t","mean\t","std\t")
 print(np.transpose(D))
 

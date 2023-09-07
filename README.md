@@ -59,6 +59,8 @@ Required dependencies and installation instructions are given below. The code ha
 - Exercise 4
   - [Problem 1A code](exercise04/roots.cpp)
   - [Problem 1A test](exercise04/exercise4_1A.txt)
+  - [Problem 1B code](exercise04/roots.cpp)
+  
 
 ## Running the algorithms
 
