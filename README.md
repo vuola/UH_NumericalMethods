@@ -60,7 +60,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 1A code](exercise04/roots.cpp)
   - [Problem 1A test](exercise04/exercise4_1A.txt)
   - [Problem 1B code](exercise04/roots.cpp)
-  - [Problem 1C plot](exercise04/exercise4_1C.pdf)
+  - [Problem 1C plot](exercise04/exercise4_1.pdf)
   - [Problem 1C test](exercise04/exercise4_1C.txt)
 
   
