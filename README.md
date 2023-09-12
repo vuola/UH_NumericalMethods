@@ -64,6 +64,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 1C test](exercise04/exercise4_1C.txt)
   - [Problem 2A code](exercise04/roots.cpp)
   - [Problem 2B test](exercise04/exercise4_2B.txt)
+  - [Problem 3A pen & paper](exercise04/exercise4_3A.pdf)
 
   
 
