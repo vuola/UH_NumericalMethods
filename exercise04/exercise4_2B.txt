@@ -193,13 +193,20 @@ Final root: -1
 Conclusions:
 ************
 
-As B grows the function approaches y = g(x) = x. This means
-the derivative saturates to unity, g'(x) = 1
+As B grows the derivative saturates to unity, g'(x) = 1
+but the function g(x) holds a spike at g(0) = 1, elsewhere the
+shape approaches g(x) = x.
 
-Now the iteration formula reduces to x_mid = x_mid - 1.
-- > the value x_mid starts to oscillate between -1 and 0.
+Now the iteration formula reduces to x_mid = x_mid - g(x_mid).
+- > the value x_mid starts to oscillate between -1 and 0 as
+the value of g(x_mid) oscillates between -1 and 1:
 
-The difference with starting point x0 = 0 is merely that the
-next value already produces x_mid = -1 and the phase of the
-oscillation is reversed compared to other initial x0 values.
+(x, g)
+(-1, -1): x = -1 - (-1) -> 0, g(0) -> 1
+(0, 1): x = 0 - (1) -> -1, g(-1) -> -1
+(-1, -1): 
+...
 
+The unique behaviour with starting point x0 = 0 is merely that the
+oscillation pattern starts right away and has a phase difference
+compared to oscillations resulting from other starting points.
