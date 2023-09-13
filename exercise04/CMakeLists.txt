@@ -16,3 +16,6 @@ set_target_properties(bifurcation_lib PROPERTIES OUTPUT_NAME "bifurcation")
 set_target_properties(bifurcation_lib PROPERTIES PREFIX "")
 set_target_properties(bifurcation_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 
+# myroots executable
+add_executable(myroots myroots.cpp)
+target_link_libraries(myroots Eigen3::Eigen)

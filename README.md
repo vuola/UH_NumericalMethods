@@ -67,6 +67,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3A pen & paper](exercise04/exercise4_3A.pdf)
   - [Problem 3B plot](exercise04/exercise4_3B.jpeg)
   - [Problem 3B analysis](exercise04/exercise4_3B.txt)
+  - [Problem 4A code](exercise04/myroots.cpp)
+
 
   
 
