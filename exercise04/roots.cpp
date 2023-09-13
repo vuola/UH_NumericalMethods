@@ -59,6 +59,10 @@ double bisect_f(double a, double b) {
     }
 
     // first search direction
+    // the invariable of the algorithm is that midpoint search 
+    // always proceeds uphill along the function curve
+    // rtbis is set to be the x starting point
+
     if (fl < 0.0) {
         rtbis = a;
         dx = b - a;
@@ -74,6 +78,8 @@ double bisect_f(double a, double b) {
         dx *= 0.5;
         xmid = rtbis + dx;
         fmid = f(xmid);
+        // if fmid has not yet climbed over zero when moving uphill,
+        // set rtbis as the new x starting point
         if (fmid <= 0.0) rtbis = xmid;
         cout << i << "\t" << xmid << "\t" << fmid << endl;
         // check if root is close enough

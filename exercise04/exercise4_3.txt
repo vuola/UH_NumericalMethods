@@ -1,0 +1,22 @@
+****
+* 3B
+*
+****
+
+Analysis of function used in newton iteration of bifurcating series
+*******************************************************************
+
+Looking at the figure, the shape of function f(x, mu) when parameter mu reaches 3 does 
+not change any longer as mu is getting higher values 3.2, and 3.5.
+
+The Newton iteration of f(x, mu) runs into difficulties as the function f(x, mu)
+with mu larger than 2 has an exponential term b^a where b is negative real number
+and a is non-integer real. This is not a well-defined continuous function.
+
+For a negative base b an even integer exponent a gives a positive result and an odd
+integer exponent gives a negative result. Hence, f(x, mu) is discontinous.
+
+Intuitively, the bifurcation behaviour looks like "hopping" caused
+by discontinuity points in f(x, mu).
+
+
