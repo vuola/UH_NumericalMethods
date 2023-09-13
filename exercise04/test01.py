@@ -4,7 +4,8 @@ import bifurcation as b
  
 mu = np.array([2.5, 3.0, 3.2, 3.5], np.int32) 
 
-D = b.frange(mu, 0.3, 1.0, 100)
+D = b.frange(mu, 0.3, 1.0, 10)
+print(D)
 
 x_range = D[0,:]
 y_25 = D[1,:]
@@ -34,7 +35,7 @@ plt.show()
 ### Fractals
 ###
 
-D2 = b.bifurcation(0.5, 2.1, 2.3, 5)
+D2 = b.bifurcation(0.5, 2.5, 3.0, 10)
 
 mu_range = D2[0,:]
 y_f1 = D2[1,:]
@@ -42,7 +43,7 @@ y_f2 = D2[2,:]
 
 # Create the plot
 plt.figure(figsize=(10, 6))
-plt.plot(mu_range, y_f1, label='fractal 1')
+# plt.plot(mu_range, y_f1, label='fractal 1')
 plt.plot(mu_range, y_f2, label='fractal 2')
 
 

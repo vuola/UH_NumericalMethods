@@ -33,8 +33,9 @@ double df(double x, double mu) {
     double m1 = mu*(x-1)+1;
     double e1 = 1/(mu-1)-1;
     double e2 = -mu/(mu-1);
-    double term1 = pow(m1,e1);
-    return term1 * pow(x,e2);
+    std::complex<double> term1 = std::pow(m1,e1);
+    std::complex<double> term2 = std::pow(x,e2);
+    return real(term1 * term2);
 }
 
 /**
@@ -119,13 +120,13 @@ double fractal_2(double x0, double mu) {
     // initialize
     double xmid = x0;
 
-    cout << "round\t" << "x\t\t" << "f(x)\t\t" << "f'(x)\t" << "mu" << endl;
+    // cout << "round\t" << "x\t\t" << "f(x)\t\t" << "f'(x)\t" << "mu" << endl;
 
     // main loop       
     for (int i=0; i<imax; ++i) {
         fmid = f(xmid, mu);
         dfmid = df(xmid, mu);
-        cout << i << "\t" << xmid << "\t" << fmid << "\t" << dfmid << "\t" << mu << endl;
+        // cout << i << "\t" << xmid << "\t" << fmid << "\t" << dfmid << "\t" << mu << endl;
         xmid = xmid - (fmid / dfmid);
         // check if root is close enough
         if (abs(fmid) < tolerance) break;
