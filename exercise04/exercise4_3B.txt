@@ -7,8 +7,8 @@ Analysis of function used in newton iteration of bifurcating series
 *******************************************************************
 
 Looking at the figure function f(x, mu) does not have a continuous 
-zero crossing any longer when mu >= 3. A singular zero at x = 1/3 is found
-but the function does not give valid results with x < 1/3.
+zero crossing any longer when mu >= 3. A singular zero at x = 2/3 is found
+but the function does not give valid results with x < 2/3.
 This is the same x-point where the bifurcation starts for the series.
 
 The Newton iteration of f(x, mu) runs into difficulties as the function f(x, mu)
