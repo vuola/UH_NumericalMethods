@@ -50,16 +50,28 @@ VectorXcd evalP(VectorXd a, VectorXcd X) {
 
     int K = size(a);
     int M = size(X);
-    VectorXcd P;
-    std::complex<double> xpow; 
+    VectorXcd P(M);
+    std::complex<double> xpow;
 
     for (int i = 0; i < M; ++i) {
-        P(i) = 0;
+        P(i) = 0.0 + 0i;
         for (int j = 0; j < K; ++j) {
             xpow = std::pow(X(i),j);
             P(i) += a(j)*xpow;
         }
     }
     return P;
+}
+
+int main() {
+    VectorXd a(4);
+    a(0) = 1.0;
+    a(1) = 2.0;
+    a(2) = 3.0;
+    a(3) = 4.0;
+    VectorXcd r = myroots(3,a);
+    cout << "roots:" << endl << r << endl;
+    VectorXcd ze = evalP(a,r);
+    cout << "function value at roots:" << endl << ze << endl;
 }
 
