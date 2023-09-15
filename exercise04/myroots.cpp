@@ -9,6 +9,7 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using Eigen::VectorXcd;
 using Eigen::EigenSolver;
+using Eigen::EigenBase;
 using namespace std;
 
 /**
@@ -61,17 +62,5 @@ VectorXcd evalP(VectorXd a, VectorXcd X) {
         }
     }
     return P;
-}
-
-int main() {
-    VectorXd a(4);
-    a(0) = 1.0;
-    a(1) = 2.0;
-    a(2) = 3.0;
-    a(3) = 4.0;
-    VectorXcd r = myroots(3,a);
-    cout << "roots:" << endl << r << endl;
-    VectorXcd ze = evalP(a,r);
-    cout << "function value at roots:" << endl << ze << endl;
 }
 

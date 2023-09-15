@@ -22,7 +22,3 @@ target_link_libraries(myroots_lib eigenpy::eigenpy)
 set_target_properties(myroots_lib PROPERTIES OUTPUT_NAME "myroots")
 set_target_properties(myroots_lib PROPERTIES PREFIX "")
 set_target_properties(myroots_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
-
-# myroots executable
-add_executable(myroots myroots.cpp)
-target_link_libraries(myroots Eigen3::Eigen)
