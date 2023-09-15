@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import myroots as my
 import random
 
-N = 4
+N = 10
 genroots = np.empty(N)
 for i in range (0, N):
     genroots[i] = np.random.uniform(-5, 5)
