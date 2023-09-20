@@ -33,7 +33,7 @@
             "name": "Debug CMake Executable",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/exercise04/myroots",
+            "program": "${workspaceFolder}/build/exercise05/broyden",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
