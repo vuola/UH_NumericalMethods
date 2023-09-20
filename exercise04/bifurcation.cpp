@@ -13,12 +13,6 @@ using namespace std::numbers;
 
 
 // Hard-coded function for exercise 4 problem 3B
-// double f(double x, double mu) {
-//    std::complex<double> y = std::exp((log(mu*(x-1)+1)-log(x))/(mu-1)); 
-//    return real(y);
-// }
-
-// Hard-coded function for exercise 4 problem 3B
 double f(double x, double mu) {
     double m = (mu*(x-1)+1)/x;
     double ex = 1/(mu-1);
