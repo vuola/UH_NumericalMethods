@@ -38,9 +38,9 @@ MatrixXd Jinv(VectorXd x) {
  */
 VectorXd broyden(VectorXd x_init) {
 
-    int imax = 50;
-    double tolerance = 1.0e-9;
-    VectorXd x, xprev, y, s, stransB;
+    int imax = 150;
+    double tolerance = 1.0e-17;
+    VectorXd x, xprev, y, s, ds, stransB;
 
     MatrixXd B = Jinv(x_init);
 
@@ -52,7 +52,8 @@ VectorXd broyden(VectorXd x_init) {
         if (s.norm() < tolerance) break;
         y = f(x) - f(xprev);
         stransB = s.transpose() * B;
-        B += (s-B*y)*stransB / stransB.dot(y);
+        ds = s - (B * y);
+        B += ds * stransB.transpose() / stransB.dot(y);
     } 
     return x;  
 
@@ -63,7 +64,7 @@ int main() {
     x_init(0) = 1;
     x_init(1) = 1;
     VectorXd r = broyden(x_init);
-    cout << "Roots: " << r << endl;
-    cout << "Error: " << f(r) << endl;
+    cout << "Roots: " << endl << r << endl;
+    cout << "Error: " << endl << f(r) << endl;
     return 0;
 }

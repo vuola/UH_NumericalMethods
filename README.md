@@ -70,9 +70,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4A & 4B code](exercise04/myroots.cpp)
   - [Problem 4B test](exercise04/exercise4_4B.txt)
 
-
-  
-
+- Exercise 5
+  - [Problem 1A code](exercise05/broyden.cpp)
+  - [Problem 1A test](exercise05/exercise5_1A.txt)
   
 
 ## Running the algorithms

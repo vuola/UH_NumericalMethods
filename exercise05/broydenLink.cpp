@@ -6,6 +6,7 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 Eigen::VectorXd broyden(VectorXd x_init);
+Eigen::VectorXd f(VectorXd x);
 
 BOOST_PYTHON_MODULE(broyden) {
   using namespace Eigen;
@@ -13,4 +14,5 @@ BOOST_PYTHON_MODULE(broyden) {
   eigenpy::enableEigenPy();
 
   bp::def("broyden", broyden);
+  bp::def("f", f);
 }
