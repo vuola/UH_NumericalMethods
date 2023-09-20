@@ -8,9 +8,14 @@
             "name": "(gdb) Attach",
             "type": "cppdbg",
             "request": "attach",
-            "program": "/usr/bin/python3.10",
-            "additionalSOLibSearchPath": "${workspaceFolder}/build/exercise03",
-            "MIMode": "gdb",
+            "program": "/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python",
+            "additionalSOLibSearchPath": "${workspaceFolder}/build/exercise04",
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "linux": {
+                "MIMode": "gdb"
+            },
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -28,13 +33,12 @@
             "name": "Debug CMake Executable",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/exercise04/bisect_f",
-            "args": ["1.0","4.0"],
+            "program": "${workspaceFolder}/build/exercise04/myroots",
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
             "osx": {
                 "MIMode": "lldb"
             },

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include <numbers>
+#include <complex>
 #include <Eigen/Core>
 #include <Eigen/Eigenvalues>
  
@@ -9,6 +9,7 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using Eigen::VectorXcd;
 using Eigen::EigenSolver;
+using Eigen::EigenBase;
 using namespace std;
 
 /**
@@ -37,12 +38,29 @@ VectorXcd myroots(int N, VectorXd a) {
     return es.eigenvalues();
 }
 
-int main() {
-    VectorXd a(4);
-    a(0) = 1;
-    a(1) = 2;
-    a(2) = 3;
-    a(3) = 4;
-    cout << myroots(3, a) << endl;
-    return 0;
+/**
+ * @brief evalP - evaluate polynomial P(x)= a0+a1*x+a2*x^2+...+an*x^n 
+ * @return Returns N-vector p, vector elements are values of P(x) at given input points x
+ *  
+ * @throws None.
+ *
+ * @param a N+1 vector of general polynomial multipliers. a(N) is multiplier of x^N and a(0) is the constant a0.
+ * @param x points in where to evaluate polynomial P(x), x can have complex values.
+ */
+VectorXcd evalP(VectorXd a, VectorXcd X) {
+
+    int K = size(a);
+    int M = size(X);
+    VectorXcd P(M);
+    std::complex<double> xpow;
+
+    for (int i = 0; i < M; ++i) {
+        P(i) = 0.0 + 0i;
+        for (int j = 0; j < K; ++j) {
+            xpow = std::pow(X(i),j);
+            P(i) += a(j)*xpow;
+        }
+    }
+    return P;
 }
+
