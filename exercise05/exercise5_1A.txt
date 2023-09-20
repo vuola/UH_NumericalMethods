@@ -22,4 +22,4 @@ F:  [-8.32667268e-17  1.11022302e-16]
 Conclusion
 **********
 
-The roots of two methods match with very good accuracy.
+The roots found by the two implementations match with very good accuracy.
