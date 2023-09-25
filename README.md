@@ -72,7 +72,7 @@ Required dependencies and installation instructions are given below. The code ha
 
 - Exercise 5
   - [Problem 1A code](exercise05/broyden.cpp)
-  - [Problem 1B test](exercise05/exercise5_1A.txt)
+  - [Problem 1B test](exercise05/exercise5_1B.txt)
   
 
 ## Running the algorithms
