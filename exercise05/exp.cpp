@@ -18,8 +18,10 @@ using namespace std;
 double myexp(double x) {
 
     double x_mapped, f;
+    int n;
 
-    x_mapped = 
+    n = round_to_nearest(x/log(2));
+    x_mapped = x - 
 
     return f;  
 
