@@ -9,3 +9,6 @@ target_link_libraries(broyden_lib eigenpy::eigenpy)
 set_target_properties(broyden_lib PROPERTIES OUTPUT_NAME "broyden")
 set_target_properties(broyden_lib PROPERTIES PREFIX "")
 set_target_properties(broyden_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+
+# myexp executable
+add_executable(myexp exp.cpp)

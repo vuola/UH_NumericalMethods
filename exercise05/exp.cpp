@@ -17,12 +17,18 @@ using namespace std;
  */
 double myexp(double x) {
 
-    double x_mapped, f;
+    double x_mapped, l2;
     int n;
 
-    n = round_to_nearest(x/log(2));
-    x_mapped = x - 
+    l2 = log(2);
+    n = round(x/l2);
+    x_mapped = x - n * l2;
+    return exp(x_mapped) * pow(2,n);  
+}
 
-    return f;  
-
+int main() {
+    double x = 2;
+    cout << "value of x is " << x << endl;
+    cout << "regular exponential: " << exp(x) << endl;
+    cout << "custom exponential: " << myexp(x) << endl;
 }
