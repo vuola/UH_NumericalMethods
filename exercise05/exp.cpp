@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 #include <numbers>
+#include <cstdlib>
 
 using namespace std;
 
@@ -26,9 +27,14 @@ double myexp(double x) {
     return exp(x_mapped) * pow(2,n);  
 }
 
+double doubleRand() {
+    srand((unsigned) time(NULL));
+    return double(rand()) / (double(RAND_MAX) + 1.0);
+}
+
 int main() {
-    double x = 2;
+    double x = doubleRand() * 20 - 10;
     cout << "value of x is " << x << endl;
-    cout << "regular exponential: " << exp(x) << endl;
-    cout << "custom exponential: " << myexp(x) << endl;
+    cout << "regular exp function: " << exp(x) << endl;
+    cout << "mapped exp function: " << myexp(x) << endl;
 }

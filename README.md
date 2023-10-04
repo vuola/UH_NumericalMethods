@@ -73,6 +73,8 @@ Required dependencies and installation instructions are given below. The code ha
 - Exercise 5
   - [Problem 1A code](exercise05/broyden.cpp)
   - [Problem 1B test](exercise05/exercise5_1B.txt)
+  - [Problem 2(a) pen & paper](exercise05/exercise5_2.pdf)
+
   
 
 ## Running the algorithms
