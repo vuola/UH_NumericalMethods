@@ -78,6 +78,10 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2(a) code](exercise05/exp.cpp)
   - [Problem 2(b) pen & paper](exercise05/exercise5_2b.pdf)
   - [Problem 2(c) pen & paper](exercise05/exercise5_2c.pdf)
+  - [Problem 2(d) pen & paper](exercise05/exercise5_2d.pdf)
+  - [Problem 3(a)(b) code](exercise05/e5p3.py)
+  - [Problem 3(a)(b) test](exercise05/exercise5_3.txt)
+  - [Problem 3 plot](exercise05/exercise5_3.png)
 
 
 
@@ -155,6 +159,10 @@ Check if these commands are pointing to desired versions of executables. Instruc
 `pip3 install matplotlib`
 
 `pip3 install scipy`
+
+`pip3 install mpmath`
+
+`pip3 install sympy`
 
 ### C++ libraries
 
