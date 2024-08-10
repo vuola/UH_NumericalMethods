@@ -84,6 +84,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3 plot](exercise05/exercise5_3.png)
   - [Problem 4 pen & paper](exercise05/exercise5_4.pdf)
 
+- Exercise 6
+  - [Problem 1 pen & paper](exercise06/exercise6_1.pdf)
 
 
 ## Running the algorithms
