@@ -86,6 +86,10 @@ Required dependencies and installation instructions are given below. The code ha
 
 - Exercise 6
   - [Problem 1 pen & paper](exercise06/exercise6_1.pdf)
+  - [Problem 2(a) code](exercise06/richardson.cpp)
+  - [Problem 2(a) test](exercise06/exercise6_2A.txt)
+  - [Problem 2(b) code](exercise06/richardson_test.cpp)
+  - [Problem 2(b) test](exercise06/exercise6_2B.txt)
 
 
 ## Running the algorithms
