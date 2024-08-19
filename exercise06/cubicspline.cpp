@@ -9,6 +9,7 @@
  
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
+using Eigen::Ref;
 using namespace std;
 
 // Random number generator
@@ -34,7 +35,7 @@ void derivative(double (*f)(double x), double x, int N, double h, MatrixXd &D) {
     }
 }
 
-void Spline3_Coeff(int n, VectorXd &x, VectorXd &y, VectorXd &z, double boundary) {
+void Spline3_Coeff(int n, VectorXd &x, VectorXd &y, Ref<VectorXd> z, double boundary) {
     VectorXd h(n), b(n), u(n), v(n);
     for (int i=0; i<n-1; i++) {
         h(i) = x(i+1) - x(i);
@@ -53,7 +54,7 @@ void Spline3_Coeff(int n, VectorXd &x, VectorXd &y, VectorXd &z, double boundary
     z(0) = boundary;
 }
 
-double Spline3_Eval(int n, VectorXd x, VectorXd y, VectorXd z, double x0) {
+double Spline3_Eval(int n, VectorXd &x, VectorXd &y, VectorXd &z, double x0) {
     int i;
     double h, tmp, result;
     for (i=n-1; i >=0; i--) {
@@ -70,14 +71,13 @@ double Spline3_Eval(int n, VectorXd x, VectorXd y, VectorXd z, double x0) {
 
 int main(int argc, char *argv[]) {
     int n;
-    double boundary;
-    if (argc != 3) {
-        cout << "Usage: " << argv[0] << " n boundary" << endl;
+    VectorXd boundary {{0.0, 1,0, 10.0}};
+    if (argc != 2) {
+        cout << "Usage: " << argv[0] << " n" << endl;
         return 1;
     }
     n = stoi(argv[1]);
-    boundary = stod(argv[2]);
-
+    
     // Create increasing x and random y values
     VectorXd x(n), y(n);
     for (int i=0; i<n; i++) {
@@ -85,5 +85,15 @@ int main(int argc, char *argv[]) {
         y(i) = dist(mt);
     } 
 
+    // Compute spline coefficients with three different boundary conditions.
+    // Store the coefficients in a matrix.
+    Eigen::MatrixXd z(n, 3);
+    for (int i=0; i<3; i++) {
+        Spline3_Coeff(n, x, y, z.col(i), boundary(i));
+    }
     return 0;
+
+    cout << x << endl;
+    cout << y << endl;
+    cout << z << endl;
 }
