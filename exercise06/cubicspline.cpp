@@ -36,7 +36,7 @@ void derivative(double (*f)(double x), double x, int N, double h, MatrixXd &D) {
 }
 
 void Spline3_Coeff(int n, VectorXd &x, VectorXd &y, Ref<VectorXd> z, double boundary) {
-    VectorXd h(n), b(n), u(n), v(n);
+    VectorXd h(n+1), b(n+1), u(n+1), v(n+1);
     for (int i=0; i<n-1; i++) {
         h(i) = x(i+1) - x(i);
         b(i) = (y(i+1) - y(i))/h(i);
@@ -81,19 +81,20 @@ int main(int argc, char *argv[]) {
     // Create increasing x and random y values
     VectorXd x(n), y(n);
     for (int i=0; i<n; i++) {
-        x(i) = static_cast<double>(i);
+        x(i) = static_cast<double>(i+1);
         y(i) = dist(mt);
     } 
 
     // Compute spline coefficients with three different boundary conditions.
     // Store the coefficients in a matrix.
-    Eigen::MatrixXd z(n, 3);
+    Eigen::MatrixXd z(n+1, 3);
     for (int i=0; i<3; i++) {
         Spline3_Coeff(n, x, y, z.col(i), boundary(i));
     }
-    return 0;
 
     cout << x << endl;
     cout << y << endl;
     cout << z << endl;
+
+    return 0;
 }
