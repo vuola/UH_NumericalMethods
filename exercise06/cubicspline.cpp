@@ -54,7 +54,7 @@ void Spline3_Coeff(int n, VectorXd &x, VectorXd &y, Ref<VectorXd> z, double boun
     z(0) = boundary;
 }
 
-double Spline3_Eval(int n, VectorXd &x, VectorXd &y, VectorXd &z, double x0) {
+double Spline3_Eval(int n, VectorXd &x, VectorXd &y, Ref<VectorXd> z, double x0) {
     int i;
     double h, tmp, result;
     for (i=n-1; i >=0; i--) {
@@ -69,15 +69,8 @@ double Spline3_Eval(int n, VectorXd &x, VectorXd &y, VectorXd &z, double x0) {
     return result;
 }
 
-int main(int argc, char *argv[]) {
-    int n;
-    VectorXd boundary {{0.0, 1,0, 10.0}};
-    if (argc != 2) {
-        cout << "Usage: " << argv[0] << " n" << endl;
-        return 1;
-    }
-    n = stoi(argv[1]);
-    
+MatrixXd cubicspline(int n, VectorXd &boundary) {
+
     // Create increasing x and random y values
     VectorXd x(n), y(n);
     for (int i=0; i<n; i++) {
@@ -85,16 +78,41 @@ int main(int argc, char *argv[]) {
         y(i) = dist(mt);
     } 
 
-    // Compute spline coefficients with three different boundary conditions.
+    // Create output matrix
+    MatrixXd out(n+3*(n-1), boundary.size()+1);
+
+    // Compute spline coefficients with different boundary conditions.
     // Store the coefficients in a matrix.
-    Eigen::MatrixXd z(n+1, 3);
-    for (int i=0; i<3; i++) {
+    Eigen::MatrixXd z(n+1, boundary.size());
+    for (int i=0; i<boundary.size(); i++) {
         Spline3_Coeff(n, x, y, z.col(i), boundary(i));
     }
 
-    cout << x << endl;
-    cout << y << endl;
-    cout << z << endl;
+    // Evaluate the spline at all x points and three intermediate points between consecutive x values.
+    for (int i=0; i<n-1; i++) {
+        for (int j=0; j<4; j++) {
+            double x0 = x(i) + (x(i+1)-x(i))*j/4.0;
+            out(i*4+j,0) = x0;
+            for (int k=0; k<boundary.size(); k++) {
+                out(i*4+j,k+1) = Spline3_Eval(n, x, y, z.col(k), x0);
+            }
+            cout << endl;
+        }
+    }
+    // Last point
+    int s = n+3*(n-1)-1; 
+    out(s,0) = x(n-1);
+    for (int k=1; k<=boundary.size(); k++) {
+        out(s,k) = y(n-1);
+    }
 
+    return out;
+}
+
+int main() {
+    int n = 10;
+    VectorXd boundary {{0.0, 1.0, 10.0}};
+    MatrixXd out = cubicspline(n, boundary);
+    cout << out << endl;
     return 0;
 }
