@@ -5,7 +5,7 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
-Eigen::MatrixXd cubicspline(int n, VectorXd &boundary);
+Eigen::MatrixXd cubicspline(int n, VectorXd boundary);
 
 BOOST_PYTHON_MODULE(cubicspline) {
   using namespace Eigen;

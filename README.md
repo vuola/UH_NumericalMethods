@@ -90,6 +90,11 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2(a) test](exercise06/exercise6_2A.txt)
   - [Problem 2(b) code](exercise06/richardson_test.cpp)
   - [Problem 2(b) test](exercise06/exercise6_2B.txt)
+  - [Problem 3 code](exercise06/cubicspline.cpp)
+  - [Problem 3 plot (5pts)](exercise06/cubicspline_5.png)
+  - [Problem 3 plot (10pts)](exercise06/cubicspline_10.png)
+  - [Problem 3 plot (20pts)](exercise06/cubicspline_20.png)
+  
 
 
 ## Running the algorithms

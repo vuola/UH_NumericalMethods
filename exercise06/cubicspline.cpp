@@ -69,7 +69,7 @@ double Spline3_Eval(int n, VectorXd &x, VectorXd &y, Ref<VectorXd> z, double x0)
     return result;
 }
 
-MatrixXd cubicspline(int n, VectorXd &boundary) {
+MatrixXd cubicspline(int n, VectorXd boundary) {
 
     // Create increasing x and random y values
     VectorXd x(n), y(n);
