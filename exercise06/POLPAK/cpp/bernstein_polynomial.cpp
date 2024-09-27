@@ -4,6 +4,7 @@
 # include <ctime>
 # include <iomanip>
 # include <iostream>
+# include <vector>
 
 using namespace std;
 
@@ -191,8 +192,7 @@ double *bernstein_matrix_inverse ( int n )
   return a;
 }
 //****************************************************************************80
-
-double *bernstein_poly_01 ( int n, double x )
+std::vector<double> bernstein_poly_01 ( int n, double x )
 
 //****************************************************************************80
 //
@@ -262,15 +262,11 @@ double *bernstein_poly_01 ( int n, double x )
 //
 //    Input, double X, the evaluation point.
 //
-//    Output, double BERNSTEIN_POLY[N+1], the values of the N+1 
+//    Output, std::vector<double> BERNSTEIN_POLY[N+1], the values of the N+1 
 //    Bernstein polynomials at X.
 //
 {
-  double *bern;
-  int i;
-  int j;
-
-  bern = new double[n+1];
+  std::vector<double> bern(n+1);
 
   if ( n == 0 )
   {
@@ -281,10 +277,10 @@ double *bernstein_poly_01 ( int n, double x )
     bern[0] = 1.0 - x;
     bern[1] = x;
  
-    for ( i = 2; i <= n; i++ )
+    for ( int i = 2; i <= n; i++ )
     {
       bern[i] = x * bern[i-1];
-      for ( j = i - 1; 1 <= j; j-- )
+      for ( int j = i - 1; 1 <= j; j-- )
       {
         bern[j] =         x   * bern[j-1] 
                 + ( 1.0 - x ) * bern[j];
@@ -406,17 +402,15 @@ double *bernstein_poly_01_matrix ( int m, int n, double x[] )
 }
 
 
-void bernstein_poly ( int n, double x, double b[] ) {
+void bernstein_poly(int n, double x, std::vector<double>& b) {
   int i;
-  double *bvec;
+  std::vector<double> bvec;
 
-  bvec = bernstein_poly_01 ( n, x );
+  bvec = bernstein_poly_01(n, x);
 
-  for ( i = 0; i <= n; i++ ) {
+  for (i = 0; i <= n; i++) {
     b[i] = bvec[i];
   }
-
-  delete [] bvec;
 
   return;
 }
@@ -975,7 +969,7 @@ double *bernstein_vandermonde ( int n )
   for ( i = 0; i < n; i++ )
   {
     x = ( double ) ( i ) / ( double ) ( n - 1 );
-    b = bernstein_poly_01 ( n - 1, x );
+//    b = bernstein_poly_01 ( n - 1, x );
     for ( j = 0; j < n; j++ )
     {
       v[i+j*n] = b[j];

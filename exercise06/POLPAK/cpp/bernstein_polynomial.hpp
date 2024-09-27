@@ -1,7 +1,7 @@
 double *bernstein_matrix ( int n );
 double bernstein_matrix_determinant ( int n );
 double *bernstein_matrix_inverse ( int n );
-double *bernstein_poly_01 ( int n, double x );
+std::vector<double> bernstein_poly_01 ( int n, double x );
 void bernstein_poly ( int n, double x, double b[] );
 double *bernstein_poly_01_matrix ( int m, int n, double x[] );
 void bernstein_poly_01_values ( int &n_data, int &n, int &k, double &x, 
