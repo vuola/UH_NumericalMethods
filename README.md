@@ -94,6 +94,16 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3 plot (5pts)](exercise06/cubicspline_5.png)
   - [Problem 3 plot (10pts)](exercise06/cubicspline_10.png)
   - [Problem 3 plot (20pts)](exercise06/cubicspline_20.png)
+  - [Problem 4 pen & paper](exercise06/exercise6_4.pdf)
+  - [Problem 4 code](exercise06/plotSplines.py)
+  - [Problem 4 test](exercise06/exercise6_4.txt)
+  - [Problem 4 plot (1st degree)](exercise06/spline1.png)
+  - [Problem 4 plot (2nd degree)](exercise06/spline2.png)
+  - [Problem 4 plot (3rd degree)](exercise06/spline3.png)
+
+
+
+
   
 
 
