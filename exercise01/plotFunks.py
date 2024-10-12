@@ -1,5 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
+import sys
+import os
+
+# Get the absolute path to the build directory (relative to the script's location)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+build_dir = os.path.join(current_dir, '..', 'build', 'exercise01')
+
+# Append the build directory to sys.path
+sys.path.append(build_dir)
+
+
 import funks as fu
 
 # Generate X values in a defined range and resolution
