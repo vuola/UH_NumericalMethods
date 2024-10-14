@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def spline(i,k,t,ti):
     """
-    Return the i-th spline of degree k within range [ t[i] , t[i+1] ).
+    Return the i-th spline of degree k within range [ ti[i] , ti[i+1] ).
     i: int, the index of the left endpoint of the spline
     k: int, the degree of the spline
     t: double, the evaluation point of the spline
@@ -107,30 +107,34 @@ def test_parametric_spline():
     # Colormap
     c = [plt.cm.tab10(i) for i in range(10)]
 
-    # Number of segments
-    n = 9
+    # Number of knots
+    n = 14
+    # Spline degree
+    k = 3
+    # Number of control points
+    m = n - k - 1
 
     # Knot values between 0 and 1
-    ti = np.linspace(0,1,n+1)
+    ti = np.linspace(0,1,n)
 
     # Control points
-    xi = np.linspace(0,n,n+1)
-    yi = np.zeros(n+1)
-    for i in range(1,n+1):
-        yi[i] = yi[i-1] + np.random.uniform(0,1)
+    theta = np.linspace(0, 2 * np.pi, m, endpoint=False)
+    radius = 5  # Radius of the circle
+    xi = radius * np.cos(theta)
+    yi = radius * np.sin(theta)
 
     # Parametric spline
-    def x(t,ti,xi,n):
+    def x(t,ti,xi,m):
         S = Z
-        for i in range(n):
-            S += xi[i] * spline(i,3,t,ti)
+        for i in range(m):
+            S += xi[i] * spline(i,k,t,ti)
         return S(t)
 
 
-    def y(t,ti,yi,n):
+    def y(t,ti,yi,m):
         S = Z
-        for i in range(n):
-            S += yi[i] * spline(i,3,t,ti)
+        for i in range(m):
+            S += yi[i] * spline(i,k,t,ti)
         return S(t)
 
 
@@ -140,8 +144,12 @@ def test_parametric_spline():
     Y = np.zeros(100)
 
     for t in range(100):
-        X[t] = x(t/100,ti,xi,n)
-        Y[t] = y(t/100,ti,yi,n)
+    #    print(t)
+        X[t] = x(t/100,ti,xi,m)
+        Y[t] = y(t/100,ti,yi,m)
+
+    #print("X:", X)
+    #print("Y:", Y)
 
     plt.plot(X,Y, color=c[0])
     plt.plot(xi,yi, 'ro')
