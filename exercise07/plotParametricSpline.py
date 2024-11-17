@@ -12,7 +12,7 @@ def spline(i,k,t,ti):
     """
     Z = Polynomial([0], symbol='t')
     if k == 0:
-        if t >= ti[i] and t < ti[i+1]:         
+        if ti[i] <= t < ti[i+1]:         
             return Polynomial([1], symbol='t')
         else: 
             return Polynomial([0], symbol='t')
@@ -31,71 +31,7 @@ def spline(i,k,t,ti):
             return A * Nikm1
         else:
             return (A * Nikm1 + B * Nip1km1)
-            
 
-
-def test_spline():
-    # Test the function with some examples
-
-    # Zero polynomial
-    Z = Polynomial([0], symbol='t')
-
-    # Colormap
-    c = [plt.cm.tab10(i) for i in range(7)]
-
-    # Knot values
-    ti = np.linspace(0,11,12)
-
-    # Up to three degrees
-    print("First degree splines")
-    print("********************")
-    for t in range(0,8):
-        x = np.linspace(t, t+1, 20, endpoint=True)
-        print("Segment [", t, ",", t+1, ")")
-        for i in range(t-1,t+1):
-            S = spline(i,1,t,ti)
-            if i >= 0 and S != Z and i < (8-1):
-                print(f"N({i},1):", S)
-                F = S(x)
-                if (t == i): plt.plot(x, F, color=c[i], label=f"N({i},1)") 
-                else: plt.plot(x, F, color=c[i])
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.title("First degree splines")
-    plt.tight_layout()
-    plt.savefig("spline1.png")
-    plt.clf()
-    print("Second degree splines")
-    print("********************")
-    for t in range(0,8):
-        x = np.linspace(t, t+1, 20, endpoint=True)
-        print("Segment [", t, ",", t+1, ")")
-        for i in range(t-2,t+1):
-            S = spline(i,2,t,ti)
-            if i >= 0 and S != Z and i < (8-2):
-                print(f"N({i},2):", S)
-                F = S(x)
-                if (t == i): plt.plot(x, F, color=c[i], label=f"N({i},2)") 
-                else: plt.plot(x, F, color=c[i])
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.title("Second degree splines")
-    plt.savefig("spline2.png")
-    plt.clf()
-    print("Third degree splines")
-    print("********************")
-    for t in range(0,8):
-        x = np.linspace(t, t+1, 20, endpoint=True)
-        print("Segment [", t, ",", t+1, ")")
-        for i in range(t-3,t+1):
-            S = spline(i,3,t,ti)
-            if i >= 0 and S != Z and i < (8-3):
-                print(f"N({i},3):", S)
-                F = S(x)
-                if (t == i): plt.plot(x, F, color=c[i], label=f"N({i},3)") 
-                else: plt.plot(x, F, color=c[i])
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.title("Third degree splines")
-    plt.savefig("spline3.png")
-    
 
 
 def test_parametric_spline():
@@ -108,7 +44,7 @@ def test_parametric_spline():
     c = [plt.cm.tab10(i) for i in range(10)]
 
     # Number of knots
-    n = 14
+    n = 25 
     # Spline degree
     k = 3
     # Number of control points
@@ -122,6 +58,12 @@ def test_parametric_spline():
     radius = 5  # Radius of the circle
     xi = radius * np.cos(theta)
     yi = radius * np.sin(theta)
+    # Add some random noise to the control points
+    xi += np.random.normal(0, 0.5, m)
+    yi += np.random.normal(0, 0.5, m)
+
+    # print("xi:",xi)
+    # print("yi:",yi)
 
     # Parametric spline
     def x(t,ti,xi,m):
@@ -144,12 +86,11 @@ def test_parametric_spline():
     Y = np.zeros(100)
 
     for t in range(100):
-    #    print(t)
-        X[t] = x(t/100,ti,xi,m)
-        Y[t] = y(t/100,ti,yi,m)
+        # tt goes from 10% to 90% to avoid the zero endpoints
+        tt = 0.1 + 0.8 * t / 100
+        X[t] = x(tt,ti,xi,m)
+        Y[t] = y(tt,ti,yi,m)
 
-    #print("X:", X)
-    #print("Y:", Y)
 
     plt.plot(X,Y, color=c[0])
     plt.plot(xi,yi, 'ro')

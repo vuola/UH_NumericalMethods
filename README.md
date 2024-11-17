@@ -101,7 +101,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 plot (2nd degree)](exercise06/spline2.png)
   - [Problem 4 plot (3rd degree)](exercise06/spline3.png)
 
-
+- Exercise 7
+  - [Problem 1 code](exercise07/plotParametricSpline.py)
+  - [Problem 1 plot](exercise07/parametricSpline.png)
 
 
   
