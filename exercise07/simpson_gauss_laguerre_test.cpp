@@ -4,7 +4,7 @@
 #include <numbers>
 #include <Eigen/Core>
 #include <Eigen/Dense>
- 
+#include <iomanip>
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using namespace std;
@@ -19,6 +19,12 @@ double f(double x) {
 double f_definite(double t) {
    return exp(-t*(1.0-t)) * pow(cos(t / (1.0-t)), 2) * pow(1.0-t, -2); 
 }
+
+// Hard-coded function for Gauss-Laguerre quadrature
+double f_gauss_laguerre(double x) {
+    return pow(cos(x), 2);
+}
+
 
 // Adaptive Simpson's rule
 double Simpson(double (*f)(double x), double a, double b, double eps, int level, int level_max)
@@ -36,7 +42,6 @@ double Simpson(double (*f)(double x), double a, double b, double eps, int level,
     /* Check for level */
     if (level+1 >= level_max) {
         result = two_simpson;
-        printf("Maximum level reached\n");
     } else {
 
         /* Check for desired accuracy */
@@ -53,72 +58,78 @@ double Simpson(double (*f)(double x), double a, double b, double eps, int level,
     return(result);
 }
 
-// Gauss-Laguerre guadrature
-double qgaus(double (*func)(double), double a, double b)
+// Gauss-Laguerre guadrature for 2, 4 and 8 points
+double qgaus(double (*func)(double), int n)
 {
-    int j;
-    double xr,xm,dx,s;
-    static double x[]={0.0, 0.1488743389, 0.4333953941, 0.6794095682, 0.8650633666, 0.9739065285};
-    static double w[]={0.0, 0.2955242247, 0.2692667193, 0.2190863625, 0.1494513491, 0.0666713443};
-    xm=0.5*(b+a);
-    xr=0.5*(b-a);
-    s=0;
-    for (j=1;j<=5;j++) {
-        dx=xr*x[j];
-        s += w[j]*((*func)(xm+dx)+(*func)(xm-dx));
+    static double x2[]={0.58578644, 3.41421356};
+    static double w2[]={0.85355339, 0.14644661};
+    static double x4[]={0.32254769, 1.7457611,  4.5366203,  9.39507091};
+    static double w4[]={6.03154104e-01, 3.57418692e-01, 3.88879085e-02, 5.39294706e-04};
+    static double x8[]={0.17027963, 0.90370178, 2.25108663, 4.26670017, 7.0459054, 10.75851601, 15.74067864, 22.86313174};
+    static double w8[]={3.69188589e-01, 4.18786781e-01, 1.75794987e-01, 3.33434923e-02, 2.79453624e-03, 9.07650877e-05, 8.48574672e-07, 1.04800117e-09};
+
+    // Evaluate the integral using Gauss-Laguerre quadrature in the range [0, Inf) using 2, 4, and 8 points
+    double result = 0.0;
+    if (n == 2) {
+        for (int i = 0; i < 2; ++i) {
+            result += w2[i] * func(x2[i]);
+        }
+    } else if (n == 4) {
+        for (int i = 0; i < 4; ++i) {
+            result += w4[i] * func(x4[i]);
+        }
+    } else if (n == 8) {
+        for (int i = 0; i < 8; ++i) {
+            result += w8[i] * func(x8[i]);
+        }
+    } else {
+        cerr << "Invalid number of points for Gauss-Laguerre quadrature. Use 2, 4, or 8." << endl;
+        return NAN;
     }
-    return s *= xr;
+    return result;
 }
 
 
 int main() {
-    int level_max = 20;
+    int level_max = 20; // Maximum recursion level for Simpson's method
     double a = 0.0, b = 1.0, eps = 1e-9;
 
-    cout << "Testing Adaptive Simpson's method" << endl << endl;
-    cout << "when b = Inf the expected result is: 0.6" << endl; // Known value for this integral
+    cout << "Adaptive Simpson's method" << endl;
+    cout << "The expected result is: 0.6" << endl; // Known value for this integral
     cout << "maximum error setting: eps = " << eps << endl;
-    cout << "---------------------------------" << endl;
     // b = 1.0
-    cout << "Integrating f(x) = exp(-x) * cos(x)^2 from " << a << " to " << b << endl;
+    cout << "Integrating f(x) = exp(-x) * cos(x)^2 from " << a << " to different upper limits" << endl;
     double result = Simpson(f, a, b, eps, 0, level_max);
-    cout << "Result: " << result << endl;
-    cout << "Error: " << fabs(result - 0.6) << endl << endl;
-    // b = 10.0
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
     b = 10.0;
-    cout << "Integrating f(x) = exp(-x) * cos(x)^2 from " << a << " to " << b << endl;
     result = Simpson(f, a, b, eps, 0, level_max);
-    cout << "Result: " << result << endl;
-    cout << "Error: " << fabs(result - 0.6) << endl << endl;
-    // b = 100.0
+    cout << b << ": " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
     b = 100.0;
-    cout << "Integrating f(x) = exp(-x) * cos(x)^2 from " << a << " to " << b << endl;
     result = Simpson(f, a, b, eps, 0, level_max);
-    cout << "Result: " << result << endl;
-    cout << "Error: " << fabs(result - 0.6) << endl;
-    cout << "---------------------------------" << endl << endl;
+    cout << b << ":" << setw(8) << result << "    error: " << fabs(result - 0.6) << endl << endl;
+    cout << "---------------------------------" << endl;
 
     // Testing with definite upper limit
-    cout << "Testing Adaptive Simpson's method with definite upper limit" << endl << endl;
+    cout << "Adaptive Simpson's method with definite upper limit" << endl;
     cout << "when b = 1.0 the expected result is: 0.6" << endl; // Known value for this integral
-    cout << "Integrating f(t) = exp(-t*(1-t)) * cos(t*(1-t))^2 * (1-t)^-2 from 0 to 1" << endl;
     a = 0.0;
-    b = 1.0;
+    b = 0.5;
+    cout << "Integrating f(t) = exp(-t*(1-t)) * cos(t*(1-t))^2 * (1-t)^-2 from " << a << " to " << b << endl;
+    cout << "Maximum number of recursion levels: " << level_max << endl;
     result = Simpson(f_definite, a, b, eps, 0, level_max);
     cout << "Result: " << result << endl;   
     cout << "Error: " << fabs(result - 0.6) << endl;
     cout << "---------------------------------" << endl << endl;
 
     // Testing Gauss-Laguerre quadrature
-    cout << "Testing Gauss-Laguerre quadrature" << endl << endl;
-    cout << "when b = Inf the expected result is: 0.6" << endl; // Known value for this integral
-    cout << "Integrating f(x) = exp(-x) * cos(x)^2 from 0 to Inf using Gauss-Laguerre quadrature" << endl;
-    a = 0.0;
-    b = 100.0; // Not used in Gauss-Laguerre, but kept for consistency
-    result = qgaus(f, a, b);
-    cout << "Result: " << result << endl;
-    cout << "Error: " << fabs(result - 0.6) << endl;
-    cout << "---------------------------------" << endl;
-
+    cout << "Testing Gauss-Laguerre quadrature" << endl;
+    cout << "The expected result is: 0.6" << endl; // Known value for this integral
+    cout << "Integrating f(x) = exp(-x) * cos(x)^2 from 0 to Inf with different number of points" << endl;
+    double result_gauss_2 = qgaus(f_gauss_laguerre, 2);
+    double result_gauss_4 = qgaus(f_gauss_laguerre, 4);
+    double result_gauss_8 = qgaus(f_gauss_laguerre, 8);
+    cout << "2: " << result_gauss_2 << endl;
+    cout << "4: " << result_gauss_4 << endl;
+    cout << "8: " << result_gauss_8 << endl;
     return 0;
 }
