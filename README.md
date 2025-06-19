@@ -104,9 +104,11 @@ Required dependencies and installation instructions are given below. The code ha
 - Exercise 7
   - [Problem 1 code](exercise07/plotParametricSpline.py)
   - [Problem 1 plot](exercise07/parametricSpline.png)
-
-
-  
+  - [Problem 2 parameters](exercise07/rootsGaussLaguerre.py)
+  - [Problem 2 code](exercise07/simpson_gauss_laguerre_test.cpp)
+  - [Problem 2 test](exercise07/exercise7_2.txt)
+  - [Problem 3(a) pen & paper](exercise07/exercise7_3a.pdf)
+ 
 
 
 ## Running the algorithms

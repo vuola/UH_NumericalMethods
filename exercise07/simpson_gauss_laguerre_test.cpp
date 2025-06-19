@@ -113,12 +113,29 @@ int main() {
     cout << "Adaptive Simpson's method with definite upper limit" << endl;
     cout << "when b = 1.0 the expected result is: 0.6" << endl; // Known value for this integral
     a = 0.0;
-    b = 0.5;
-    cout << "Integrating f(t) = exp(-t*(1-t)) * cos(t*(1-t))^2 * (1-t)^-2 from " << a << " to " << b << endl;
+    cout << "Integrating f(t) = exp(-t*(1-t)) * cos(t*(1-t))^2 * (1-t)^-2 from " << a << " to upper limits approaching 1" << endl;
     cout << "Maximum number of recursion levels: " << level_max << endl;
+    b = 0.99;
     result = Simpson(f_definite, a, b, eps, 0, level_max);
-    cout << "Result: " << result << endl;   
-    cout << "Error: " << fabs(result - 0.6) << endl;
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
+    b = 0.75;
+    result = Simpson(f_definite, a, b, eps, 0, level_max);
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
+    b = 0.625;
+    result = Simpson(f_definite, a, b, eps, 0, level_max);
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
+    b = 0.5625;
+    result = Simpson(f_definite, a, b, eps, 0, level_max);
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
+    b = 0.5001;
+    result = Simpson(f_definite, a, b, eps, 0, level_max);
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
+    b = 0.5;
+    result = Simpson(f_definite, a, b, eps, 0, level_max);
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
+    b = 0.49;
+    result = Simpson(f_definite, a, b, eps, 0, level_max);
+    cout << b << ":  " << setw(8) << result << "    error: " << fabs(result - 0.6) << endl;
     cout << "---------------------------------" << endl << endl;
 
     // Testing Gauss-Laguerre quadrature
@@ -128,8 +145,8 @@ int main() {
     double result_gauss_2 = qgaus(f_gauss_laguerre, 2);
     double result_gauss_4 = qgaus(f_gauss_laguerre, 4);
     double result_gauss_8 = qgaus(f_gauss_laguerre, 8);
-    cout << "2: " << result_gauss_2 << endl;
-    cout << "4: " << result_gauss_4 << endl;
-    cout << "8: " << result_gauss_8 << endl;
+    cout << "2: " << result_gauss_2 << "    error: " << fabs(result_gauss_2 - 0.6) << endl;
+    cout << "4: " << result_gauss_4 << "    error: " << fabs(result_gauss_4 - 0.6) << endl;
+    cout << "8: " << result_gauss_8 << "    error: " << fabs(result_gauss_8 - 0.6) << endl;
     return 0;
 }
