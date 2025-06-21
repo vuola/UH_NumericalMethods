@@ -108,6 +108,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2 code](exercise07/simpson_gauss_laguerre_test.cpp)
   - [Problem 2 test](exercise07/exercise7_2.txt)
   - [Problem 3(a) pen & paper](exercise07/exercise7_3a.pdf)
+  - [Problem 3(b)(c)code](exercise07/romberg.cpp)
+  - [Problem 3(b)(c)test](exercise07/exercise7_3bc.txt)
  
 
 

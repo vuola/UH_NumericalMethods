@@ -44,7 +44,7 @@ void Romberg(double (*f)(double x), double a, double b, int n, double R[][MAXN])
 int main()
 {
     double a = 0.0, b = 1.0;
-    int n = 5; // Number of Romberg levels
+    int n = 10; // Number of Romberg levels
     double R[MAXN][MAXN]; // Romberg table
     Romberg(f1, a, b, n, R);
     cout << "Romberg integration results for f1(x) = sin(sqrt(x)):" << endl;
@@ -54,4 +54,14 @@ int main()
         }
         cout << endl;
     }
+
+    Romberg(f2, a, b, n, R);
+    cout << "Romberg integration results for f2(x) = sin(sqrt(x))-sqrt(x) plus added constant 2/3:" << endl;
+    for (int i = 0; i <= n; ++i) {
+        for (int j = 0; j <= i; ++j) {
+            cout << setw(10) << setprecision(6) << R[i][j] + 2.0/3.0 << " ";
+        }
+        cout << endl;
+    }
+
 }
