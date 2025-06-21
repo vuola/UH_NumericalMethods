@@ -110,6 +110,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3(a) pen & paper](exercise07/exercise7_3a.pdf)
   - [Problem 3(b)(c)code](exercise07/romberg.cpp)
   - [Problem 3(b)(c)test](exercise07/exercise7_3bc.txt)
+  - [Problem 4 pen & paper](exercise07/exercise7_4.pdf)
  
 
 
