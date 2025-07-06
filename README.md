@@ -112,6 +112,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3(b)(c)test](exercise07/exercise7_3bc.txt)
   - [Problem 4 pen & paper](exercise07/exercise7_4.pdf)
  
+- Exercise 8
+  - [Problem 1 pen & paper](exercise08/exercise8_1.pdf)
 
 
 ## Running the algorithms
