@@ -143,7 +143,11 @@ Visual Studio Code for Ubuntu - installation instructions can be found for examp
 
 https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 
-CMake has been used to package the code into transportable format  and to compile / link efficiently. With Visual Studio Code CMake is available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake** and **CMake Tools**. For debugging you will also need extension **C/C++ Extension Pack** from Microsoft. 
+CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
+
+`sudo apt install cmake`
+
+With Visual Studio Code CMake tools are available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake Tools**. For debugging you will also need extension **C/C++ Extension Pack** from Microsoft. 
 
 Once Visual Studio Code is installed, cd into the repository *UH_NumericalMethods* and run
 
@@ -153,35 +157,13 @@ Once Visual Studio Code is installed, cd into the repository *UH_NumericalMethod
 During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler.
 
 ### Python 3
-The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8
+The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8. If you have a Python version 3.8 or newer, it is safe to use the current version. 
 
 ### Pip3
 
 If you have *python3* but not the package manager *pip3*, run
 
 `sudo apt install python3-pip`
-
-#### Python 3.11
-
-If you have a Python version 3.8 or newer, **it is safer to use the current version**. Some linux distributions control the symlinks to python. If you manage the symlink *Python3->Python3.xx* yourself and want the latest and greatest go ahead and upgrade to the latest Python version. 
-
-`sudo add-apt-repository ppa:deadsnakes/ppa`
-
-`sudo apt update`
-
-`sudo apt install python3.11`
-
-Package manager **pip3.11** installation
-
-`curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11`
-
-Check symlinked versions
-
-`python3 -V`
-
-`pip3 -V`
-
-Check if these commands are pointing to desired versions of executables. Instructions for either dynamic version selection or updating static links *Python3* and *pip3* are available online.
 
 #### Python3 libraries
 
@@ -237,9 +219,7 @@ Check out what the install location is for package 'eigenpy' with command
 
 `sudo find / -name "eigenpy" | grep cmake`
 
-If the location path starts with */opt/openrobots* everything should be fine. Otherwise
-consider editing the main *CMakeLists.txt* file in the repository root. The 
-directives for setting *eigenpy* search path are the following:
+If the location path starts with */opt/openrobots* everything should be fine. Otherwise consider editing the main *CMakeLists.txt* file in the repository root. The directives for setting *eigenpy* search path are the following:
 
 `cmake_policy(SET CMP0074 NEW)`
 
@@ -249,4 +229,14 @@ directives for setting *eigenpy* search path are the following:
 
 CMake is expecting to find file *eigenpyConfig.cmake* from one of the subdirectories.
 
-If everything is working, running *Build* from the footer menu of Visual Studio Code will place the target files into folders /build/excercise[nn].
+#### other math libraries used
+
+Some of the exercises use these math libraries
+
+`sudo apt update`
+
+`sudo apt install libgsl-dev`
+
+`sudo apt install liblapack-dev libblas-dev`
+
+If everything is working, running *Build* from the low frame icon of Visual Studio Code will place the target files into folders /build/excercise[nn].

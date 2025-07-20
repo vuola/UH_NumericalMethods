@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "residual.cpp"
+#include "../exercise02/residual.cpp"
 #include <Eigen/Core>
  
 using Eigen::MatrixXd;
