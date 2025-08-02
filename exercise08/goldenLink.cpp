@@ -11,7 +11,7 @@ using namespace Eigen;
 
 double f(double x);
 
-VectorXd fRange(double first, double last, int N)
+VectorXd goldenRange(double first, double last, int N)
 {
     VectorXd Xpoints = VectorXd::LinSpaced(N, first, last);
     VectorXd Fpoints(N);
@@ -21,10 +21,11 @@ VectorXd fRange(double first, double last, int N)
     return Fpoints;
 }
 
-BOOST_PYTHON_MODULE(funks) {
+BOOST_PYTHON_MODULE(golden) {
   using namespace Eigen;
   namespace bp = boost::python;
   eigenpy::enableEigenPy();
 
-  bp::def("fRange", fRange);
+//  bp::def("golden", golden);
+  bp::def("goldenRange", goldenRange);
 }

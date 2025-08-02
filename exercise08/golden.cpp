@@ -10,7 +10,7 @@ using namespace std;
 
 // Hard-coded function for exercise 8 problem 4
 double f(double x) {
-    return pow(x, 4) - sin(x);
+    return pow(x, 4)*erfc(x) - sin(x);
 }
 
 // Golden section minimization algorithm
