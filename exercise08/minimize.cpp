@@ -1,7 +1,9 @@
-#include <stdio.h>
-#include <math.h>
+#include <iostream>
+#include <cmath>
+#include <numbers>
 #include <gsl/gsl_multimin.h>
 #include <gsl/gsl_errno.h>
+using namespace std;
 
 /* Hard-coded function f for exercise 8 problem 5 */
 double ex5_f (const gsl_vector *v, void *params)
@@ -47,10 +49,6 @@ void ex5_fdf (const gsl_vector *x, void *params,
 
 /* Parameters of function f */
 double par[7] = { 2.0, -4.0, 7.0, 3.0, 2.0, 5.0, -8.0 };
-
-/* Starting point for the minimization */
-double x_initial = 2.0;
-double y_initial = -4.0;
 
 
 /* Generic gradient descent minimization algorithm */
@@ -194,12 +192,3 @@ int simplex(double x0, double y0, const gsl_multimin_fminimizer_type *T)
   return status;
 }
 
-#define METHODTYPE 1
-
-int main(void) {
-  if (METHODTYPE == 0) {
-    return gradient(x_initial, y_initial, gsl_multimin_fdfminimizer_conjugate_fr);
-  } else {
-    return simplex(x_initial, y_initial, gsl_multimin_fminimizer_nmsimplex2);
-  }
-}

@@ -2,8 +2,7 @@
 #include <utility>
 #include <Eigen/Core>
 #include "eigenpy/eigenpy.hpp"
- 
-// using Eigen::MatrixXd;
+using Eigen::MatrixXd;
 // using Eigen::ArrayXd;
 using Eigen::VectorXd;
 
@@ -11,12 +10,13 @@ using namespace Eigen;
 
 double f(double x);
 
-VectorXd goldenRange(double first, double last, int N)
+MatrixXd goldenRange(double first, double last, int N)
 {
     VectorXd Xpoints = VectorXd::LinSpaced(N, first, last);
-    VectorXd Fpoints(N);
+    MatrixXd Fpoints(2, N);
     for (int i=0; i<N; ++i) {
-        Fpoints(i) = f(Xpoints(i));
+        Fpoints(0, i) = Xpoints(i);
+        Fpoints(1, i) = f(Xpoints(i));
     }
     return Fpoints;
 }

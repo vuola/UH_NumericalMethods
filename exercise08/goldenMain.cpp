@@ -30,7 +30,7 @@ string getArgumentCountErrorMessage(const string& functionName, int expectedCoun
 int main(int argc, char** argv){
 
     if (argc == 1) { // The first argument is the program name
-        cerr << getArgumentCountErrorMessage(argv[0], 1, argc - 1) << endl;
+        cerr << getArgumentCountErrorMessage(argv[0], 2, argc - 1) << endl;
         return 1;
     }
 
@@ -39,9 +39,9 @@ int main(int argc, char** argv){
     if (flag == "--help" || flag == "-h" || flag == "-H") {
         displayHelp();
         return 0;
-    }
-
-    if (argc == 2) {
+    } 
+        
+    if (argc == 3) {
             double arg1 = stod(argv[1]);
             double arg2 = stod(argv[2]);
             cout << golden(arg1, arg2) << endl;

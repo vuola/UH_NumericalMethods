@@ -13,12 +13,12 @@ sys.path.append(build_dir)
 import golden as golden
 
 # Create range of y-values
-Y = golden.goldenRange(0.0, 10.0, 100)
+XY = golden.goldenRange(0.0, 4.0, 100)
 
 # Plot to pdf file
-plt.plot(Y, 'r-')
-plt.xlabel('Index')
-plt.ylabel('Value')
+plt.plot(XY[0], XY[1], 'r-')
+plt.xlabel('x')
+plt.ylabel('f(x)')
 plt.title('Golden Range Plot')
 plt.grid(True)
 plt.savefig(os.path.join(current_dir, 'golden_range_plot.pdf'))

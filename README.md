@@ -114,6 +114,14 @@ Required dependencies and installation instructions are given below. The code ha
  
 - Exercise 8
   - [Problem 1 pen & paper](exercise08/exercise8_1.pdf)
+  - [Problem 2 pen & paper](exercise08/exercise8_2.pdf)
+  - [Problem 3 pen & paper](exercise08/exercise8_3.pdf)
+  - [Problem 4 code](exercise08/golden.cpp)
+  - [Problem 4 plot](exercise08/golden_range_plot.pdf)
+  - [Problem 4 test](exercise08/exercise8_4.txt)
+  - [Problem 5a code](exercise08/minimize.cpp)
+  
+
 
 
 ## Running the algorithms

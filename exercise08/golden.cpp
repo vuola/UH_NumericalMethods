@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <numbers>
+#include <iomanip>
 // #include <Eigen/Core>
 // #include <Eigen/Dense>
 // #include <iomanip>
@@ -28,7 +29,7 @@ double golden(double xa, double xc) {
     double fxb = f(xb);
     double fxd = f(xd);
 
-    while (abs(xc - xa) > 1e-9) {
+    while (abs(xc - xa) > 1e-6) {
         if (fxb < fxd) {
             xc = xd;
             xd = xb;
@@ -42,6 +43,11 @@ double golden(double xa, double xc) {
             fxb = fxd;
             fxd = f(xd);
         }
+        cout << "interval: [" << xa << ", " << xc << "]" 
+             << setprecision(7) 
+             << " function value: " << f((xa + xc) / 2)
+             << " x-step: " << abs(xc - xa)
+             << endl;
     }
     return (xa + xc) / 2; // Return the minimum point
 }
