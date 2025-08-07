@@ -1,11 +1,26 @@
 #include <iostream>
+#include <fstream>
 #include <cmath>
 #include <numbers>
 #include <gsl/gsl_multimin.h>
 #include <gsl/gsl_errno.h>
 using namespace std;
 
+
+/* Parameters of function f */
+double p[7] = { 2.0, -4.0, 7.0, 3.0, 2.0, 5.0, -8.0 };
+
 /* Hard-coded function f for exercise 8 problem 5 */
+double f(double x, double y)
+{
+  return p[2] * exp(-pow(x - p[0], 2)) +
+         p[3] * pow(x, 2) +
+         p[4] * x * y +
+         p[5] * pow(y, 2) -
+         p[6] * exp(-pow(y - p[1], 2));
+}
+
+/* The function to be minimized, f(x,y) in GSL format*/
 double ex5_f (const gsl_vector *v, void *params)
 {
   double x, y;
@@ -14,11 +29,7 @@ double ex5_f (const gsl_vector *v, void *params)
   x = gsl_vector_get(v, 0);
   y = gsl_vector_get(v, 1);
 
-  return p[2] * exp(-pow(x - p[0], 2)) +
-         p[3] * pow(x, 2) +
-         p[4] * x * y +
-         p[5] * pow(y, 2) -
-         p[6] * exp(-pow(y - p[1], 2));
+  return f(x, y);
 }
 
 /* The gradient of f, df = (df/dx, df/dy). */
@@ -47,10 +58,6 @@ void ex5_fdf (const gsl_vector *x, void *params,
   ex5_df(x, params, df);
 }
 
-/* Parameters of function f */
-double par[7] = { 2.0, -4.0, 7.0, 3.0, 2.0, 5.0, -8.0 };
-
-
 /* Generic gradient descent minimization algorithm */
 int gradient (double x0, double y0, const gsl_multimin_fdfminimizer_type *T)
 {
@@ -73,7 +80,7 @@ int gradient (double x0, double y0, const gsl_multimin_fdfminimizer_type *T)
   my_func.f = ex5_f;
   my_func.df = ex5_df;
   my_func.fdf = ex5_fdf;
-  my_func.params = par;
+  my_func.params = p;
 
   /* Starting point, x = (5,7) */
   x = gsl_vector_alloc (2);
@@ -88,6 +95,9 @@ int gradient (double x0, double y0, const gsl_multimin_fdfminimizer_type *T)
 
   // Initialize the minimizer with the function, initial point, step size, and tolerance
   gsl_multimin_fdfminimizer_set (s, &my_func, x, 0.01, 1e-4);
+
+  // Delete "xy.txt" if it exists, ignore error if it doesn't
+  remove("xy.txt");
 
   do
     {
@@ -104,11 +114,18 @@ int gradient (double x0, double y0, const gsl_multimin_fdfminimizer_type *T)
       if (status == GSL_SUCCESS)
         printf ("Minimum found at:\n");
 
-      printf ("%5zu %.5f %.5f %10.5f\n", iter,
+      printf ("%5zu %.5f %.5f f() = %7.3f\n", iter,
               gsl_vector_get (s->x, 0),
               gsl_vector_get (s->x, 1),
               s->f);
 
+      // Accumulate x and y in "xy.txt" for plotting the trajectory
+      ofstream xy_file("xy.txt", ios::app);
+      if (xy_file.is_open()) {
+          xy_file << gsl_vector_get(s->x, 0) << " "
+                  << gsl_vector_get(s->x, 1) << endl;
+          xy_file.close();
+      }
     }
   while (status == GSL_CONTINUE && iter < 100);
 
@@ -140,7 +157,7 @@ int simplex(double x0, double y0, const gsl_multimin_fminimizer_type *T)
 
   minex_func.n = 2;
   minex_func.f = ex5_f;
-  minex_func.params = par;
+  minex_func.params = p;
 
   /* Starting point */
   x = gsl_vector_alloc (2);
@@ -160,6 +177,9 @@ int simplex(double x0, double y0, const gsl_multimin_fminimizer_type *T)
   // Initialize the minimizer with the function, initial point and step size
   gsl_multimin_fminimizer_set (s, &minex_func, x, ss);
 
+  // Delete "xy.txt" if it exists, ignore error if it doesn't
+  remove("xy.txt");
+
   do
     {
       iter++;
@@ -177,11 +197,20 @@ int simplex(double x0, double y0, const gsl_multimin_fminimizer_type *T)
           printf ("converged to minimum at\n");
         }
 
-      printf ("%5zu %10.3e %10.3e f() = %7.3f size = %.3f\n",
+      printf ("%5zu %.5f %.5f f() = %7.3f size = %.3f\n",
               iter,
               gsl_vector_get (s->x, 0),
               gsl_vector_get (s->x, 1),
               s->fval, size);
+              
+      // Accumulate x and y in "xy.txt" for plotting the trajectory
+      ofstream xy_file("xy.txt", ios::app);
+      if (xy_file.is_open()) {
+          xy_file << gsl_vector_get(s->x, 0) << " "
+                  << gsl_vector_get(s->x, 1) << endl;
+          xy_file.close();
+      }
+
     }
   while (status == GSL_CONTINUE && iter < 100);
 

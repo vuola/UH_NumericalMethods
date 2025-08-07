@@ -54,18 +54,22 @@ int minimize(double x0, double y0, int alg) {
     switch (alg) {
         case 1:
             // Call Nelder-Mead simplex method
+            cout << "Using Nelder-Mead simplex method" << endl;
             simplex(x0, y0, gsl_multimin_fminimizer_nmsimplex2);
             break;
         case 2:
             // Call steepest descent method
+            cout << "Using steepest descent method" << endl;
             gradient(x0, y0, gsl_multimin_fdfminimizer_steepest_descent);
             break;
         case 3:
             // Call Polak-Ribiere conjugate gradient method
+            cout << "Using Polak-Ribiere conjugate gradient method" << endl;
             gradient(x0, y0, gsl_multimin_fdfminimizer_conjugate_pr);
             break;
         case 4:
             // Call Broyden-Fletcher-Goldfarb-Shanno (BFGS) method
+            cout << "Using Broyden-Fletcher-Goldfarb-Shanno (BFGS) method" << endl;
             gradient(x0, y0, gsl_multimin_fdfminimizer_vector_bfgs2);
             break;
         default:
@@ -90,10 +94,10 @@ int main(int argc, char** argv){
     }
 
     if (argc == 4) {
-        double arg1 = stod(argv[2]);
-        double arg2 = stod(argv[3]);
-        int alg = stoi(argv[4]);
-        minimize(arg1, arg2, alg);
+        double x0 = stod(argv[1]);
+        double y0 = stod(argv[2]);
+        int alg = stoi(argv[3]);
+        minimize(x0, y0, alg);
         return 0;
     }
 
