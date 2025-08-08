@@ -15,7 +15,7 @@ sys.path.append(build_dir)
 import minimize as minimize
 
 # Create coordinate grids and evaluate the function in the grid
-X, Y, Z = minimize.createFunctionGrid(-1, 1, -1, 1, 100)
+X, Y, Z = minimize.createFunctionGrid(-11, 21, -11, 11, 1000)
 
 # Create contour plot
 plt.figure(figsize=(10, 8))
@@ -33,6 +33,6 @@ except Exception as e:
 
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Contour plot of f(x,y)')
+plt.title('BFGS')
 plt.grid(True, alpha=0.3)
-plt.savefig(os.path.join(current_dir, 'contour.pdf'))
+plt.savefig(os.path.join(current_dir, 'BFGS_A.pdf'))

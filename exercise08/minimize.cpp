@@ -87,9 +87,6 @@ int gradient (double x0, double y0, const gsl_multimin_fdfminimizer_type *T)
   gsl_vector_set (x, 0, x0);
   gsl_vector_set (x, 1, y0);
 
-  // Set the type of minimization algorithm
-  T = gsl_multimin_fdfminimizer_conjugate_fr;
-
   // Allocate the minimizer workspace
   s = gsl_multimin_fdfminimizer_alloc (T, 2);
 

@@ -120,8 +120,19 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 plot](exercise08/golden_range_plot.pdf)
   - [Problem 4 test](exercise08/exercise8_4.txt)
   - [Problem 5a code](exercise08/minimize.cpp)
-  
+  - [Problem 5a code main](exercise08/minimizeMain.cpp)
+  - [Problem 5b test](exercise08/exercise8_5b.txt)
+  - [Problem 5b plot Nelder-Mead simplex from (20, -10)](exercise08/NelderMeadSimplexA.pdf)
+  - [Problem 5b plot Steepest descent from (20, -10)](exercise08/SteepestDescentA.pdf)
+  - [Problem 5b plot Polak-Ribiere from (20, -10)](exercise08/PolakRibiereA.pdf)
+  - [Problem 5b plot BFGS from (2, -4)](exercise08/BFGS_A.pdf)
+  - [Problem 5b plot Nelder-Mead simplex from (2, -4)](exercise08/NelderMeadSimplexB.pdf)
+  - [Problem 5b plot Steepest descent from (2, -4)](exercise08/SteepestDescentB.pdf)
+  - [Problem 5b plot Polak-Ribiere from (2, -4)](exercise08/PolakRibiereB.pdf)
+  - [Problem 5b plot BFGS from (2, -4)](exercise08/BFGS_B.pdf)
 
+  
+  
 
 
 ## Running the algorithms
