@@ -131,6 +131,10 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 5b plot Polak-Ribiere from (2, -4)](exercise08/PolakRibiereB.pdf)
   - [Problem 5b plot BFGS from (2, -4)](exercise08/BFGS_B.pdf)
 
+- Exercise 9
+  - [Problem 1 code](exercise09/chi2.py)
+  - [Problem 1 plot](exercise09/chi2_histogram.png)
+  - [Problem 1 test](exercise09/exercise9_1.txt)
   
   
 
