@@ -2,17 +2,13 @@
 #include <string>
 #include <random>
 #include <fstream>
-#include <iomanip>
 #include <chrono>
 #include <vector>
 #include <numeric>
 #include <algorithm>
 #include <sstream>
 
-
-#define RAND_SAMPLES 1000000
 #define OFFSET_FROM_EXTREMES 0.1
-#define BINS 20
 
 using namespace std;
 
@@ -67,8 +63,8 @@ double lorentz_dist(double x) {
 double lorentz_dist_inv(double p) {
     if (p < 0 || p > 1) return -1;  // Invalid probability
     // Avoid p values too close to 0 or 1
-    if (p < OFFSET_FROM_EXTREMES) p = OFFSET_FROM_EXTREMES;
-    if (p > 1 - OFFSET_FROM_EXTREMES) p = 1 - OFFSET_FROM_EXTREMES;
+    if (p < OFFSET_FROM_EXTREMES) return lorentz_dist_inv(getRandomUniform());
+    else if (p > 1 - OFFSET_FROM_EXTREMES) return 1 - lorentz_dist_inv(getRandomUniform());
     // Inverse CDF for Lorentz distribution
     return tan(M_PI * (p - 0.5));
 }
@@ -138,61 +134,3 @@ pair<vector<double>, vector<double>> create_histogram(const vector<double>& data
 }
 
 
-/**
- * @file problem2.cpp
- * @brief Main function to demonstrate the functionality
-    */
-
-int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        cerr << "Usage: " << argv[0] << " <exp|lorentz>\n";
-        return 1;
-    }
-    string func_name = argv[1];
-
-    vector<double> data(RAND_SAMPLES);
-    for (auto& value : data) {
-        value = getRandomUniform();
-    }
-
-    vector<double> x_values(RAND_SAMPLES);
-
-    if (func_name == "exp") {
-        for (int i = 0; i < RAND_SAMPLES; ++i) {
-            x_values[i] = exp_dist_inv(data[i], 1.0);  // lambda = 1.0
-        }
-    } else if (func_name == "lorentz") {
-        for (int i = 0; i < RAND_SAMPLES; ++i) {
-            x_values[i] = lorentz_dist_inv(data[i]);
-        }
-    } else {
-        cerr << "Unknown function: " << func_name << ". Use 'exp' or 'lorentz'.\n";
-        return 1;
-    }
-
-    int M = BINS;  // Number of bins for histogram
-    auto [x_hist, p_hist] = create_histogram(x_values, M);
-
-    vector<double> p_func(M);
-    if (func_name == "exp") {
-        for (int i = 0; i < M; ++i) {
-            p_func[i] = exp_dist(x_hist[i], 1.0);
-        }
-    } else {
-        for (int i = 0; i < M; ++i) {
-            p_func[i] = lorentz_dist(x_hist[i]);
-        }
-    }
-    double integral = accumulate(p_func.begin(), p_func.end(), 0.0);
-    if (integral > 0) {
-        for (auto& prob : p_func) {
-            prob /= integral;
-        }
-    }
-
-    cout << fixed << setprecision(6);
-    cout << "x_hist\tp_hist\tp_" << func_name << "\n";
-    for (int i = 0; i < M; ++i) {
-        cout << x_hist[i] << "\t" << p_hist[i] << "\t" << p_func[i] << "\n";
-    }
-}

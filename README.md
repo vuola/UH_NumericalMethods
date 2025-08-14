@@ -135,6 +135,10 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 1 code](exercise09/chi2.py)
   - [Problem 1 plot](exercise09/chi2_histogram.png)
   - [Problem 1 test](exercise09/exercise9_1.txt)
+  - [Problem 2 code](exercise09/problem2.cpp)
+  - [Problem 2 plot exponential](exercise09/exp_distribution.png)
+  - [Problem 2 plot Lorentz](exercise09/lorentz_distribution.png)
+  - [Problem 2 test](exercise09/exercise9_2.txt)
   
   
 
