@@ -139,6 +139,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2 plot exponential](exercise09/exp_distribution.png)
   - [Problem 2 plot Lorentz](exercise09/lorentz_distribution.png)
   - [Problem 2 test](exercise09/exercise9_2.txt)
+  - [Problem 3 code](exercise09/gaussrng.cpp)
+  - [Problem 3 plot](exercise09/lorentzByQuotient.png)
   
   
 

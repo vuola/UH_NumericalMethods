@@ -43,7 +43,7 @@ def plot_distribution(func_name, M=20):
 
 if __name__ == "__main__":
 # Plot distributions for both functions and store into files
-    plot_distribution('exp', M=20)
+    plot_distribution('exp', M=100)
  
-    plot_distribution('lorentz', M=20)
+    plot_distribution('lorentz', M=100)
     

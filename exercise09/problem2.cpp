@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <sstream>
 
-#define OFFSET_FROM_EXTREMES 0.1
+#define OFFSET_FROM_EXTREMES 0.02
 
 using namespace std;
 
@@ -63,8 +63,7 @@ double lorentz_dist(double x) {
 double lorentz_dist_inv(double p) {
     if (p < 0 || p > 1) return -1;  // Invalid probability
     // Avoid p values too close to 0 or 1
-    if (p < OFFSET_FROM_EXTREMES) return lorentz_dist_inv(getRandomUniform());
-    else if (p > 1 - OFFSET_FROM_EXTREMES) return 1 - lorentz_dist_inv(getRandomUniform());
+    if (p < OFFSET_FROM_EXTREMES || p > 1 - OFFSET_FROM_EXTREMES) return lorentz_dist_inv(getRandomUniform());
     // Inverse CDF for Lorentz distribution
     return tan(M_PI * (p - 0.5));
 }
