@@ -141,8 +141,10 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2 test](exercise09/exercise9_2.txt)
   - [Problem 3 code](exercise09/gaussrng.cpp)
   - [Problem 3 plot](exercise09/lorentzByQuotient.png)
-  
-  
+  - [Problem 4 code](exercise09/problem4.cpp)
+  - [Problem 4 plot](exercise09/random_vs_squared_averages.png)
+  - [Problem 4 test](exercise09/exercise9_4.txt)
+   
 
 
 ## Running the algorithms
