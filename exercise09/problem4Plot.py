@@ -22,10 +22,10 @@ results = problem4.verifyRNG()
 import matplotlib.pyplot as plt
 
 # Extract the data for plotting
-random_averages_1000 = results[0, :]
-random_averages_1000000 = results[2, :]
-squared_averages_1000 = results[1, :]
-squared_averages_1000000 = results[3, :]
+random_averages_1000 = results[:, 0]
+squared_averages_1000 = results[:, 1]
+random_averages_1000000 = results[:, 2]
+squared_averages_1000000 = results[:, 3]
 
 # Create the figure and axis objects
 fig, axs = plt.subplots(2, 1, figsize=(10, 8))

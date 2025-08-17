@@ -3,7 +3,6 @@
 #include <random>
 #include <fstream>
 #include <chrono>
-#include <vector>
 #include <numeric>
 #include <algorithm>
 #include <sstream>
@@ -21,20 +20,17 @@ double getRandomUniform() {
 
 /**
  * @brief Create N random numbers and repeat the experiment M times. Calculate averages
- * of the M sets of samples. Store the averages in the provided vector.
+ * of the M sets of samples. Store the averages in the provided array.
  * Do another round of random number generation where instead of just a random number, 
  * use the squares of random numbers as input for the statistics. 
- * Store the results in another vector.
+ * Store the results in another array.
  * @param N number of random numbers to generate in one experiment
  * @param M number of experiments to run
- * @param averages reference to a vector to store M averages
- * @param squared_averages reference to a vector to store M squared averages
+ * @param averages reference to an array to store M averages
+ * @param squared_averages reference to an array to store M squared averages
  * @return Returns 0 if successful
  */
-int multipleAverages(int N, int M, std::vector<double>& averages, std::vector<double>& squared_averages) {
-    averages.resize(M, 0.0);
-    squared_averages.resize(M, 0.0);
-
+int multipleAverages(int N, int M, double* averages, double* squared_averages) {
     for (int i = 0; i < M; ++i) {
         double sum = 0.0;
         double squared_sum = 0.0;
@@ -50,6 +46,8 @@ int multipleAverages(int N, int M, std::vector<double>& averages, std::vector<do
 
     return 0;
 }
+
+
    
 
 
