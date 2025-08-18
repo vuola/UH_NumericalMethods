@@ -35,6 +35,22 @@ double mypi(int N) {
     return 4.0 * sum / N;
 }
 
+/** @brief Estimate the value of pi using 3D Monte Carlo simulation
+ *  @param N Number of random points to generate
+ *  @return Estimated value of pi
+ */
+double mypi3D(int N) {
+    double inside = 0.0;
+    for (int i = 0; i < N; ++i) {
+        double x = getRandomUniform();
+        double y = getRandomUniform();
+        double z = getRandomUniform();
+        if (x * x + y * y + z * z <= 1.0) {
+            inside += 1.0;
+        }
+    }
+    return (6.0 * inside) / N;
+}
 
 /**
  * @brief Create an M-bin histogram x and p values from the given data (using arrays)
@@ -92,7 +108,7 @@ void create_histogram(const double* data, int data_size, int K, double* x, doubl
  * @param K number of histogram bins in the output
  * @return arrays x and p representing the histogram
  */
-void run_monte_carlo_simulation(int n, int K, double* x, double* p) {
+void run_monte_carlo_simulation(int n, int K, double(*mypi)(int), double* x, double* p) {
     int N = pow(10, n);
     double *pi_values = new double[1000];
     for (int i = 0; i < 1000; ++i) {

@@ -144,6 +144,10 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 code](exercise09/problem4.cpp)
   - [Problem 4 plot](exercise09/random_vs_squared_averages.png)
   - [Problem 4 test](exercise09/exercise9_4.txt)
+  - [Problem 5 code](exercise09/mypi.cpp)
+  - [Problem 5(b) plot 2D](exercise09/pi_histograms.png)
+  - [Problem 5(c) plot 3D](exercise09/pi_histograms_3D.png)
+  - [Problem 5 test](exercise09/exercise9_5.txt)
    
 
 

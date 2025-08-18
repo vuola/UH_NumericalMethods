@@ -1,0 +1,26 @@
+***
+*
+* 5
+***
+
+Generating pi value with a Monte Carlo method
+*********************************************
+
+(b) The pi value distribution converges with increasing n. i.e.
+the variance is getting smaller and the distribution average is
+moving closer to correct pi value.
+
+(c) It seems that the 3D method does not converge to the correct
+value as quickly as the 2D method. The point density is much
+higher in 2D space than in 3D space when N is held constant.
+
+Test results for distribution average
+*************************************
+(b) Results for 2D case
+Average value of π from the distribution n=2: 3.135989189189189
+Average value of π from the distribution n=3: 3.142849849849849
+Average value of π from the distribution n=4: 3.141187887887888
+(c) Results for 3D case
+Average value of π from the distribution n=2: 3.125165765765766
+Average value of π from the distribution n=3: 3.138762462462462
+Average value of π from the distribution n=4: 3.140061981981981
