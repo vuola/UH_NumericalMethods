@@ -3,12 +3,12 @@
 #include <random>
 #include <fstream>
 #include <chrono>
-#include <vector>
 #include <numeric>
 #include <algorithm>
 #include <sstream>
 
 #define OFFSET_FROM_EXTREMES 0.02
+#define LAMBDA 1.0
 
 using namespace std;
 
@@ -21,38 +21,21 @@ double getRandomUniform() {
     return dist(mt);
 }
 
-/**
- * @file problem2.cpp
- * @brief Hard-coded exponential distribution function
- * @param x x-axis value
- * @param lambda rate parameter
- * @return Returns the value of the exponential distribution at x
- */
-double exp_dist(double x, double lambda) {
-    if (x < 0) return 0;
-    return (1/lambda) * exp(-(1/lambda) * x);
+double uniform(double p) {
+    return p - 0.5;
 }
 
 /**
  * @file problem2.cpp
  * @brief Inverse cumulative distribution function of the exponential distribution
  * @param p probability value
- * @param lambda rate parameter
  * @return Returns the inverse cumulative distribution function value at p
  */
-double exp_dist_inv(double p, double lambda) {
+double exp_dist_inv(double p) {
     if (p < 0 || p > 1) return -1;  // Invalid probability
-    return -(lambda) * log(p);
+    return - (LAMBDA) * log(p);
 }
 
-/**
- * @file problem2.cpp
- * @brief Hard-coded Lorentz distribution function
- * @param x x-axis value
- */
-double lorentz_dist(double x) {
-    return (1 / M_PI) * (1 / (x * x + 1));
-}
 
 /**
  * @file problem2.cpp
@@ -68,50 +51,33 @@ double lorentz_dist_inv(double p) {
     return tan(M_PI * (p - 0.5));
 }
 
+
 /**
- * @file problem2.cpp
- * @brief Find x value limit based on probability and cumulative distribution function
- * @param p probability value
- * @param F cumulative distribution function F(x)
- * @param x vector of x values
- * @return If successful returns index and corresponding x-value, otherwise
- * @return the returned index is -1
+ * @brief Create an M-bin histogram x and p values from the given data (using arrays)
+ * @param data pointer to array of data points
+ * @param data_size number of data points
+ * @param K number of bins
+ * @param x pointer to array for bin centers (output, size M)
+ * @param p pointer to array for probabilities (output, size M)
  */
-template <typename T, typename Func>
-pair<int, T> confidence_limit(double p, const vector<T>& x, Func F) {
-    int N = x.size();
-    pair<int, T> xlim = {-1, T()};
-    for (int i = 0; i < N - 1; ++i) {
-        double Fi = F(x[i]);
-        double Fi1 = F(x[i + 1]);
-        if ((Fi < p) && (Fi1 >= p)) {
-            xlim.first = i + 1;
-            xlim.second = x[xlim.first];
-            break;
-        }
+void create_histogram(const double* data, int data_size, int K, double* x, double* p) {
+    // Initialize p
+    for (int i = 0; i < K; ++i) {
+        p[i] = 0.0;
     }
-    return xlim;
-}
 
-/**
- * @file problem2.cpp
- * @brief Create an M-bin histogram x and p values from the given data
- * @param data vector of data points
- * @param M number of bins
- * @return Returns a pair of vectors containing x and p values for the histogram
- */
-pair<vector<double>, vector<double>> create_histogram(const vector<double>& data, int M) {
-    vector<double> x(M);
-    vector<double> p(M, 0.0);
+    // Find min and max
+    double min_val = data[0], max_val = data[0];
+    for (int i = 1; i < data_size; ++i) {
+        if (data[i] < min_val) min_val = data[i];
+        if (data[i] > max_val) max_val = data[i];
+    }
+    double bin_width = (max_val - min_val) / K;
 
-    // Compute histogram
-    double min_val = *min_element(data.begin(), data.end());
-    double max_val = *max_element(data.begin(), data.end());
-    double bin_width = (max_val - min_val) / M;
-
-    for (const auto& value : data) {
-        int bin = static_cast<int>((value - min_val) / bin_width);
-        if (bin >= 0 && bin < M) {
+    // Fill histogram
+    for (int i = 0; i < data_size; ++i) {
+        int bin = static_cast<int>((data[i] - min_val) / bin_width);
+        if (bin >= 0 && bin < K) {
             p[bin]++;
         }
     }
@@ -132,4 +98,23 @@ pair<vector<double>, vector<double>> create_histogram(const vector<double>& data
     return {x, p};
 }
 
-
+/**
+ * @brief Create N random numbers and repeat the experiment M times. Calculate averages
+ * of the M sets of samples. Store the averages in the provided array.
+ * @param N number of random numbers to generate in one experiment
+ * @param M number of experiments to run
+ * @param rng pointer to the random number generator function to use
+ * @param averages reference to an array to store M averages
+ * @return Returns 0 if successful
+ */
+int multipleAverages(int N, int M, double(*rng)(double), double* averages) {
+    for (int i = 0; i < M; ++i) {
+        double sum = 0.0;
+        for (int j = 0; j < N; ++j) {
+            double random_value = getRandomUniform();
+            sum += rng(random_value);
+        }
+        averages[i] = sum / N;
+    }
+    return 0;
+}
