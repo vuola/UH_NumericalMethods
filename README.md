@@ -149,6 +149,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 5(c) plot 3D](exercise09/pi_histograms_3D.png)
   - [Problem 5 test](exercise09/exercise9_5.txt)
    
+- Exercise 10
+  - [Problem 1 pen & paper](exercise10/exercise10_1.pdf)
 
 
 ## Running the algorithms
