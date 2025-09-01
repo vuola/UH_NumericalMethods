@@ -106,6 +106,7 @@ void create_histogram(const double* data, int data_size, int K, double* x, doubl
  * @brief is formed using N random numbers. 
  * @param n exponent for number of samples used for obtaining one estimate of pi, N = 10^n
  * @param K number of histogram bins in the output
+ * @param mypi pointer to the function used to estimate pi
  * @return arrays x and p representing the histogram
  */
 void run_monte_carlo_simulation(int n, int K, double(*mypi)(int), double* x, double* p) {
