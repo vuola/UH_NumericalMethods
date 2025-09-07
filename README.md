@@ -151,6 +151,12 @@ Required dependencies and installation instructions are given below. The code ha
    
 - Exercise 10
   - [Problem 1 pen & paper](exercise10/exercise10_1.pdf)
+  - [Problem 2 code](exercise10/problem2.cpp)
+  - [Problem 2 plot K=3](exercise10/problem2_K3.png)
+  - [Problem 2 plot K=10](exercise10/problem2_K10.png)
+  - [Problem 2 plot K=30](exercise10/problem2_K30.png)
+  - [Problem 2 plot K=100](exercise10/problem2_K100.png)
+  
 
 
 ## Running the algorithms

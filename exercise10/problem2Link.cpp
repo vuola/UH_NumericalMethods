@@ -23,7 +23,7 @@ void create_histogram(const double* data, int data_size, int M, double *x, doubl
  * @return An M x 6 matrix of histograms. The columns in increasing order are: 
  * @return uniform x and p, exponential x and p, and Lorentz x and p.
 */
-Eigen::MatrixXd verifyCLT(int K) {
+Eigen::MatrixXd verifyclt(int K) {
   const int N = 10000;  // Number of experiments i.e. averages
   const int M = 100;    // Number of bins for the histogram
   double data[N];
@@ -44,10 +44,10 @@ Eigen::MatrixXd verifyCLT(int K) {
   return results;
 }
 
-BOOST_PYTHON_MODULE(problem2) {
+BOOST_PYTHON_MODULE(verifyclt) {
   using namespace Eigen;
   namespace bp = boost::python;
   eigenpy::enableEigenPy();
 
-  bp::def("verifyCLT", verifyCLT);
+  bp::def("verifyclt", verifyclt);
 }
