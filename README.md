@@ -156,6 +156,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2 plot K=10](exercise10/problem2_K10.png)
   - [Problem 2 plot K=30](exercise10/problem2_K30.png)
   - [Problem 2 plot K=100](exercise10/problem2_K100.png)
+  - [Problem 3a pen & paper](exercise10/exercise10_3a.pdf)
+  - [Problem 3b pen & paper](exercise10/exercise10_3b.pdf)
+  - [Problem 3c pen & paper](exercise10/exercise10_3c.pdf)
   
 
 
