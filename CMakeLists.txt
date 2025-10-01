@@ -35,6 +35,7 @@ add_subdirectory(exercise07)
 add_subdirectory(exercise08)
 add_subdirectory(exercise09)
 add_subdirectory(exercise10)
+add_subdirectory(exercise11)
 add_subdirectory(test_GSL)
 
 
