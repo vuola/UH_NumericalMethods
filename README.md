@@ -160,7 +160,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3b pen & paper](exercise10/exercise10_3b.pdf)
   - [Problem 3c pen & paper](exercise10/exercise10_3c.pdf)
   
-
+- Exercise 11
+  - [Problem 1 code](exercise11/rungeKuttaSolver.cpp)
+  - [Problem 1 plot](exercise11/runge_kutta_plot.pdf)
 
 ## Running the algorithms
 

@@ -13,7 +13,7 @@ using namespace std;
 void rungeKuttaSolver(double a, double b, int N, double y0, double yp0, double* x, double* y);
 
 
-MatrixXd verifyRungeKutta(double a, double b, int N, double y0, double yp0)
+MatrixXd rungeKuttaRange(double a, double b, int N, double y0, double yp0)
 {
     // Create an Eigen matrix to hold the results
     MatrixXd result(N + 1, 2);
@@ -28,10 +28,10 @@ MatrixXd verifyRungeKutta(double a, double b, int N, double y0, double yp0)
     return result;
 }
 
-BOOST_PYTHON_MODULE(rungeKuttaSolver) {
+BOOST_PYTHON_MODULE(rungeKutta) {
   using namespace Eigen;
   namespace bp = boost::python;
   eigenpy::enableEigenPy();
 
-  bp::def("verifyRungeKutta", verifyRungeKutta);
+  bp::def("rungeKuttaRange", rungeKuttaRange);
 }
