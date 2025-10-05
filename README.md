@@ -163,6 +163,15 @@ Required dependencies and installation instructions are given below. The code ha
 - Exercise 11
   - [Problem 1 code](exercise11/rungeKuttaSolver.cpp)
   - [Problem 1 plot](exercise11/runge_kutta_plot.pdf)
+  - [Problem 1a test](exercise11/exercise11_1A.txt)
+  - [Problem 1b test](exercise11/exercise11_1B.txt)
+  - [Problem 1c test](exercise11/exercise11_1C.txt)
+  - [Problem 2 code](exercise11/shootingSolver.cpp)
+  - [Problem 2 plot](exercise11/shootingPlot.py)
+  - [Problem 2a test](exercise11/exercise11_2A.txt)
+  - [Problem 2b test](exercise11/exercise11_2B.txt)
+  - [Problem 2C test](exercise11/exercise11_2C.txt)
+
 
 ## Running the algorithms
 
