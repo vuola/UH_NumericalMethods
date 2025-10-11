@@ -4,6 +4,10 @@ add_executable(rungeKuttaSolver rungeKuttaSolverMain.cpp rungeKuttaSolver.cpp)
 # shootingSolver executable
 add_executable(shootingSolver shootingSolverMain.cpp shootingSolver.cpp)
 
+# finiteDifferenceStencil executable
+add_executable(finiteDifferenceStencil finiteDifferenceStencil.cpp)
+target_link_libraries(finiteDifferenceStencil Eigen3::Eigen)
+
 # Compile a library version for rungeKuttaSolver function plotting 
 add_library(rungeKutta SHARED rungeKuttaSolver.cpp rungeKuttaSolverLink.cpp)
 target_link_libraries(rungeKutta eigenpy::eigenpy)
