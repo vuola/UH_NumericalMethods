@@ -26,6 +26,7 @@ MatrixXd finiteDifferenceStencil(int N, double h) {
     return A;
 }
 
+
 /**
  * @brief Solve the eigenproblem Dψ = -2Eψ
  * @file finiteDifferenceStencil.cpp
@@ -34,7 +35,7 @@ MatrixXd finiteDifferenceStencil(int N, double h) {
  * @return Energies E and wave functions ψ as a pair
  */
 pair<VectorXd, MatrixXd> solveEigenproblem(int N, double h) {
-    MatrixXd D = finiteDifferenceStencil(N, h); 
+    MatrixXd D = finiteDifferenceStencil(N, h);
     SelfAdjointEigenSolver<MatrixXd> solver(D);
     if (solver.info() != Success) {
         cerr << "Eigenvalue computation did not converge." << endl;
@@ -56,10 +57,15 @@ int main(int argc, char** argv){
     }   
 
     auto [energies, wavefunctions] = solveEigenproblem(N, h);
-    cout << "Energies:\n" << setprecision(6) << energies << endl; // Print all energies
 
-    for (int i = 0; i < wavefunctions.cols(); ++i) {
-        cout << "Wave function " << i + 1 << ":\n" << setprecision(6) << wavefunctions.col(i) << endl;
+    cout << "Energies:\n" << setprecision(6) << energies << endl; 
+    
+    // Print all energies
+
+    int n = energies.size();
+    cout << "Corresponding wave functions:\n";
+    for (int i = 0; i < n; ++i) {
+        cout << "Wave function " << (i + 1) << ":\n" << setprecision(6) << wavefunctions.col(i).transpose() << endl;
     }
 
     return 0;

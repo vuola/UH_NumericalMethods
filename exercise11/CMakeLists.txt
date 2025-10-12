@@ -27,3 +27,13 @@ set_target_properties(shooting PROPERTIES OUTPUT_NAME "shooting")
 set_target_properties(shooting PROPERTIES PREFIX "")
 set_target_properties(shooting PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 target_include_directories(shooting PRIVATE ../exercise11)
+
+# Compile a library version for finiteDifferenceStencil function plotting 
+add_library(fds SHARED finiteDifferenceStencil.cpp finiteDifferenceStencilLink.cpp)
+target_link_libraries(fds Eigen3::Eigen eigenpy::eigenpy)
+
+# set the name for the finiteDifferenceStencil Python extension (if needed for the Python script)
+set_target_properties(fds PROPERTIES OUTPUT_NAME "fds")
+set_target_properties(fds PROPERTIES PREFIX "")
+set_target_properties(fds PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+target_include_directories(fds PRIVATE ../exercise11)
