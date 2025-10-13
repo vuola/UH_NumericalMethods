@@ -12,11 +12,25 @@ sys.path.append(build_dir)
 
 import fds as fds
 
-# Create energies and wave functions
-N=1280
-alldata = fds.finiteDifference(N, 2/N)
+# Create theoretical reference values for 5 first energies
+n = np.arange(1, 6)
+E_ref = n**2 * np.pi**2 / 8
+print(f'Theoretical reference energies: {[f"{e:.4f}" for e in E_ref]}')
 
-print("Last 5 energies:\n", alldata[-5:, 0])
+# Create energies and wave functions
+N=20
+alldata = fds.finiteDifference(N, 2/N)
+smallfive = alldata[-5:, 0][::-1]
+error = np.sqrt(np.mean((smallfive - E_ref) ** 2))
+print(f'N={N}, smallest five energies: {[f"{e:.4f}" for e in smallfive]}, error: {error:.4f}')
+
+# Repeat with doubling N until error < 0.03
+while error > 0.03:
+    N *= 2
+    alldata = fds.finiteDifference(N, 2/N)
+    smallfive = alldata[-5:, 0][::-1]
+    error = np.sqrt(np.mean((smallfive - E_ref) ** 2))
+    print(f'N={N}, smallest five energies: {[f"{e:.4f}" for e in smallfive]}, error: {error:.4f}')
 
 for i in range(N-4, N+1):
     plt.plot(np.linspace(-1.0, 1.0, N), alldata[:, i], label=f'Wavefunction {i}')

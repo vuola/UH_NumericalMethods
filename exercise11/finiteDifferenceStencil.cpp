@@ -44,29 +44,3 @@ pair<VectorXd, MatrixXd> solveEigenproblem(int N, double h) {
     return {solver.eigenvalues() * -0.5, solver.eigenvectors()};
 }
 
-int main(int argc, char** argv){
-
-    int N = stoi(argv[1]); // Number of interior points
-    double h = stod(argv[2]); // Step size
-
-    if (argc != 3 || N <= 0 || h <= 0.0) {
-        cerr << "Usage: " << argv[0] << " <N> <h>" << endl;
-        cerr << "N: Number of interior points (positive integer)" << endl;
-        cerr << "h: Step size (positive float)" << endl;
-        return 1;
-    }   
-
-    auto [energies, wavefunctions] = solveEigenproblem(N, h);
-
-    cout << "Energies:\n" << setprecision(6) << energies << endl; 
-    
-    // Print all energies
-
-    int n = energies.size();
-    cout << "Corresponding wave functions:\n";
-    for (int i = 0; i < n; ++i) {
-        cout << "Wave function " << (i + 1) << ":\n" << setprecision(6) << wavefunctions.col(i).transpose() << endl;
-    }
-
-    return 0;
-}

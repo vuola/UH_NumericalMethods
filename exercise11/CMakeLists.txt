@@ -5,7 +5,7 @@ add_executable(rungeKuttaSolver rungeKuttaSolverMain.cpp rungeKuttaSolver.cpp)
 add_executable(shootingSolver shootingSolverMain.cpp shootingSolver.cpp)
 
 # finiteDifferenceStencil executable
-add_executable(finiteDifferenceStencil finiteDifferenceStencil.cpp)
+add_executable(finiteDifferenceStencil finiteDifferenceMain.cpp finiteDifferenceStencil.cpp)
 target_link_libraries(finiteDifferenceStencil Eigen3::Eigen)
 
 # Compile a library version for rungeKuttaSolver function plotting 

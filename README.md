@@ -171,6 +171,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2a test](exercise11/exercise11_2A.txt)
   - [Problem 2b test](exercise11/exercise11_2B.txt)
   - [Problem 2C test](exercise11/exercise11_2C.txt)
+  - [Problem 3 code](exercise11/finiteDifferenceStencil.cpp)
+  - [Problem 3 plot](exercise11/finite_difference_stencil_plot.pdf)
+  - [Problem 3 test](exercise11/exercise11_3.txt)
 
 
 ## Running the algorithms
