@@ -16,9 +16,7 @@ MatrixXd finiteDifference(int N, double h)
 {
     auto [energies, wavefunctions] = solveEigenproblem(N, h);
 
-    // Create arrays to hold the results
-    // double* x = wavefunctions.col(0).data();
-    // double* y = wavefunctions.col(1).data();
+    // The first column of the result matrix contains energies, the rest are wavefunctions
 
     MatrixXd result(N, N+1);
     result.col(0) = energies;
