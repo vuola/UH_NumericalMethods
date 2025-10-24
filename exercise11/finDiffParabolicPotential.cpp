@@ -77,9 +77,10 @@ double perturbationTheoryLowestEnergy(int N, double h, double V0) {
     VectorXd V = computeParabolicPotential(N, V0);
 
     // Perturbation theory E = E0 + Integral(-1,1, psi0^2 * V dx) / Integral(-1,1, psi0^2 dx)
-    double integral1 = (psi0.array().square() * V.array()).sum() * h;
-    double integral2 = psi0.array().square().sum() * h;
+    double integral1 = (psi0.col(N-1).transpose() * V.asDiagonal() * psi0.col(N-1)).sum() * h;
+    double integral2 = psi0.col(N-1).dot(psi0.col(N-1)) * h;
 
     // Compute E0 + integral1 / integral2 using lowest energy state
-    return E0[0] + integral1 / integral2;
+    // return E0[N-1] + integral1 / integral2;
+    return E0[N-1] + integral1 / integral2;
 }

@@ -8,6 +8,10 @@ add_executable(shootingSolver shootingSolverMain.cpp shootingSolver.cpp)
 add_executable(finiteDifferenceStencil finiteDifferenceMain.cpp finiteDifferenceStencil.cpp)
 target_link_libraries(finiteDifferenceStencil Eigen3::Eigen)
 
+# finDiffParabolicPotential executable
+add_executable(finDiffParabolicPotential finDiffParabolicPotentialMain.cpp finDiffParabolicPotential.cpp finiteDifferenceStencil.cpp)
+target_link_libraries(finDiffParabolicPotential Eigen3::Eigen)
+
 # Compile a library version for rungeKuttaSolver function plotting 
 add_library(rungeKutta SHARED rungeKuttaSolver.cpp rungeKuttaSolverLink.cpp)
 target_link_libraries(rungeKutta eigenpy::eigenpy)
