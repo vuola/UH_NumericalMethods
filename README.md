@@ -174,6 +174,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3 code](exercise11/finiteDifferenceStencil.cpp)
   - [Problem 3 plot](exercise11/finite_difference_stencil_plot.pdf)
   - [Problem 3 test](exercise11/exercise11_3.txt)
+  - [Problem 4 code](exercise11/finDiffParabolicPotential.cpp)
+  - [Problem 4 test](exercise11/exercise11_4.txt)
 
 
 ## Running the algorithms

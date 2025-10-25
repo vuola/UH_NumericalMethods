@@ -75,10 +75,9 @@ int main(int argc, char** argv){
     if (DEBUG_OUTPUT) {
         cout << "All energies:\n" << setprecision(6) << energies.transpose() << endl;
     }
-    cout << "Lowest energy:\n" << setprecision(6) << energies[N-1] << endl;
-    
-    cout << "Lowest energy from perturbation theory: " << setprecision(6) << theoreticalLowestE << endl;
-    
+    double error = abs(energies[N-1] - theoreticalLowestE)/abs(theoreticalLowestE);
+    cout << "Lowest energy: " << setprecision(6) << energies[N-1] << "\tPerturbation theory: " << setprecision(6) << theoreticalLowestE << "\tRelative error: " << setprecision(3) << error*100 << "%" << endl;
+
     // Print all wave functions
     if (DEBUG_OUTPUT) {
         int n = energies.size();
