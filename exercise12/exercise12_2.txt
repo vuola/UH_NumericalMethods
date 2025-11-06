@@ -1,0 +1,67 @@
+****
+*
+* 12
+****
+
+Problem 2. Tuning forks
+***********************
+
+(a) Important frequencies found
+*******************************
+
+Analysis in the frequency range  (0 Hz filtered out, 15 Hz min separation):
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise12$ python3 tuningfork.py 
+
+Nyquist frequency for Signal 1: 22727.27 Hz
+Top 10 frequency components for Signal 1:
+Frequency: 439.89 Hz, Magnitude: 22411.50
+Frequency: 14.23 Hz, Magnitude: 225.64
+Frequency: 455.20 Hz, Magnitude: 86.21
+Frequency: 879.71 Hz, Magnitude: 84.45
+Frequency: 54.97 Hz, Magnitude: 69.44
+Frequency: 124.69 Hz, Magnitude: 68.73
+Frequency: 39.43 Hz, Magnitude: 60.55
+Frequency: 484.51 Hz, Magnitude: 55.68
+Frequency: 71.26 Hz, Magnitude: 51.07
+Frequency: 1116.12 Hz, Magnitude: 45.33
+
+Nyquist frequency for Signal 2: 22727.27 Hz
+Top 10 frequency components for Signal 2:
+Frequency: 439.94 Hz, Magnitude: 18816.01
+Frequency: 14.23 Hz, Magnitude: 198.34
+Frequency: 460.51 Hz, Magnitude: 152.81
+Frequency: 838.06 Hz, Magnitude: 126.75
+Frequency: 879.89 Hz, Magnitude: 116.07
+Frequency: 51.37 Hz, Magnitude: 108.37
+Frequency: 1096.63 Hz, Magnitude: 100.04
+Frequency: 424.91 Hz, Magnitude: 95.16
+Frequency: 1113.66 Hz, Magnitude: 90.52
+Frequency: 1080.74 Hz, Magnitude: 84.61
+
+Nyquist frequency for Signal 3: 22727.27 Hz
+Top 10 frequency components for Signal 3:
+Frequency: 437.03 Hz, Magnitude: 18069.32
+Frequency: 14.23 Hz, Magnitude: 205.95
+Frequency: 38.86 Hz, Magnitude: 156.68
+Frequency: 452.06 Hz, Magnitude: 107.20
+Frequency: 124.51 Hz, Magnitude: 82.54
+Frequency: 873.94 Hz, Magnitude: 60.10
+Frequency: 56.23 Hz, Magnitude: 54.82
+Frequency: 1114.52 Hz, Magnitude: 49.11
+Frequency: 470.46 Hz, Magnitude: 47.69
+Frequency: 1096.46 Hz, Magnitude: 45.45
+
+Strongest peaks are witin range 437.03 Hz - 439.94 Hz
+
+(b) Higher harmonics
+********************
+
+Looking at the plot and maximum report together, two 
+re-occurring harmonics can be found:
+
+873.94 Hz - 879.89 Hz
+1113.66 Hz - 1116.12 Hz
+
+(c) Windowing
+*************

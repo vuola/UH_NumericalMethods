@@ -177,6 +177,14 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 code](exercise11/finDiffParabolicPotential.cpp)
   - [Problem 4 test](exercise11/exercise11_4.txt)
 
+- Exercise 12
+  - [Problem 1ab pen & paper](exercise12/exercise12_1ab.pdf)
+  - [Problem 1cd pen & paper](exercise12/exercise12_1cd.pdf)
+  - [Problem 1ef pen & paper](exercise12/exercise12_1ef.pdf)
+  - [Problem 1gh pen & paper](exercise12/exercise12_1gh.pdf)
+  - [Problem 1ijkl pen & paper](exercise12/exercise12_1ijkl.pdf)
+
+
 
 ## Running the algorithms
 
