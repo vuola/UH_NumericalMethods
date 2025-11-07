@@ -18,12 +18,16 @@ signal3 = read_signal('sample3.dat')
 ## Plot time-domain signals. File has t and amplitude columns
 ## Create a subplot for each signal
 ## Scale y-axis between 2 and 3
-def plot_time_domain(signals, labels):
+def plot_time_domain(signals, labels, strip_time=2.5):
     fig, axs = plt.subplots(len(signals), 1, figsize=(12, 6), sharex=True)
     for ax, signal, label in zip(axs, signals, labels):
         if signal is not None:
             t = signal[:, 0]
             amplitude = signal[:, 1]
+            ## Strip 2.5 seconds from start
+            mask = t >= strip_time
+            t = t[mask]
+            amplitude = amplitude[mask]
             ax.plot(t, amplitude, label=label, linewidth=1)
     axs[0].set_title('Time-Domain Signals')
     axs[-1].set_xlabel('Time (s)')
@@ -37,28 +41,41 @@ def plot_time_domain(signals, labels):
 
 plot_time_domain([signal1, signal2, signal3], ['Signal 1', 'Signal 2', 'Signal 3'])
 
-## Compute and plot frequency-domain signals using FFT
-## Strip away strip_time seconds from start
-## Limit frequency axis to 0-max_freq Hz
+## Compute multiple frequency-domain signals using FFT
+def compute_all_fft(signals, strip_time=2.5):
+    fsignals = []
+    for signal in signals:
+        fsignal = compute_fft(signal, strip_time)
+        fsignals.append(fsignal)
+    return fsignals
 
-def plot_frequency_domain(signals, labels, strip_time=2.5, max_freq=2000):
-    fig, axs = plt.subplots(len(signals), 1, figsize=(12, 6), sharex=True)
-    for ax, signal, label in zip(axs, signals, labels):
+
+def compute_fft(signal, strip_time=2.5):    
+    if signal is None:
+        return None
+    t = signal[:, 0]
+    amplitude = signal[:, 1]
+    ## Strip 2.5 seconds from start         
+    mask = t >= strip_time
+    t = t[mask]
+    amplitude = amplitude[mask]
+    N = len(amplitude)
+    T = t[1] - t[0]  # Sampling interval
+    ## Compute FFT using pyfftw
+    xf = np.fft.rfftfreq(N, T)
+    yf = pyfftw.interfaces.numpy_fft.rfft(amplitude)
+    return np.column_stack((xf, np.abs(yf)))
+
+
+## Plot frequency-domain signals
+## Limit frequency axis to 0-max_freq Hz
+def plot_frequency_domain(fsignals, labels, filename, max_freq=2000):
+    fig, axs = plt.subplots(len(fsignals), 1, figsize=(12, 6), sharex=True)
+    for ax, signal, label in zip(axs, fsignals, labels):
         if signal is not None:
-            t = signal[:, 0]
-            amplitude = signal[:, 1]
-            ## Strip 2.5 seconds from start
-            mask = t >= strip_time
-            t = t[mask]
-            amplitude = amplitude[mask]
-            N = len(amplitude)
-            T = t[1] - t[0]  # Sampling interval
-            ## Report Nyquist frequency
-            nyquist_freq = 0.5 / T
-            print(f"Nyquist frequency for {label}: {nyquist_freq:.2f} Hz")
-            ## Compute FFT using pyfftw
-            xf = np.fft.rfftfreq(N, T)
-            yf = pyfftw.interfaces.numpy_fft.rfft(amplitude)
+            xf = signal[:, 0]
+            yf = signal[:, 1]
+            N = len(yf)
             ## Report 10 highest frequency components in descending order 
             ## and print out their frequency and magnitude.
             ## Ignore the DC component at index 0. 
@@ -99,45 +116,56 @@ def plot_frequency_domain(signals, labels, strip_time=2.5, max_freq=2000):
         ax.legend()
         ax.grid()
     plt.tight_layout()
-    plt.savefig('frequency_domain_signals.png')
+    plt.savefig(filename)
 
 
-plot_frequency_domain([signal1, signal2, signal3], ['Signal 1', 'Signal 2', 'Signal 3'])
-
-## Do a windowed FFT using a Welch window. Slice the time series into two parts using given splitting time and plot the two parts with different colours on the same graph.
-def plot_windowed_fft(signals, labels, window_size=2048, overlap=1024, max_freq=2000):
-    fig, axs = plt.subplots(len(signals), 1, figsize=(12, 6), sharex=True)
-    for ax, signal, label in zip(axs, signals, labels):
-        if signal is not None:
-            t = signal[:, 0]
-            amplitude = signal[:, 1]
-            ## Strip 2.5 seconds from start
-            mask = t >= 2.5
-            t = t[mask]
-            amplitude = amplitude[mask]
-            N = len(amplitude)
-            T = t[1] - t[0]  # Sampling interval
-            ## Compute windowed FFT using Welch method
-            from scipy.signal import welch
-            # adjust nperseg and noverlap to not exceed the available data length
-            nperseg = min(window_size, max(1, N))
-            noverlap = min(overlap, max(0, nperseg - 1))
-            freqs, psd = welch(amplitude, fs=1/T, window='hann', nperseg=nperseg, noverlap=noverlap)
-            ## Limit frequency axis to 0-max_freq Hz
-            freq_mask = freqs <= max_freq
-            freqs = freqs[freq_mask]
-            psd = psd[freq_mask]
-            ## Plot windowed FFT in log scale
-            ax.semilogy(freqs, psd, label=label, linewidth=1)
-    # use the figure object so it is accessed (avoids unused-variable warning)
-    fig.suptitle('Windowed FFT (Welch Method)')
-    axs[-1].set_xlabel('Frequency (Hz)')
-    for ax in axs:
-        ax.set_ylabel('Power Spectral Density')
-        ax.legend()
-        ax.grid()
-    fig.tight_layout()
-    fig.savefig('windowed_fft_signals.png')
+[fsignal1, fsignal2, fsignal3] = compute_all_fft([signal1, signal2, signal3])
 
 
-plot_windowed_fft([signal1, signal2, signal3], ['Signal 1', 'Signal 2', 'Signal 3'])
+plot_frequency_domain([fsignal1, fsignal2, fsignal3], ['Signal 1', 'Signal 2', 'Signal 3'], 'frequency_domain_signals.png')
+
+## Do a windowed FFT using a Welch window. Set a center time and a window size.
+def windowed_fft(signal, center_time=5.0, window_size=1.0, strip_time=2.5):
+    if signal is None:
+        return None
+    t = signal[:, 0]
+    amplitude = signal[:, 1]
+    ## Strip 2.5 seconds from start
+    mask = t >= strip_time
+    t = t[mask]
+    amplitude = amplitude[mask]
+    ## Select windowed segment
+    half_window = window_size / 2
+    window_mask = (t >= center_time - half_window) & (t <= center_time + half_window)
+    t_window = t[window_mask]
+    amplitude_window = amplitude[window_mask]
+    N = len(amplitude_window)
+    if N < 2:
+        return None
+    T = t_window[1] - t_window[0]  # Sampling interval
+    ## Apply Welch (parabolic) window: w[n] = 1 - ((n - (N-1)/2) / ((N-1)/2))^2
+    n = np.arange(N)
+    denom = (N - 1) / 2.0
+    if denom == 0:
+        window = np.ones(N)
+    else:
+        window = 1.0 - ((n - denom) / denom) ** 2
+    amplitude_windowed = amplitude_window * window
+    ## Compute FFT using pyfftw
+    xf = np.fft.rfftfreq(N, T)
+    yf = pyfftw.interfaces.numpy_fft.rfft(amplitude_windowed)
+    return np.column_stack((xf, np.abs(yf)))
+
+
+def windowed_all_fft(signals, center_time=5.0, window_size=1.0, strip_time=2.5):
+    fsignals = []
+    for signal in signals:
+        fsignal = windowed_fft(signal, center_time, window_size, strip_time)
+        fsignals.append(fsignal)
+    return fsignals
+
+
+windowed_fsignals = windowed_all_fft([signal1, signal2, signal3], center_time=5.0, window_size=1.0)
+
+
+plot_frequency_domain(windowed_fsignals, ['Signal 1 Windowed', 'Signal 2 Windowed', 'Signal 3 Windowed'], filename='windowed_frequency_domain_signals.png')
