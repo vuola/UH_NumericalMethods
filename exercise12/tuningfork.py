@@ -150,6 +150,14 @@ def windowed_fft(signal, center_time=5.0, window_size=1.0, strip_time=2.5):
         window = np.ones(N)
     else:
         window = 1.0 - ((n - denom) / denom) ** 2
+    ## plot window for verification
+    #plt.figure()
+    #plt.plot(t_window, window)
+    #plt.title('Welch Window')
+    #plt.xlabel('Time (s)')
+    #plt.ylabel('Amplitude')
+    #plt.grid()
+    #plt.show()
     amplitude_windowed = amplitude_window * window
     ## Compute FFT using pyfftw
     xf = np.fft.rfftfreq(N, T)
@@ -168,4 +176,9 @@ def windowed_all_fft(signals, center_time=5.0, window_size=1.0, strip_time=2.5):
 windowed_fsignals = windowed_all_fft([signal1, signal2, signal3], center_time=5.0, window_size=1.0)
 
 
-plot_frequency_domain(windowed_fsignals, ['Signal 1 Windowed', 'Signal 2 Windowed', 'Signal 3 Windowed'], filename='windowed_frequency_domain_signals.png')
+plot_frequency_domain(windowed_fsignals, ['Signal 1 Window 5s', 'Signal 2 Window 5s', 'Signal 3 Window 5s'], filename='window_frequency_domain_5s.png')
+
+windowed_fsignals = windowed_all_fft([signal1, signal2, signal3], center_time=3.75, window_size=1.0)
+
+
+plot_frequency_domain(windowed_fsignals, ['Signal 1 Window 3.75s', 'Signal 2 Window 3.75s', 'Signal 3 Window 3.75s'], filename='window_frequency_domain_3.75s.png')
