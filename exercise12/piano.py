@@ -37,9 +37,9 @@ def create_initial_string(l=1.0, n=1000, shape='flat'):
 
 
 ## Create initial string shapes
-flat_string = create_initial_string(l=1.0, n=1000, shape='flat')
-round_string = create_initial_string(l=1.0, n=1000, shape='round')
-gaussian_string = create_initial_string(l=1.0, n=1000, shape='gaussian')
+flat_string = create_initial_string(l=1.0, n=2000, shape='flat')
+round_string = create_initial_string(l=1.0, n=2000, shape='round')
+gaussian_string = create_initial_string(l=1.0, n=5000, shape='gaussian')
 
 
 
@@ -89,9 +89,9 @@ def compute_fft(signal):
 
 
 ## Plot frequency-domain signals
-def plot_frequency_domain(fsignals, labels, filename, k, res):
+def plot_frequency_domain(fsignals, labels, filename, peaks, res):
     fig, axs = plt.subplots(len(fsignals), 1, figsize=(12, 6), sharex=True)
-    for ax, signal, label in zip(axs, fsignals, labels):
+    for ax, signal, label, k, r in zip(axs, fsignals, labels, peaks, res):
         if signal is not None:
             xf = signal[:, 0]
             yf = signal[:, 1]
@@ -108,8 +108,8 @@ def plot_frequency_domain(fsignals, labels, filename, k, res):
                 if j == 0:
                     continue  # ignore DC component
                 freq = xf[j]
-                # skip if within res Hz of any already accepted peak
-                if any(abs(freq - xf[k]) < res for k in accepted):
+                # skip if within r Hz of any already accepted peak
+                if any(abs(freq - xf[k]) < r for k in accepted):
                     continue
                 accepted.append(j)
                 if len(accepted) >= k:
@@ -141,5 +141,5 @@ def plot_frequency_domain(fsignals, labels, filename, k, res):
 plot_frequency_domain([flat_f, round_f, gaussian_f], 
                       ['Flat Top', 'Rounded Top', 'Gaussian'], 
                       'piano_string_frequency_domain.png', 
-                      k=5, res=15)
+                      peaks=[7, 7, 3], res=[35, 35, 500])
 

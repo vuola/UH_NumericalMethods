@@ -187,6 +187,9 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 2a plot](exercise12/frequency_domain_signals.png)
   - [Problem 2c plot early t](exercise12/window_frequency_domain_3.75s.png)
   - [Problem 2c plot late t](exercise12/window_frequency_domain_5s.png)
+  - [Problem 3 test](exercise12/exercise12_3.txt)
+  - [Problem 3 plot spatial](exercise12/initial_string_shapes.png)
+  - [Problem 3 plot frequency](exercise12/piano_string_frequency_domain.png)
 
 
 
