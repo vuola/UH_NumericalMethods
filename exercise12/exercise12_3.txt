@@ -40,5 +40,8 @@ Conclusions
 When comparing flat and round top, the round top shifts the harmonics slightly
 up in the frequency scale (first harmonic moves from 72.96 Hz to 81.96 Hz)
 
-The gaussian hammer has completely different characteristics, the first harmonic
-is found at 1034.79 Hz and second one at 983.60 Hz. The harmonics have very low amplitudes. 
+The gaussian hammer has completely different characteristics, a maximum
+is found at 1034.79 Hz and another one at 1983.60 Hz. 
+Beyond the DC component the signal power is infitesimally small and
+therefore these maximums are not significant characteristics of the created sound.
+
