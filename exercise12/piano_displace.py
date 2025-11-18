@@ -23,26 +23,25 @@ def create_initial_string(l=1.0, n=1000, shape='flat', d=0.0):
     ## Create initial deformation
     y = np.zeros_like(x)
     if shape == 'flat':
-        y[np.abs(x) <= w/2] = A
+        y[np.abs(x - d) <= w/2] = A
     elif shape == 'round':
-        mask = np.abs(x) <= w/2
-        y[mask] = np.sqrt((w/2)**2 - x[mask]**2)
+        mask = np.abs(x - d) <= w/2
+        y[mask] = np.sqrt((w/2)**2 - (x[mask]-d)**2)
     elif shape == 'gaussian':
-        y = A * np.exp(-(4 * np.log(2) * x**2) / w**2)
+        y = A * np.exp(-(4 * np.log(2) * (x-d)**2) / w**2)
     else:
         raise ValueError("Invalid shape. Choose from 'flat', 'round', or 'gaussian'.")
     ## Switch into dimensionless units z = x / l
-    z = (x - d) / l
+    z = x / l
     
     ## Return as Nx2 array
     return np.column_stack((z, y))
 
 
 ## Create initial string shapes
-flat_string = create_initial_string(l=1.0, n=1000, shape='flat', d=-0.4)
-round_string = create_initial_string(l=1.0, n=1000, shape='round', d=0.4)
-gaussian_string = create_initial_string(l=1.0, n=1000, shape='gaussian', d=-0.3)
-
+##flat_string = create_initial_string(l=1.0, n=2000, shape='flat', d=0.0)
+##round_string = create_initial_string(l=1.0, n=2000, shape='round', d=0.0)
+##gaussian_string = create_initial_string(l=1.0, n=2000, shape='gaussian', d=-0.45)
 
 
 def test_initial_string_shapes():
@@ -66,7 +65,7 @@ def test_initial_string_shapes():
     plt.savefig('displaced_string_shapes.png')
 
 
-test_initial_string_shapes()
+## test_initial_string_shapes()
 
 ## Compute multiple frequency-domain signals using FFT
 def compute_all_fft(signals):
@@ -96,13 +95,7 @@ def plot_frequency_domain(fsignals, labels, filename, peaks, res):
     for ax, signal, label, k, r in zip(axs, fsignals, labels, peaks, res):
         if signal is not None:
             ## Detect principal frequencies
-            principal_freqs = detect_principal_frequencies(signal, k=k, res=r)
-
-            ## Find matching magnitudes
-            magnitudes = []
-            for pf in principal_freqs:
-                idx = np.argmin(np.abs(signal[:, 0] - pf))
-                magnitudes.append(signal[idx, 1])
+            principal_freqs, magnitudes = detect_principal_frequencies(signal, k=k, res=r)
 
             ## Print principal frequencies and their magnitudes with 1 decimal place
             print(f'Principal frequencies for {label}: {[f"{pf:.1f}" for pf in principal_freqs]}')
@@ -130,7 +123,7 @@ def plot_frequency_domain(fsignals, labels, filename, peaks, res):
 
 
 ## Walk through the frequency spectrum and list an alternating sequence of local maxima and minima in between.
-## Return the k highest local maxima that are at least res Hz apart.
+## Return the k highest local maxima that are at least res Hz apart and the corresponding magnitudes.
 def detect_principal_frequencies(signal, k=5, res=20):
     xf = signal[:, 0]
     yf = signal[:, 1]
@@ -145,20 +138,49 @@ def detect_principal_frequencies(signal, k=5, res=20):
     # Sort local maxima by magnitude
     local_maxima.sort(key=lambda x: x[1], reverse=True)
     principal_freqs = []
+    magnitudes = []
     for freq, mag in local_maxima:
         if all(abs(freq - pf) >= res for pf in principal_freqs):
             principal_freqs.append(freq)
+            magnitudes.append(mag)
         if len(principal_freqs) >= k:
             break
-    return principal_freqs
+
+    return principal_freqs, magnitudes
 
 
 ## Compute FFT of all signals
-[flat_f, round_f, gaussian_f] = compute_all_fft([flat_string, round_string, gaussian_string])
+## [flat_f, round_f, gaussian_f] = compute_all_fft([flat_string, round_string, gaussian_string])
 
 ## Plot frequency-domain signals
-plot_frequency_domain([flat_f, round_f, gaussian_f], 
-                      ['Flat Top', 'Rounded Top', 'Gaussian'], 
-                      'displaced_hammer_frequency_domain.png', 
-                      peaks=[9, 9, 1], res=[20, 20, 20])
+## plot_frequency_domain([flat_f, round_f, gaussian_f], 
+##                      ['Flat Top', 'Rounded Top', 'Gaussian'], 
+##                      'displaced_hammer_frequency_domain.png', 
+##                      peaks=[10, 10, 10], res=[20, 20, 20])
 
+
+## Create a graph with peak displacement in x and magnitude of the first harmonic in y.
+## Vary the initial displacement between -0.45 and 0.45 in steps of 0.05.
+def plot_peak_displacement_vs_first_harmonic(shape='flat'):
+    displacements = np.arange(-0.45, 0.46, 0.01)
+    peak_displacements = []
+    first_harmonic_magnitudes = []
+    for d in displacements:
+        string = create_initial_string(l=1.0, n=2000, shape=shape, d=d)
+        fsignal = compute_fft(string)
+        principal_freqs, magnitudes = detect_principal_frequencies(fsignal, k=1, res=20)
+        peak_displacements.append(d)
+        first_harmonic_magnitudes.append(magnitudes[0] if magnitudes else 0)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(peak_displacements, first_harmonic_magnitudes, marker='o')
+    plt.title('Peak Displacement vs First Harmonic Magnitude ' + shape + ' hammer')
+    plt.xlabel('Peak Displacement (m)')
+    plt.ylabel('First Harmonic Magnitude')
+    plt.grid()
+    plt.savefig('peak_displacement_vs_first_harmonic_' + shape + '.png')
+
+
+plot_peak_displacement_vs_first_harmonic('flat')
+plot_peak_displacement_vs_first_harmonic('round')
+plot_peak_displacement_vs_first_harmonic('gaussian')
