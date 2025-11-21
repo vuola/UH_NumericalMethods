@@ -39,9 +39,9 @@ def create_initial_string(l=1.0, n=1000, shape='flat', d=0.0):
 
 
 ## Create initial string shapes
-##flat_string = create_initial_string(l=1.0, n=2000, shape='flat', d=0.0)
-##round_string = create_initial_string(l=1.0, n=2000, shape='round', d=0.0)
-##gaussian_string = create_initial_string(l=1.0, n=2000, shape='gaussian', d=-0.45)
+flat_string = create_initial_string(l=1.0, n=2000, shape='flat', d=0.0)
+round_string = create_initial_string(l=1.0, n=2000, shape='round', d=0.0)
+gaussian_string = create_initial_string(l=1.0, n=2000, shape='gaussian', d=0.0)
 
 
 def test_initial_string_shapes():
@@ -95,12 +95,12 @@ def plot_frequency_domain(fsignals, labels, filename, peaks, res):
     for ax, signal, label, k, r in zip(axs, fsignals, labels, peaks, res):
         if signal is not None:
             ## Detect principal frequencies
-            principal_freqs, magnitudes = detect_principal_frequencies(signal, k=k, res=r)
+            principal_freqs, intensities = detect_principal_frequencies(signal, k=k, res=r)
 
-            ## Print principal frequencies and their magnitudes with 1 decimal place
+            ## Print principal frequencies and their intensities with 1 decimal place
             print(f'Principal frequencies for {label}: {[f"{pf:.1f}" for pf in principal_freqs]}')
-            ## Use scientific notation for magnitudes
-            print(f'Magnitudes for {label}: {[f"{mag:.1e}" for mag in magnitudes]}')
+            ## Use scientific notation for intensities
+            print(f'Intensities for {label}: {[f"{intensity:.1e}" for intensity in intensities]}')
 
             ## Plot intensity spectrum |F(f)|^2
             xf = signal[:, 0]
@@ -115,7 +115,7 @@ def plot_frequency_domain(fsignals, labels, filename, peaks, res):
     axs[0].set_title('Frequency-Domain Signals')
     axs[-1].set_xlabel('Frequency (Hz)')
     for ax in axs:
-        ax.set_ylabel('Magnitude')
+        ax.set_ylabel('Intensity |F(f)|²')
         ax.legend()
         ax.grid()
     plt.tight_layout()
@@ -138,25 +138,25 @@ def detect_principal_frequencies(signal, k=5, res=20):
     # Sort local maxima by magnitude
     local_maxima.sort(key=lambda x: x[1], reverse=True)
     principal_freqs = []
-    magnitudes = []
+    intensities = []
     for freq, mag in local_maxima:
         if all(abs(freq - pf) >= res for pf in principal_freqs):
             principal_freqs.append(freq)
-            magnitudes.append(mag)
+            intensities.append(mag)
         if len(principal_freqs) >= k:
             break
 
-    return principal_freqs, magnitudes
+    return principal_freqs, intensities
 
 
 ## Compute FFT of all signals
-## [flat_f, round_f, gaussian_f] = compute_all_fft([flat_string, round_string, gaussian_string])
+[flat_f, round_f, gaussian_f] = compute_all_fft([flat_string, round_string, gaussian_string])
 
 ## Plot frequency-domain signals
-## plot_frequency_domain([flat_f, round_f, gaussian_f], 
-##                      ['Flat Top', 'Rounded Top', 'Gaussian'], 
-##                      'displaced_hammer_frequency_domain.png', 
-##                      peaks=[10, 10, 10], res=[20, 20, 20])
+plot_frequency_domain([flat_f, round_f, gaussian_f], 
+                      ['Flat Top', 'Rounded Top', 'Gaussian'], 
+                      'displaced_hammer_frequency_domain.png', 
+                      peaks=[10, 10, 10], res=[20, 20, 20])
 
 
 ## Create a graph with peak displacement in x and magnitude of the first harmonic in y.
@@ -164,19 +164,19 @@ def detect_principal_frequencies(signal, k=5, res=20):
 def plot_peak_displacement_vs_first_harmonic(shape='flat'):
     displacements = np.arange(-0.45, 0.46, 0.01)
     peak_displacements = []
-    first_harmonic_magnitudes = []
+    first_harmonic_intensities = []
     for d in displacements:
         string = create_initial_string(l=1.0, n=2000, shape=shape, d=d)
         fsignal = compute_fft(string)
-        principal_freqs, magnitudes = detect_principal_frequencies(fsignal, k=1, res=20)
+        principal_freqs, intensities = detect_principal_frequencies(fsignal, k=1, res=20)
         peak_displacements.append(d)
-        first_harmonic_magnitudes.append(magnitudes[0] if magnitudes else 0)
+        first_harmonic_intensities.append(intensities[0] if intensities else 0)
 
     plt.figure(figsize=(10, 6))
-    plt.plot(peak_displacements, first_harmonic_magnitudes, marker='o')
-    plt.title('Peak Displacement vs First Harmonic Magnitude ' + shape + ' hammer')
+    plt.plot(peak_displacements, first_harmonic_intensities, marker='o')
+    plt.title('Peak Displacement vs First Harmonic Intensity ' + shape + ' hammer')
     plt.xlabel('Peak Displacement (m)')
-    plt.ylabel('First Harmonic Magnitude')
+    plt.ylabel('First Harmonic Intensity')
     plt.grid()
     plt.savefig('peak_displacement_vs_first_harmonic_' + shape + '.png')
 

@@ -190,6 +190,15 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3 test](exercise12/exercise12_3.txt)
   - [Problem 3 plot spatial](exercise12/initial_string_shapes.png)
   - [Problem 3 plot frequency](exercise12/piano_string_frequency_domain.png)
+  - [Problem 4 plot intensity of harmonics](exercise12/displaced_hammer_frequency_domain.png)
+  - [Problem 4 plot fundamental harmonic as function of displacement, flat](exercise12/peak_displacement_vs_first_harmonic_flat.png)
+  - [Problem 4 plot fundamental harmonic as function of displacement, round](exercise12/peak_displacement_vs_first_harmonic_round.png)
+  - [Problem 4 plot fundamental harmonic as function of displacement, gaussian](exercise12/peak_displacement_vs_first_harmonic_gaussian.png)
+  - [Problem 4 test](exercise12/exercise12_4.txt)
+  - [Problem 4 code](exercise12/piano_displace.py)
+
+  
+
 
 
 
