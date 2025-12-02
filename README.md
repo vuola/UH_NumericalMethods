@@ -197,6 +197,13 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 test](exercise12/exercise12_4.txt)
   - [Problem 4 code](exercise12/piano_displace.py)
 
+- Exercise 13
+  - [Problem 1 code](exercise13/fiterf.cpp)
+  - [Problem 1 test](exercise13/exercise13_1.txt)
+  - [Problem 1 plot (a)](exercise13/fit_erf_results_a.png)
+  - [Problem 1 plot (b)](exercise13/fit_erf_results_b.png)
+  - [Problem 1 plot (c)](exercise13/fit_erf_results_c.png)
+  - [Problem 1 plot comparison](exercise13/max_absolute_error_fit_erf.png)
   
 
 
