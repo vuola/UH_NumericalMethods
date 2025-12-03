@@ -33,12 +33,32 @@ Eigen::MatrixXd evaluateFitpoly(int p, int n, int m) {
     evalpoly(c, p, m, x_data, y_data);
 
     // Fill in the second column with actual f(x) values
+    double* f_data = result.col(1).data();
     for (int i = 0; i < m; ++i) {
-        y_data[i] = sin(M_PI * x_data[i]);
+        f_data[i] = sin(M_PI * x_data[i]);
     }
     
     return result;
 } 
+
+
+/**
+ * @file fitpolyLink.cpp
+ * @brief Evaluates f(x) = sin(pi*x) at m points
+ * @param m number of x points
+ * @return A (m x 2) matrix. The first column contains x 
+ * values, and the second column f(x) values.
+ * */
+Eigen::MatrixXd evaluateF(int m) {
+    Eigen::MatrixXd M(m, 2);
+    VectorXd x = VectorXd::LinSpaced(m, -2.0, 2.0);
+
+    for (int i = 0; i < m; ++i) {
+        M(i, 0) = x(i);
+        M(i, 1) = sin(M_PI * x(i));
+      }
+    return M;
+}
 
 
 BOOST_PYTHON_MODULE(fitpoly) {
@@ -47,4 +67,5 @@ BOOST_PYTHON_MODULE(fitpoly) {
   eigenpy::enableEigenPy();
 
   bp::def("evaluateFitpoly", evaluateFitpoly);
+  bp::def("evaluateF", evaluateF);
 }
