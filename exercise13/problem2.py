@@ -22,7 +22,7 @@ def plot_fitpoly_results(degrees, n, m, output_filename = None):
     # Plot the error function and the fitted polynomial.
     # Mark the fitting points with red circles.
     plt.figure(figsize=(8, 5))
-    plt.title('Fitted sin(pi*x) function using fitpoly')
+    plt.title('Fitted sin(pi*x) function using fitpoly_primitive')
     plt.xlabel('x')
     plt.ylabel('Value')
     plt.grid()
@@ -38,7 +38,9 @@ def plot_fitpoly_results(degrees, n, m, output_filename = None):
         f_values = data[:, 1]
         fitted_values = data[:, 2]
 
+        # Plot the fitted polynomial. Expect overrun and keep y between -5 and 5
         plt.plot(x, fitted_values, label=f'Degree {deg}')
+        plt.ylim(-5, 5)
 
         # Return the L1 error between the fitted and actual error function
         l1_error = np.sum(np.abs(f_values - fitted_values))

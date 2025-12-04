@@ -1,0 +1,222 @@
+****
+*
+* 13
+****
+
+Problem 1. stability of polynomial basis
+****************************************
+
+(a)
+Parameter fitting by alpha matrix and directly solving alpha * c = beta
+for parameters c, primitive polynomial basis
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise13$ python3 problem2.py
+
+Eigenvalues of alpha matrix, order 5:
+1063,47
+19,7739
+2,42231
+319,701
+5,15975
+
+Eigenvalues of alpha matrix, order 10:
+185387
+705484
+287,769
+768,179
+16,0629
+2,33762
+0,0706222
+14,4081
+1,04272
+0,0276608 -> close to zero
+
+Eigenvalues of alpha matrix, order 15:
+6,27968e+08
+1,59884e+08
+185764
+59271,1
+532,513
+229,137
+20,4071
+4,84643
+8,86814
+0,332947 
+0,774681 
+0,0119058 -> close to zero
+0,000170918 -> close to zero
+0,0312812 -> close to zero
+0,00050332 -> close to zero
+
+Eigenvalues of alpha matrix, order 20:
+1,53386e+11
+6,09075e+11
+1,99713e+07
+6,5449e+07
+20967
+55103
+136,513
+264,776
+14,4005
+10,3909
+2,58199
+1,14487
+0,180355
+0,0694687 -> close to zero
+0,00732049 -> close to zero
+0,0024813 -> close to zero
+0,000143268 -> close to zero
+4,7089e-05 -> close to zero
+-5,85891e-07 -> close to zero
+3,62687e-07 -> close to zero
+
+Eigenvalues of alpha matrix, order 25:
+6,10038e+14
+1,5297e+14
+2,61045e+10
+7,84046e+09
+7,85964e+06
+2,88083e+06
+11030,5
+5081,42
+86,5005
+52,4929
+12,894
+4,61959
+2,07209
+0,486176
+0,155672
+0,0318148 -> close to zero
+0,012982 -> close to zero
+-0,00236898 -> close to zero
+0,00322183 -> close to zero
+0,00231437 -> close to zero
+0,000954483 -> close to zero
+0,000495355 -> close to zero
+-0,000253782 -> close to zero
+-7,85725e-07 -> close to zero
+1,19938e-06 -> close to zero
+
+L1 errors for different polynomial degrees:
+Degree 5: L1 error = 1432.8119893435196
+Degree 10: L1 error = 305075438.694722
+Degree 15: L1 error = 38151115.465173334
+Degree 20: L1 error = 15083723943.746838
+Degree 25: L1 error = 1020275095831.6646
+
+Comments
+********
+
+Starting from order 10 the problem becomes ill-posed as there are 
+linearly dependent basis function with eigenvalues close to zero.
+The problem gets worse with higher orders of basis functions. 
+
+(b)
+Parameter fitting by alpha matrix and directly solving alpha * c = beta
+for parameters c, regularized polynomial basis
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise13$ python3 problem2.py
+
+Eigenvalues of alpha matrix, order 5:
+30,4872
+4,04466
+0,100852
+13,0456
+0,493935
+
+Eigenvalues of alpha matrix, order 10:
+33,0236
+6,83106
+0,406076
+19,9665
+0,011392  -> close to zero
+2,08913
+0,000123294  -> close to zero
+0,0976761  -> close to zero
+0,00229808  -> close to zero
+2,13634e-05  -> close to zero
+
+Eigenvalues of alpha matrix, order 15:
+36,041
+10,141
+23,4664
+0,911407
+3,04365
+0,0499534  -> close to zero
+0,199192
+0,0017245  -> close to zero
+0,00801385  -> close to zero
+3,60195e-05  -> close to zero
+0,000192874  -> close to zero
+4,09086e-07  -> close to zero
+1,89593e-09  -> close to zero
+2,51415e-06  -> close to zero
+1,34052e-08  -> close to zero
+
+Eigenvalues of alpha matrix, order 20:
+38,0201
+12,0287
+28,3746
+1,23072
+4,30199
+0,0815377   -> close to zero
+0,358816
+0,00366057   -> close to zero
+0,0203511   -> close to zero
+0,000110388   -> close to zero
+0,000791052   -> close to zero
+2,16054e-06   -> close to zero
+2,07264e-05   -> close to zero
+3,51282e-07   -> close to zero
+2,56054e-08   -> close to zero
+3,56659e-09   -> close to zero
+1,6051e-10   -> close to zero
+1,87543e-11   -> close to zero
+3,8507e-13   -> close to zero
+3,71468e-14   -> close to zero
+
+Eigenvalues of alpha matrix, order 25:
+41,2165
+14,4925
+31,6259
+1,65804
+5,03105
+0,128593
+0,45864
+0,00709274   -> close to zero
+0,0292986   -> close to zero
+0,000278619   -> close to zero
+0,00132714   -> close to zero
+7,67999e-06   -> close to zero
+4,22989e-05   -> close to zero
+1,43807e-07   -> close to zero
+9,25131e-07   -> close to zero
+1,73053e-09   -> close to zero
+1,3262e-08   -> close to zero
+1,154e-10   -> close to zero
+1,2202e-11   -> close to zero
+5,34079e-13   -> close to zero
+4,3544e-14   -> close to zero
+1,33808e-15   -> close to zero
+-1,92303e-16   -> close to zero
+2,88939e-16   -> close to zero
+5,0361e-16   -> close to zero
+
+L1 errors for different polynomial degrees:
+Degree 5: L1 error = 563.7087984023868
+Degree 10: L1 error = 621.1606389342958
+Degree 15: L1 error = 809.5165962524019
+Degree 20: L1 error = 656.0150142946976
+Degree 25: L1 error = 585.7596889070769
+
+Comments
+********
+
+The problem still persists even though the fitted
+functions now stay within reasonable y-value range.
+
+(c) "extra test" 
+Parameter fitting using GSL library function, 
+primitive polynomial basis
+
+
