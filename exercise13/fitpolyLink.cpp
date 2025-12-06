@@ -7,12 +7,15 @@
 using namespace Eigen;
 using namespace std;
 
+
+// Define which fitting function to use: 'a' for fitpoly_primitive, 'c' for fitpoly
+#define FITFUNC 'a'
+
+
 // Declarations
 double* fitpoly(int p, int n);
 double* fitpoly_primitive(int p, int n);
-double* fitpoly_primitive_b(int p, int n);
 void evalpoly(double* c, int p, int m, double* x_data, double* y_data);
-void evalpoly_b(double* c, int p, int m, double* x_data, double* y_data);
 
 /**
  * @file fitpolyLink.cpp
@@ -28,16 +31,18 @@ Eigen::MatrixXd evaluateFitpoly(int p, int n, int m) {
     Eigen::MatrixXd result(m, 3);
 
     // Fit polynomial to data
-    // double* c = fitpoly(p, n);
-    // double* c = fitpoly_primitive(p, n);
-    double* c = fitpoly_primitive_b(p, n);
+    #if FITFUNC == 'c'
+    double* c = fitpoly(p, n);
+    #elif FITFUNC == 'a'
+    double* c = fitpoly_primitive(p, n);
+    #endif
 
     // Evaluate fitted polynomial at m points. Use pointers to output matrix columns to store results
     double* x_data = result.col(0).data();
     double* y_data = result.col(2).data();
-    // evalpoly(c, p, m, x_data, y_data);
-    evalpoly_b(c, p, m, x_data, y_data);
 
+    evalpoly(c, p, m, x_data, y_data);
+ 
     // Fill in the second column with actual f(x) values
     double* f_data = result.col(1).data();
     for (int i = 0; i < m; ++i) {

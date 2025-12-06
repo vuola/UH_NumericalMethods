@@ -204,6 +204,20 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 1 plot (b)](exercise13/fit_erf_results_b.png)
   - [Problem 1 plot (c)](exercise13/fit_erf_results_c.png)
   - [Problem 1 plot comparison](exercise13/max_absolute_error_fit_erf.png)
+  - [Problem 2 & 3 code](exercise13/fitpoly.cpp)
+  - [Problem 2 test](exercise13/exercise13_2.txt)
+  - [Problem 2 plot (a) fit](exercise13/fitpoly_results_a.png)
+  - [Problem 2 plot (a) error](exercise13/fitpoly_error_vs_degree_a.png)
+  - [Problem 2 plot (b) fit](exercise13/fitpoly_results_b.png)
+  - [Problem 2 plot (b) error](exercise13/fitpoly_error_vs_degree_b.png)
+  - [Problem 2 plot (extra c) fit](exercise13/fitpoly_results_c.png)
+  - [Problem 2 plot (extra c) error](exercise13/fitpoly_error_vs_degree_c.png)
+  - [Problem 3 test](exercise13/exercise13_3.txt)
+  - [Problem 3 plot fit](exercise13/fitpoly_results_d.png)
+  - [Problem 3 plot error](exercise13/fitpoly_error_vs_degree_d.png)
+
+
+
   
 
 

@@ -1,0 +1,111 @@
+****
+*
+* 13
+****
+
+Problem 3. Legendre polynomial basis
+************************************
+
+Parameter fitting using alpha matrix and directly solving alpha * c = beta for parameters c, Legendre polynomial basis. Eigenvalues of alpha matrix smaller than 1e-3 are screened with value 1e-3.
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise13$ python3 problem2.py
+
+Eigenvalues of alpha matrix, p=5:
+25,1249
+6,33127
+3,36688
+9,28442
+4,33768
+
+Eigenvalues of alpha matrix, p=10:
+25,3667
+8,27488
+3,93778
+2,27004
+1,5558
+11,3922
+6,08527
+2,92925
+1,86263
+1,32882
+
+Eigenvalues of alpha matrix, p=15:
+26,4129
+12,9044
+4,12929
+14,7679
+0,271593
+2,29627
+1,57625
+0,940666
+1,1888
+6,6495
+2,95756
+0,469875
+1,86716
+1,3475
+1,03727
+
+Eigenvalues of alpha matrix, p=20:
+27,8439
+15,5563
+20,6878
+4,13354
+6,8342
+2,30891
+0,00347739
+1,60728
+2,95966
+0,574727
+1,2228
+0,968764
+0,784224
+0,000649986  <-- screened
+1,89489
+0,397864
+1,39139
+1,08431
+0,715894
+0,872596
+
+Eigenvalues of alpha matrix, p=25:
+30,7595
+18,5076
+24,4703
+4,2321
+6,96932
+2,39518
+3,0096
+1,69532
+1,28747
+0,274138
+1,95546
+1,01182
+0,819103
+0,56838
+1,45756
+0,678163
+1,13612
+0,000285509  <-- screened
+0,908496
+0,446988
+0,742653
+0,615274
+1,10213e-09  <-- screened
+0,0027786
+4,4194e-08  <-- screened
+
+L1 errors for different base function degrees:
+Degree 5: L1 error = 543.7944538066895
+Degree 10: L1 error = 4.037940025566879
+Degree 15: L1 error = 0.015255209452736394
+Degree 20: L1 error = 5.408672302479131
+Degree 25: L1 error = 13.987457795401932
+
+Comments
+********
+
+The Legendre basis is more stable, functions up to p = 15
+don't have small eigenvalues. The fit results are good,
+only the models with p >= 20 have a small glitches at the ends of 
+the fitting range. 

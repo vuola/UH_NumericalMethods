@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 import os
 import sys
 
+FITFUNC = 'd'  
+# 'a' for primitive base
+# 'b' for regulated base 
+# 'c' for gsl_multifit_linear()
+# 'd' for Legendre basis
+
 # Get the absolute path to the build directory (relative to the script's location)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 build_dir = os.path.join(current_dir, '..', 'build', 'exercise13')
@@ -22,7 +28,14 @@ def plot_fitpoly_results(degrees, n, m, output_filename = None):
     # Plot the error function and the fitted polynomial.
     # Mark the fitting points with red circles.
     plt.figure(figsize=(8, 5))
-    plt.title('Fitted sin(pi*x) function using fitpoly_primitive')
+    if FITFUNC == 'a':
+        plt.title('Fitted sin(pi*x) with primitive basis')
+    elif FITFUNC == 'b':
+        plt.title('Fitted sin(pi*x) with regulated basis')
+    elif FITFUNC == 'c':
+        plt.title('Fitted sin(pi*x) using gsl_multifit_linear()')
+    elif FITFUNC == 'd':
+        plt.title('Fitted sin(pi*x) with Legendre basis')
     plt.xlabel('x')
     plt.ylabel('Value')
     plt.grid()
@@ -56,25 +69,32 @@ def plot_fitpoly_results(degrees, n, m, output_filename = None):
 
 
     if output_filename:
-        plt.savefig(output_filename)
+        plt.savefig(output_filename + FITFUNC + '.png')
 
     return max_errors
 
 
 num_params_list_a = [5, 10, 15, 20, 25]
-max_errors = plot_fitpoly_results(num_params_list_a, 25, 1000, 'fitpoly_results.png')
+max_errors = plot_fitpoly_results(num_params_list_a, 25, 1000, 'fitpoly_results_')
 
-print("L1 errors for different polynomial degrees:")
+print("L1 errors for different base function degrees:")
 for deg, err in zip(num_params_list_a, max_errors):
     print(f"Degree {deg}: L1 error = {err}")
 
 # Plot the L1 error as function of polynomial degree
 plt.figure(figsize=(8, 5))
-plt.title('L1 Error vs Polynomial Degree')
-plt.xlabel('Polynomial Degree')
+if FITFUNC == 'a':
+    plt.title('L1 Error vs Polynomial Degree (primitive basis)')
+elif FITFUNC == 'b':
+    plt.title('L1 Error vs Polynomial Degree (regulated basis)')
+elif FITFUNC == 'c':
+    plt.title('L1 Error vs Polynomial Degree using gsl_multifit_linear()')
+elif FITFUNC == 'd':
+    plt.title('L1 Error vs Base Function Degree (Legendre basis)')
+plt.xlabel('Base Function Degree')
 plt.ylabel('L1 Error')
 plt.semilogy(num_params_list_a, max_errors, marker='o', label='fitpoly')
 plt.grid()
 plt.legend()
-plt.savefig('fitpoly_error_vs_degree.png')
+plt.savefig('fitpoly_error_vs_degree_' + FITFUNC + '.png')
 
