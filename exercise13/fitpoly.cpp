@@ -265,11 +265,11 @@ void evalpoly(double* c, int p, int m, double* x_data, double* y_data) {
         double y = 0.0;
         if (BASIS_PRIMITIVE) {
             for (int j = 0; j < p; ++j) {
-                y += c[j] * pow(x, j);
+                y += c[j] * X_primitive(j, x);
             }
         } else if (BASIS_REGULATED) {
             for (int j = 0; j < p; ++j) {
-                y += c[j] * pow(x / 2.0, j);
+                y += c[j] * X_regulated(j, x);
             }
         } else if (BASIS_LEGENDRE) {
             for (int j = 0; j < p; ++j) {

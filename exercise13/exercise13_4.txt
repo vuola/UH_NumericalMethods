@@ -1,0 +1,29 @@
+****
+*
+* 13
+****
+
+Problem 4. Maxwell-Boltzmann parameters
+***************************************
+
+The fit is first done on linearized distribution data with standard least squares method.
+The linearization mapping is described in the pen&paper section. The second fit is done with nonlinear fitting using Levenberg-Marquardt algorithm from SciPy toolbox.
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise13$ python3 problem4.py
+
+Linear fit parameters from ex13p4_d1.dat: a = 0.009437899977934863, b = 486649.9243878261
+Linear fit parameters from ex13p4_d2.dat: a = 0.02139332709928874, b = 219849.29101929293
+Linear fit parameters from ex13p4_d3.dat: a = 0.013349452851293417, b = 349843.8289248972
+
+Nonlinear fit parameters from ex13p4_d1.dat: a = 0.010297873161376512, b = 470395.7864257983
+Nonlinear fit parameters from ex13p4_d2.dat: a = 0.021554368477268545, b = 221483.69675045263
+Nonlinear fit parameters from ex13p4_d3.dat: a = 0.014280949388870395, b = 340118.19576246
+
+Comments
+********
+Both methods produce reasonable results. Differences can be found by looking at the 
+data plots and model curves with fitted parameters. For datasets d1 and d2 the nonlinear
+method produces a better fit around the maximum of the distribution.
+
+
+

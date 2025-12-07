@@ -215,6 +215,15 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3 test](exercise13/exercise13_3.txt)
   - [Problem 3 plot fit](exercise13/fitpoly_results_d.png)
   - [Problem 3 plot error](exercise13/fitpoly_error_vs_degree_d.png)
+  - [Problem 4 pen & paper](exercise13/exercise13_4.pdf)
+  - [Problem 4 code](exercise13/problem4.py)
+  - [Problem 4 test](exercise13/exercise13_4.txt)
+  - [Problem 4 plot d1 linear](exercise13/maxwell_boltzmann_linear_d1.png)
+  - [Problem 4 plot d1 nonlinear](exercise13/maxwell_boltzmann_nonlinear_d1.png)
+  - [Problem 4 plot d2 linear](exercise13/maxwell_boltzmann_linear_d2.png)
+  - [Problem 4 plot d2 nonlinear](exercise13/maxwell_boltzmann_nonlinear_d2.png)
+  - [Problem 4 plot d3 linear](exercise13/maxwell_boltzmann_linear_d3.png)
+  - [Problem 4 plot d3 nonlinear](exercise13/maxwell_boltzmann_nonlinear_d3.png)
 
 
 
