@@ -28,7 +28,8 @@ Required dependencies and installation instructions are given below. The code ha
 
 ## Links to exercise Submittals
 
-- Exercise 1 
+- Exercise 1
+  - [ASSIGNMENT](exercise01/exercise01.pdf)
   - [Problem 1 pen & paper](exercise01/exercise1_1.pdf) 
   - [Problem 2 code](exercise01/harmonic.cpp)
   - [Problem 2 test](exercise01/exercise1_2.txt)
@@ -42,6 +43,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 test funks_Taylor errors f2](exercise01/exercise1_4_ef2.png)
 
 - Exercise 2 
+  - [ASSIGNMENT](exercise02/exercise02.pdf)
   - [Problem 1 pen & paper](exercise02/exercise2_1.pdf) 
   - [Problem 2 code](exercise02/harmonic_kahan.cpp) 
   - [Problem 2 test](exercise02/exercise2_2.txt)
@@ -50,7 +52,8 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4A code](exercise02/residual.cpp) 
   - [Problem 4B test](exercise02/exercise2_4.txt)
 
-- Exercise 3 
+- Exercise 3
+  - [ASSIGNMENT](exercise03/exercise03.pdf)
   - [Problem 1 pen & paper](exercise03/exercise3_1.pdf)
   - [Problem 2A code](exercise03/jacobi.cpp)
   - [Problem 2B test](exercise03/exercise3_2.txt)
@@ -58,6 +61,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3B test](exercise03/exercise3_3B.txt)
 
 - Exercise 4
+  - [ASSIGNMENT](exercise04/exercise04.pdf)
   - [Problem 1A code](exercise04/roots.cpp)
   - [Problem 1A test](exercise04/exercise4_1A.txt)
   - [Problem 1B code](exercise04/roots.cpp)
@@ -72,6 +76,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4B test](exercise04/exercise4_4B.txt)
 
 - Exercise 5
+  - [ASSIGNMENT](exercise05/exercise05.pdf)
   - [Problem 1A code](exercise05/broyden.cpp)
   - [Problem 1B test](exercise05/exercise5_1B.txt)
   - [Problem 2(a) pen & paper](exercise05/exercise5_2a.pdf)
@@ -85,6 +90,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 pen & paper](exercise05/exercise5_4.pdf)
 
 - Exercise 6
+  - [ASSIGNMENT](exercise06/exercise06.pdf)
   - [Problem 1 pen & paper](exercise06/exercise6_1.pdf)
   - [Problem 2(a) code](exercise06/richardson.cpp)
   - [Problem 2(a) test](exercise06/exercise6_2A.txt)
@@ -102,6 +108,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 plot (3rd degree)](exercise06/spline3.png)
 
 - Exercise 7
+  - [ASSIGNMENT](exercise07/exercise07.pdf)
   - [Problem 1 code](exercise07/plotParametricSpline.py)
   - [Problem 1 plot](exercise07/parametricSpline.png)
   - [Problem 2 parameters](exercise07/rootsGaussLaguerre.py)
@@ -113,6 +120,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 pen & paper](exercise07/exercise7_4.pdf)
  
 - Exercise 8
+  - [ASSIGNMENT](exercise08/exercise08.pdf)
   - [Problem 1 pen & paper](exercise08/exercise8_1.pdf)
   - [Problem 2 pen & paper](exercise08/exercise8_2.pdf)
   - [Problem 3 pen & paper](exercise08/exercise8_3.pdf)
@@ -132,6 +140,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 5b plot BFGS from (2, -4)](exercise08/BFGS_B.pdf)
 
 - Exercise 9
+  - [ASSIGNMENT](exercise09/exercise09.pdf)
   - [Problem 1 code](exercise09/chi2.py)
   - [Problem 1 plot](exercise09/chi2_histogram.png)
   - [Problem 1 test](exercise09/exercise9_1.txt)
@@ -150,6 +159,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 5 test](exercise09/exercise9_5.txt)
    
 - Exercise 10
+  - [ASSIGNMENT](exercise10/exercise10.pdf)
   - [Problem 1 pen & paper](exercise10/exercise10_1.pdf)
   - [Problem 2 code](exercise10/problem2.cpp)
   - [Problem 2 plot K=3](exercise10/problem2_K3.png)
@@ -161,6 +171,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 3c pen & paper](exercise10/exercise10_3c.pdf)
   
 - Exercise 11
+  - [ASSIGNMENT](exercise11/exercise11.pdf)
   - [Problem 1 code](exercise11/rungeKuttaSolver.cpp)
   - [Problem 1 plot](exercise11/runge_kutta_plot.pdf)
   - [Problem 1a test](exercise11/exercise11_1A.txt)
@@ -178,6 +189,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 test](exercise11/exercise11_4.txt)
 
 - Exercise 12
+  - [ASSIGNMENT](exercise12/exercise12.pdf)
   - [Problem 1ab pen & paper](exercise12/exercise12_1ab.pdf)
   - [Problem 1cd pen & paper](exercise12/exercise12_1cd.pdf)
   - [Problem 1ef pen & paper](exercise12/exercise12_1ef.pdf)
@@ -198,6 +210,7 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 code](exercise12/piano_displace.py)
 
 - Exercise 13
+  - [ASSIGNMENT](exercise13/exercise13.pdf)
   - [Problem 1 code](exercise13/fiterf.cpp)
   - [Problem 1 test](exercise13/exercise13_1.txt)
   - [Problem 1 plot (a)](exercise13/fit_erf_results_a.png)
