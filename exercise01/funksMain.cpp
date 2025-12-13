@@ -36,6 +36,11 @@ string getArgumentCountErrorMessage(const string& functionName, int expectedCoun
 // Main function implementing command line 
 int main(int argc, char** argv){
 
+    if (argc == 1) { // Wrong number of arguments
+        cerr << getArgumentCountErrorMessage(argv[0], 1, 0) << endl;
+        return 1;
+    }
+
     string flag = argv[1];
 
     if (flag == "--help" || flag == "-h" || flag == "-H") {

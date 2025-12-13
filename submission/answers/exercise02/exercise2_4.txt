@@ -1,0 +1,45 @@
+B)
+**
+**
+
+Test 1:     matrix6,  m = 1
+***************************
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./residual 1 < m6
+Residual:
+5.41206e-07
+
+
+Test 2:     matrix6,  m = 2
+***************************
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./residual 2 < m6
+Residual:
+2.74226e-07
+
+
+Test 3:     matrix6,  m = 0 (infinity)
+**************************************
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./residual 0 < m6
+Residual:
+1.95297e-07
+
+
+Test 4:     matrix100,  m = 1
+*****************************
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./residual 1 < m100
+Residual:
+2.49603e-05
+
+
+Test 5:     matrix100,  m = 2
+*****************************
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./residual 2 < m100
+Residual:
+3.03158e-06
+
+
+Test 6:     matrix100,  m = 0 (infinity)
+****************************************
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./residual 0 < m100
+Residual:
+1.00384e-06
+

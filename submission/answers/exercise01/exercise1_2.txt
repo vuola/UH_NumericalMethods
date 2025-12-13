@@ -1,0 +1,12 @@
+[exercise01] ./harmonic                                                   main  ✭ ✱
+float resolution limit at iteration 2097152
+15.4037
+
+[exercise01] ./harmonic --bunch 50                                          main  ✭
+18.6237
+
+[exercise01] ./harmonic --bunch 100                                         main  ✭
+19.3149
+
+[exercise01] ./harmonic --bunch 500                                         main  ✭
+20.9251

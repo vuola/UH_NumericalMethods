@@ -1,0 +1,33 @@
+***
+*
+* 5
+***
+
+Generating pi value with Monte Carlo methods
+********************************************
+
+(b) The pi value distribution converges with increasing n. i.e.
+the variance is getting smaller and the distribution average is
+moving closer to correct pi value.
+
+(c) It seems that the 3D method does not converge to the correct
+value as quickly as the 2D method. The points filling the n-sphere
+are estimating the volume of the sphere. If the point density 
+is smaller, the accuracy of the volume estimate is worse.
+The constant multiplier in V_n(R) grows in higher dimensions:
+n = 2: V_2(R) ~ 3.1415 * R^2
+n = 3: V_3(R) ~ 4.1887 * R^3
+n = 4: V_4(R) ~ 4.9348 * R^4
+Now the point density N / {V_n(R)/R^n} is smaller with 
+growing n.
+
+Test results for distribution average
+*************************************
+(b) Results for 2D case
+Average value of π from the distribution n=2: 3.135989189189189
+Average value of π from the distribution n=3: 3.142849849849849
+Average value of π from the distribution n=4: 3.141187887887888
+(c) Results for 3D case
+Average value of π from the distribution n=2: 3.125165765765766
+Average value of π from the distribution n=3: 3.138762462462462
+Average value of π from the distribution n=4: 3.140061981981981

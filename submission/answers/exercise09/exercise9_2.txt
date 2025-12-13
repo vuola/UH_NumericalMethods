@@ -1,0 +1,17 @@
+***
+*
+* 2
+***
+
+Testing inverse cumulative distributions 
+****************************************
+
+The random numbers were generated with Mersenne twister implemented in standard C++ library. The seed was 
+generated from the milliseconds of system time.
+
+The inverse Lorenz distributed causes a problem near input probabilities 0 and 1, as the x-value approaches
+-Inf and +Inf, respectively. This was solved by defining a tolerance parameter OFFSET_FROM_EXTREMES with value 
+set to 0.02. In case the random input probability is closer than tolerance from either 0 or 1, a new random
+number is generated and the inverse function is called recursively.
+
+Numerically computed and closed forms of f() match quite nicely for both functions.

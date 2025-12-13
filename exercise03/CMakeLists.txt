@@ -16,8 +16,4 @@ add_executable(err_propag err_propagMain.cpp jacobi.cpp)
 target_link_libraries(err_propag Eigen3::Eigen)
 target_include_directories(err_propag PRIVATE ../exercise02)
 
-# boostStatistics executable
-# add_executable(boostStatistics boostStatistics.cpp)
-# target_link_libraries(err_propag Eigen3::Eigen)
-# target_include_directories(err_propag PRIVATE ../exercise02)
 

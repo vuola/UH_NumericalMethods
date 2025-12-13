@@ -26,7 +26,6 @@ find_package(GSL REQUIRED)
 # Add each subdirectory containing main()
 add_subdirectory(exercise01)
 add_subdirectory(exercise02)
-add_subdirectory(exercise02/ex2_p3)
 add_subdirectory(exercise03)
 add_subdirectory(exercise04)
 add_subdirectory(exercise05)
@@ -37,8 +36,6 @@ add_subdirectory(exercise09)
 add_subdirectory(exercise10)
 add_subdirectory(exercise11)
 add_subdirectory(exercise13)
-add_subdirectory(test_GSL)
-
 
 
 
