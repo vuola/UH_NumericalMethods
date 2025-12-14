@@ -47,11 +47,12 @@ plt.clabel(contours, inline=True, fontsize=8)
 
 # Add optimization trajectory
 try:
-    xy_data = np.loadtxt(os.path.join(build_dir, 'xy.txt'))
+    xy_data = np.loadtxt('xy.txt')
     plt.plot(xy_data[:, 0], xy_data[:, 1], 'r-', linewidth=2, label='Optimization trajectory')
 except Exception as e:
-    print(f"Error loading trajectory data: {e}")
+    print(f"Error loading trajectory data: {e} Consider running 'minimize 2.0 -4.0 4' and moving 'xy.txt' to this folder.")
 
+# This labeling & file naming assumes 'xy.txt' has been created with 'minimize 2.0 -4.0 4'.
 plt.xlabel('x')
 plt.ylabel('y')
 plt.title('BFGS')

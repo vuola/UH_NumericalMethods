@@ -74,4 +74,4 @@ plt.legend()
 
 # Display the plot
 plt.grid(True)
-plt.show()
+plt.savefig('exercise1_4_ef2.png')

@@ -17,7 +17,8 @@ find "$ROOT_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; d
     mkdir -p "$OUT_DIR/$ex_name"
 
     find "$ex_dir" -maxdepth 1 -type f \( \
-        -name "*.py" \
+        -name "*.py" -o \
+        -name "xy.txt" \
     \) ! -name "CMakeLists.txt" ! -name "CMakeCache.txt" | while read -r f; do
         echo "    ✔ $(basename "$f")"
         cp "$f" "$OUT_DIR/$ex_name/"

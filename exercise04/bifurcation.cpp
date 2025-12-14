@@ -24,12 +24,14 @@ double f(double x, double mu) {
 
 // Hard-coded f derivative for exercise 4 problem 3B
 double df(double x, double mu) {
-    double m1 = mu*(x-1)+1;
-    double e1 = 1/(mu-1)-1;
-    double e2 = -mu/(mu-1);
-    std::complex<double> term1 = std::pow(m1,e1);
-    std::complex<double> term2 = std::pow(x,e2);
-    return real(term1 * term2);
+    double num2 = mu*(x-1)+1;
+    double den2 = x;
+    double exp2 = 1/(mu-1);
+    double num1 = pow(num2/den2, exp2);
+    double den1 = mu*(x-1)*x+x;
+//    std::complex<double> term1 = std::pow(m1,e1);
+//    std::complex<double> term2 = std::pow(x,e2);
+    return num1 / den1;
 }
 
 /**
@@ -100,10 +102,12 @@ double fractal_1(double x0, double mu) {
  * @brief
  * fractal_2 - use Newton method to find solution to f(x) = 0 starting from x0 
  * @return  
- * Returns x fulfilling f(x) = 0. Functions f and f' are hard-coded. 
+ * Returns x fulfilling f(x) = 0. The Newton iteration for finding the root is
+ * x(k+1) = x(k) - f{x(k)}/f'{x(k)} 
+ * Functions f = f(x,mu) and f' = df(x,mu) are hard-coded. 
  * @throws None.
  * @param x0 starting x-value for search 
- * @param mu constant used in f(x)
+ * @param mu constant used in f() and df()
  **/
 double fractal_2(double x0, double mu) {
 
@@ -141,10 +145,10 @@ double fractal_2(double x0, double mu) {
  * iteration.
  *   
  * @throws None.
- * @param mu vector of values for parameter mu, each element adds a row to output.
- * @param x_left starting value for x
- * @param x_right ending value for x
- * @param N number of input variable points between [x_left, x_right]  
+ * @param x0 starting value for the x-iteration formula
+ * @param mu_left starting value for mu
+ * @param mu_right ending value for mu
+ * @param N number of mu points between [mu_left, mu_right]  
  * 
  **/
 MatrixXd bifurcation(double x0, double mu_left, double mu_right, int N) {

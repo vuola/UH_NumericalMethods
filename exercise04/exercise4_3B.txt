@@ -18,3 +18,25 @@ The Newton iteration of f(x, mu) runs into difficulties as the function f(x, mu)
 has an exponential term b^a where b is negative real number and a is 
 non-integer real. This is not a well-defined continuous function and
 even C++ complex version of pow(b,a) gives a -nan result.
+
+Test run output:
+****************
+vuola@nuc:~/matres/UH_NumericalMethods/exercise04$ python3 ./testBifurcation.py
+
+Function frange output:
+x-values   : [0.300 0.378 0.456 0.533 0.611 0.689 0.767 0.844 0.922 1.000]
+y(x,mu=2.5): [-1.333 -0.647 -0.195  0.125  0.364  0.548  0.696  0.816  0.916  1.000]
+y(x,mu=3.0): [  nan   nan   nan   nan   nan 0.311 0.626 0.795 0.912 1.000]
+y(x,mu=3.2): [  nan   nan   nan   nan   nan 0.311 0.626 0.795 0.912 1.000]
+y(x,mu=3.5): [  nan   nan   nan   nan   nan 0.311 0.626 0.795 0.912 1.000]
+
+Function bifurgation output:
+mu-values:
+[2.500 2.526 2.553 2.579 2.605 2.632 2.658 2.684 2.711 2.737 2.763 2.789
+ 2.816 2.842 2.868 2.895 2.921 2.947 2.974 3.000]
+x(k+1)=mu*x(k){1-x(k)}, k -> N:
+[0.600 0.604 0.608 0.612 0.616 0.620 0.624 0.627 0.631 0.635 0.638 0.642
+ 0.645 0.648 0.651 0.654 0.657 0.658 0.654 0.637]
+x(k+1)=x(k)-f(k)/f'(k), k -> N:
+[nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan]
