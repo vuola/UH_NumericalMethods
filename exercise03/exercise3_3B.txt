@@ -1,6 +1,13 @@
-B)
-**
-**
+****
+*
+* 03
+****
+
+Problem 3. Error propagation in the eigenvalue method of P.2
+************************************************************
+
+(B)
+***
 
 Statistics collection of function 'err_propag'
 *********************************************

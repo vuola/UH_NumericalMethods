@@ -1,6 +1,14 @@
 ****
-* C)
+*
+* 04
 ****
+
+
+Problem 1. Root finding with bisect and Newton methods
+******************************************************
+
+(C)
+***
 
 Testing bisect_f between [0,1]
 ******************************

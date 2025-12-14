@@ -1,8 +1,13 @@
 ****
 *
-* 4B
-*
+* 04
 ****
+
+Problem 4. Complex roots of real polynomial
+*******************************************
+
+(B)
+***
 
 The Python tests script does the following steps:
 - generate N random roots with genroots = np.random.uniform(-5, 5)

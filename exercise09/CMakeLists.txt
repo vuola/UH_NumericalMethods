@@ -1,12 +1,12 @@
-# Compile a library version for problem2 function plotting 
-add_library(problem2 SHARED problem2.cpp problem2Link.cpp)
-target_link_libraries(problem2 eigenpy::eigenpy)
+# Compile a library version for inversecdf function plotting 
+add_library(inversecdf SHARED inversecdf.cpp inversecdfLink.cpp)
+target_link_libraries(inversecdf eigenpy::eigenpy)
 
 # set the name for the problem2Python extension (if needed for the Python script)
-set_target_properties(problem2 PROPERTIES OUTPUT_NAME "problem2")
-set_target_properties(problem2 PROPERTIES PREFIX "")
-set_target_properties(problem2 PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
-target_include_directories(problem2 PRIVATE ../exercise09)
+set_target_properties(inversecdf PROPERTIES OUTPUT_NAME "inversecdf")
+set_target_properties(inversecdf PROPERTIES PREFIX "")
+set_target_properties(inversecdf PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+target_include_directories(inversecdf PRIVATE ../exercise09)
 
 # Compile a library version for gaussrng function
 add_library(gaussrng SHARED gaussrng.cpp gaussrngLink.cpp)
@@ -18,15 +18,15 @@ set_target_properties(gaussrng PROPERTIES PREFIX "")
 set_target_properties(gaussrng PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 target_include_directories(gaussrng PRIVATE ../exercise09)
 
-# Compile a library version of problem4
-add_library(problem4 SHARED problem4.cpp problem4Link.cpp)
-target_link_libraries(problem4 eigenpy::eigenpy)
+# Compile a library version of moment
+add_library(moment SHARED moment.cpp momentLink.cpp)
+target_link_libraries(moment eigenpy::eigenpy)
 
-# set the name for the problem4Python extension (if needed for the Python script)
-set_target_properties(problem4 PROPERTIES OUTPUT_NAME "problem4")
-set_target_properties(problem4 PROPERTIES PREFIX "")
-set_target_properties(problem4 PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
-target_include_directories(problem4 PRIVATE ../exercise09)
+# set the name for the momentPython extension (if needed for the Python script)
+set_target_properties(moment PROPERTIES OUTPUT_NAME "moment")
+set_target_properties(moment PROPERTIES PREFIX "")
+set_target_properties(moment PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+target_include_directories(moment PRIVATE ../exercise09)
 
 # Compile a library version of mypi
 add_library(mypi SHARED mypi.cpp mypiLink.cpp)

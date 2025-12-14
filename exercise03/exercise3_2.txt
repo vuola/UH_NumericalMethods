@@ -1,9 +1,14 @@
-B)
-**
-**
+****
+*
+* 03
+****
 
-Comparative test of Jacobi implementation
-*****************************************
+Problem 2. Jacobi method for eigenvalue computation
+***************************************************
+
+
+(B) Comparative test of Jacobi implementation
+*********************************************
 
 The reference implementation was python numpy.linalg.eig()
 
@@ -25,7 +30,7 @@ Markus:  [-0.89223509 -0.50897529 -0.1059993   0.21311182  0.72873487  2.8915022
 Python:  [-0.89223509 -0.50897529 -0.1059993   0.21311182  0.72873487  2.89150229]
 Diff:    [-2.22044605e-16 -1.11022302e-16 -1.38777878e-16  0.00000000e+00 -9.99200722e-16 -1.77635684e-15]
 
-*** Conclusion:
+*** Comments:
 
 Results from two implementations were extremely close. The biggest single difference in eigenvalue
 between two implementations was 1.77635684e-15.

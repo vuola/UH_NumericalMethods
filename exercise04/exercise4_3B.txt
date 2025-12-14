@@ -1,10 +1,13 @@
 ****
-* 3B
 *
+* 04
 ****
 
-Analysis of function used in newton iteration of bifurcating series
-*******************************************************************
+Problem 3. Analysis of function used in Newton iteration of bifurcating series
+******************************************************************************
+
+(B)
+***
 
 Looking at the figure function f(x, mu) does not have a continuous 
 zero crossing any longer when mu >= 3. A singular zero at x = 2/3 is found

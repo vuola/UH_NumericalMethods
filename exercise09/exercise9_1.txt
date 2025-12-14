@@ -1,15 +1,18 @@
-***
+****
 *
-* 1
-***
+* 09
+****
 
-Testing chi2 -function 
-**************************
-**************************
+Problem 1. Testing chi2 -function 
+*********************************
 
-vuola@nuc:~/matres/UH_NumericalMethods/exercise09$ python3 chi2.py > exercise9_1.txt
+vuola@nuc:~/matres/UH_NumericalMethods/exercise09$ python3 chi2.py
+
 Mean Chi-squared value: 8.991084
 Chi-squared test completed and histogram saved.
 
+
+Comments
+********
 
 The test produces a mean value of approximately M - 1 as expected by theory.

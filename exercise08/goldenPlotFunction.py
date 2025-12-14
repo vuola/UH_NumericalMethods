@@ -3,12 +3,33 @@ import matplotlib.pyplot as plt
 import sys
 import os
 
-# Get the absolute path to the build directory (relative to the script's location)
-current_dir = os.path.dirname(os.path.abspath(__file__))
-build_dir = os.path.join(current_dir, '..', 'build', 'exercise08')
+def add_solver_to_path(exercise_name):
+    """
+    Makes eigenpy modules importable in both:
+    - development repository
+    - submission folder layout
+    """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Append the build directory to sys.path
-sys.path.append(build_dir)
+    candidate_paths = [
+        # Development layout:
+        os.path.join(current_dir, '..', 'build', exercise_name),
+
+        # Submission layout:
+        os.path.join(current_dir, '..', '..', 'python'),
+    ]
+
+    for path in candidate_paths:
+        if os.path.isdir(path):
+            sys.path.insert(0, path)
+            return
+
+    raise RuntimeError(
+        f"Could not locate Python modules for {exercise_name}. "
+        f"Tried: {candidate_paths}"
+    )
+
+add_solver_to_path('exercise08')
 
 import golden as golden
 
@@ -21,6 +42,6 @@ plt.xlabel('x')
 plt.ylabel('f(x)')
 plt.title('Golden Range Plot')
 plt.grid(True)
-plt.savefig(os.path.join(current_dir, 'golden_range_plot.pdf'))
+plt.savefig('golden_range_plot.pdf')
 
 

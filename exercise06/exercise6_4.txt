@@ -1,3 +1,14 @@
+****
+*
+* 06
+****
+
+Problem 4. B-splines
+********************
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise06$ python3 plotSplines.py
+
+
 First degree splines
 ********************
 Segment [ 0 , 1 )

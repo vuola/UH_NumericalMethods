@@ -1,14 +1,14 @@
-***
+****
 *
-* 5
-***
+* 08
+****
 
-Testing minimize -function 
-**************************
-**************************
+Problem 5. Testing minimize -function 
+*************************************
 
-Summary of found minima 
-***********************
+
+(b) Summary of found minima 
+***************************
 
 The following (x,y) locations of minima were found 
 

@@ -1,10 +1,13 @@
 ****
 *
-* 1B
+* 05
 ****
 
-Testing broyden
-***************
+Problem 1. Testing broyden
+**************************
+
+(B)
+***
 
 The reference algorithm is Python scipy.optimize.broyden1
 

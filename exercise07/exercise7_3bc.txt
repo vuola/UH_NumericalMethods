@@ -1,4 +1,19 @@
-a) Romberg integration results for f1(x) = sin(sqrt(x)):
+
+****
+*
+* 07
+****
+
+Problem 2. Numerical integral with Romberg method
+*************************************************
+
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise07$ ./romberg
+
+(B)
+***
+
+Romberg integration results for f1(x) = sin(sqrt(x)):
   0.420735 
   0.535186   0.573336 
   0.577889   0.592124   0.593376 
@@ -16,7 +31,11 @@ The derivative of the integrand (d/dx){ sin(sqrt(x)) } = 0.5*cos(sqrt(x))/sqrt(x
 The outcome is sensitive to the width of first interval x = {0...h} as the control point value f1(x = h) does not
 represent {f1(0)...f1(h)} with sufficient accuracy.
 
-b) Romberg integration results for f2(x) = sin(sqrt(x))-sqrt(x) plus added constant 2/3:
+
+(C)
+***
+
+Romberg integration results for f2(x) = sin(sqrt(x))-sqrt(x) plus added constant 2/3:
   0.587402 
   0.598299   0.601932 
   0.601273   0.602264   0.602286 

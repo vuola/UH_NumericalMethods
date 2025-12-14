@@ -1,12 +1,13 @@
-***
+****
 *
-* 4
-***
+* 08
+****
 
-Testing golden section search 
-*****************************
+Problem 4. Testing golden section search 
+****************************************
 
 vuola@T480s:~/matres/UH_NumericalMethods/build/exercise08$ ./golden 0.0 4.0
+
 interval: [0, 2.47214] function value: -0.7566928 x-step: 2.472136
 interval: [0.9442719, 2.472136] function value: -0.8568783 x-step: 1.527864
 interval: [1.527864, 2.472136] function value: -0.8344537 x-step: 0.9442719
@@ -113,6 +114,9 @@ interval: [7.85398, 7.853982] function value: -1 x-step: 2.053031e-06
 interval: [7.853981, 7.853982] function value: -1 x-step: 1.268843e-06
 interval: [7.853981, 7.853982] function value: -1 x-step: 7.841881e-07
 7.853982
+
+Comments
+********
 
 The first and second search intervals converge to the first local minimum.
 The third search interval converges to the second local minimum.

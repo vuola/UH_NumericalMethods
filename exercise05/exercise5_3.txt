@@ -1,4 +1,13 @@
+****
+*
+* 05
+****
+
+Problem 3. Finding 2nd degree interpolating polynomial
+******************************************************
+
 vuola@nuc:~/matres/UH_NumericalMethods/exercise05$ python3 e5p3.py
+
 
 ###
 Ex5 Prob3 (a) Lagrange method:

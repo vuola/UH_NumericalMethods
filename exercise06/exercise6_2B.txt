@@ -1,3 +1,17 @@
+****
+*
+* 06
+****
+
+Problem 2. Derivative using Richardson extrapolation (RE)
+*********************************************************
+
+(B)
+***
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise06$ ./richardson_test
+
+
 Testing Richardson derivative for different values of h
 -------------------------------------------------------
 n	h=10^(-n)	Richardson error	Central difference error

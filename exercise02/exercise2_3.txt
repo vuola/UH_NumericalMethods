@@ -1,6 +1,14 @@
-A)
-**
-**
+****
+*
+* 02
+****
+
+Problem 3. Testing LAPACK function dgesv
+****************************************
+
+(A)
+***
+
 
 Compile commands using CMake (file: CMakeLists.txt)
 ***************************************************
@@ -65,12 +73,15 @@ vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matri
 vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ cat output.txt | grep Reciprocal
 Reciprocal condition number: 0.000003
 
+Comments
+********
+
 This is a fairly ill-conditioned matrix since the condition number is close to zero.
 
 
-B) 
-**
-**
+(B) 
+***
+
 
 Testing what happens if two rows of A are the same:
 ***************************************************
@@ -93,6 +104,9 @@ x
 
 Norm: 3.864119
 Reciprocal condition number: 0.000000
+
+Comments
+********
 
 A is an ill-conditioned matrix, condition number is zero.
 
@@ -118,4 +132,7 @@ x
 Norm: 3.914439
 Reciprocal condition number: 0.000000
 
-A is an ill-conditioned matrix, condition number is zero.
+Comments
+********
+
+A with two similar rows is an ill-conditioned matrix, condition number is zero.

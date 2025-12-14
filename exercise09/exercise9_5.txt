@@ -1,10 +1,10 @@
-***
+****
 *
-* 5
-***
+* 09
+****
 
-Generating pi value with Monte Carlo methods
-********************************************
+Problem 5. Generating pi value with Monte Carlo methods
+*******************************************************
 
 (b) The pi value distribution converges with increasing n. i.e.
 the variance is getting smaller and the distribution average is
@@ -23,10 +23,16 @@ growing n.
 
 Test results for distribution average
 *************************************
+
 (b) Results for 2D case
+
+
 Average value of π from the distribution n=2: 3.135989189189189
 Average value of π from the distribution n=3: 3.142849849849849
 Average value of π from the distribution n=4: 3.141187887887888
+
+
+
 (c) Results for 3D case
 Average value of π from the distribution n=2: 3.125165765765766
 Average value of π from the distribution n=3: 3.138762462462462

@@ -4,12 +4,33 @@ from mpl_toolkits.mplot3d import Axes3D
 import os
 import sys
 
-# Get the absolute path to the build directory (relative to the script's location)
-current_dir = os.path.dirname(os.path.abspath(__file__))
-build_dir = os.path.join(current_dir, '..', 'build', 'exercise08')
+def add_solver_to_path(exercise_name):
+    """
+    Makes eigenpy modules importable in both:
+    - development repository
+    - submission folder layout
+    """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Append the build directory to sys.path
-sys.path.append(build_dir)
+    candidate_paths = [
+        # Development layout:
+        os.path.join(current_dir, '..', 'build', exercise_name),
+
+        # Submission layout:
+        os.path.join(current_dir, '..', '..', 'python'),
+    ]
+
+    for path in candidate_paths:
+        if os.path.isdir(path):
+            sys.path.insert(0, path)
+            return
+
+    raise RuntimeError(
+        f"Could not locate Python modules for {exercise_name}. "
+        f"Tried: {candidate_paths}"
+    )
+
+add_solver_to_path('exercise08')
 
 # Import the self-made minimize module from the build directory
 import minimize as minimize
@@ -35,4 +56,4 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.title('BFGS')
 plt.grid(True, alpha=0.3)
-plt.savefig(os.path.join(current_dir, 'BFGS_A.pdf'))
+plt.savefig('BFGS_A.pdf')

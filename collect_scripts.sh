@@ -24,4 +24,4 @@ find "$ROOT_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; d
     done
 done
 
-echo "✅ Done. Scripts and documentation copied to submission/scripts/"
+echo "✅ Done. Scripts copied to submission/scripts/"

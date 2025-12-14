@@ -1,3 +1,14 @@
+****
+*
+* 07
+****
+
+Problem 2. Adaptive Simpson's method
+************************************
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise07$ ./simpson_gauss_laguerre_test
+
+
 Adaptive Simpson's method
 The expected result is: 0.6
 maximum error setting: eps = 1e-09
