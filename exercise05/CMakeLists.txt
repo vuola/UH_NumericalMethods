@@ -11,5 +11,5 @@ set_target_properties(broyden_lib PROPERTIES PREFIX "")
 set_target_properties(broyden_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 
 # myexp executable
-add_executable(myexp exp.cpp)
+add_executable(exp exp.cpp expMain.cpp)
 

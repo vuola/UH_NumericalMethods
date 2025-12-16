@@ -19,4 +19,5 @@ for i in range(1000):
         print("x[i]: ", x[i])
 
 plt.hist(out, bins=80, density=True, label='normal', alpha=0.7, edgecolor='yellow')
-plt.show()
+plt.title("Error distribution of { myexp(x) - math.exp(x) }")
+plt.savefig("myexp_error_distribution.png")

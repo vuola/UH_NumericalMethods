@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 
 def portable_generator(s1,s2,N):
@@ -43,7 +44,22 @@ def portable_generator(s1,s2,N):
             z = z + m1 - 1
         u = z / m1
 
-#        print(i, u)
         out[i] = u
 
     return out
+
+
+
+def main(script, s1=123456, s2=7891011, N=10):
+    try:
+        s1 = int(s1)
+        s2 = int(s2)
+        N = int(N)
+    except ValueError:
+        print('Usage: %d s1 s2 N' % script)
+    else: 
+        print(portable_generator(s1,s2,N))
+
+
+if __name__ == '__main__':
+    main(*sys.argv)

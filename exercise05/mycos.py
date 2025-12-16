@@ -37,4 +37,5 @@ for i in range(1000):
         print("x[i]: ", x[i])
 
 plt.hist(out, bins=80, density=True, label='normal', alpha=0.7, edgecolor='yellow')
-plt.show()
+plt.title("Error distribution of { mycos(x) - math.cos(x) }")
+plt.savefig("mycos_error_distribution.png")

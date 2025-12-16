@@ -27,14 +27,14 @@ double myexp(double x) {
     return exp(x_mapped) * pow(2,n);  
 }
 
+
+/**
+ * @brief doubleRand - generate a double-precision random number 0.0 ,..., 1.0
+ * @brief              the output can be scaled and used as input x for exp(x)
+ * @return Returns the random number 
+ * @throws None.
+ */
 double doubleRand() {
     srand((unsigned) time(NULL));
     return double(rand()) / (double(RAND_MAX) + 1.0);
-}
-
-int main() {
-    double x = doubleRand() * 20 - 10;
-    cout << "value of x is " << x << endl;
-    cout << "regular exp function: " << exp(x) << endl;
-    cout << "mapped exp function: " << myexp(x) << endl;
 }

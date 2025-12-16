@@ -69,4 +69,4 @@ pol = x**2/10 - 3*x/5 + 1
 # red dashes, blue squares and green triangles
 plt.title("Function y = 1/(1+x^2) RED, 2nd deg Polynome fit GRN")
 plt.plot(x, fx, 'r-', x, pol, 'g--')
-plt.show()
+plt.savefig("exercise5_3.png")
