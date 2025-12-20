@@ -44,7 +44,7 @@ Eigen::MatrixXd verifyclt(int K) {
   return results;
 }
 
-BOOST_PYTHON_MODULE(verifyclt) {
+BOOST_PYTHON_MODULE(clt) {
   using namespace Eigen;
   namespace bp = boost::python;
   eigenpy::enableEigenPy();

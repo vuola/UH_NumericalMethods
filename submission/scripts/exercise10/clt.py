@@ -36,7 +36,7 @@ import clt as clt
 
 def plot_clt_distributions(num_samples, output_filename):
     # Create test distributions
-    data10 = vclt.verifyclt(num_samples)
+    data10 = clt.verifyclt(num_samples)
 
     # For reference normal distributions, check mean and stddev. Weight x points with p values.
     mean_normal = []

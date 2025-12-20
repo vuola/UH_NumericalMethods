@@ -18,6 +18,9 @@ find "$ROOT_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; d
 
     find "$ex_dir" -maxdepth 1 -type f \( \
         -name "*.py" -o \
+        -name "sample*.dat" -o \
+        -name "ex13*.dat" -o \
+        -name "data.txt" -o \
         -name "xy.txt" \
     \) ! -name "CMakeLists.txt" ! -name "CMakeCache.txt" | while read -r f; do
         echo "    ✔ $(basename "$f")"
