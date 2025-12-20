@@ -3,27 +3,14 @@
 
 These are personal excercise solutions. Do not re-distribute exercises or submit solutions as your own. The development environment is open source.
 
-## Development Environment
-The algorithms are written with C++ using the Eigen mathemathical library. 
+## Submission folder structure in tar archive
 
-Since Python has a rich visualization library available with NumPy, the approach has been the following:
-
-1. If the excercise does not require visualization, the C++ algorithm has been compiled into a command-line executable.
-2. If a visualization is required in the excercise, the C++ algorithm has also been compiled into a library binary in a format which can be called from Python. Visualization has been implemented using Python code and a Python script has been used as the entry point for running both the algorithm and visualization.
-
-Two interface libraries have been used to make Python and C++ interoperable. The first one is called **boost-python**. It is a well established, highly efficient C++ library which is intended for users wanting to call optimized C/C++ routines from Python scripts. 
-
-The second interface library is called **eigenpy**. It is a fairly recent addition to the eigen C++ mathematical toolkit. Eigenpy creates a direct one-to-one linkage between eigen C++ data structures and Python/NumPy data structures, removing the need to pass data via files or to create duplicate copies of the data structures in memory.
-
-Required dependencies and installation instructions are given below. The code has been tested in MacOs and Ubuntu.
-
-*references*
-
->[eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page)
-
->[boost-python](https://www.boost.org/doc/libs/1_83_0/libs/python/doc/html/index.html)
-
->[eigenpy](https://github.com/stack-of-tasks/eigenpy)
+  - [answers](answers) - Folder contains pen & paper results, essential C++ code, test results and plots.
+  - [bin](bin) - For running executables, move to this folder and first evoke a help text by 
+    `./program_name -h`
+    - [python](python) - Folder holds compiled python libraries
+  - [scripts](scripts) - For running python scripts, move to this folder and evoke code by 
+    `python3 ./scriptname.py`
 
 
 ## Links to exercise Submittals
@@ -63,7 +50,7 @@ Required dependencies and installation instructions are given below. The code ha
 - Exercise 4
   - [ASSIGNMENT](exercise04/exercise04.pdf)
   - [Problem 1A code](exercise04/roots.cpp)
-  - [Problem 1A test](exercise04/exercise4_1A.txt)
+  - [Problem 1AB test](exercise04/exercise4_1AB.txt)
   - [Problem 1B code](exercise04/roots.cpp)
   - [Problem 1C plot](exercise04/exercise4_1.pdf)
   - [Problem 1C test](exercise04/exercise4_1C.txt)
@@ -239,38 +226,46 @@ Required dependencies and installation instructions are given below. The code ha
   - [Problem 4 plot d3 nonlinear](exercise13/maxwell_boltzmann_nonlinear_d3.png)
 
 
-## Installing development stack and compiling in Ubuntu
+## Development Environment
 
-This chapter contains instructions for installing the full development environment. If you are familiar with Docker, you can also check docker/Dockerfile to see the same information in a Docker build script format.
+The algorithms are written with C++ using the Eigen mathemathical library. 
 
-### Pull the repository
+Since Python has a rich visualization library available with NumPy, the approach has been the following:
+
+1. If the excercise does not require visualization, the C++ algorithm has been compiled into a command-line executable.
+2. If a visualization is required in the excercise, the C++ algorithm has also been compiled into a library binary in a format which can be called from Python. Visualization has been implemented using Python code and a Python script has been used as the entry point for running both the algorithm and visualization.
+3. Some of the algorithms are implemented with python only. 
+
+Two interface libraries have been used to make Python and C++ interoperable. The first one is called `boost-python`. It is a well established, highly efficient C++ library which is intended for users wanting to call optimized C/C++ routines from Python scripts. 
+
+The second interface library is called `eigenpy`. It creates a direct one-to-one linkage between eigen C++ data structures and Python/NumPy data structures, removing the need to pass data via files or to create duplicate copies of the data structures in memory.
+
+Required dependencies and installation instructions are given below. The code has been tested in MacOs and Ubuntu.
+
+## Installing a development stack and compiling in Ubuntu
+
+This chapter contains instructions for installing the full development environment.
+
+### C++
+
+During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:
+
+`sudo apt update`
+
+`sudo apt install build-essential`
+
+### Pull the code repository
 
 `git clone https://github.com/vuola/UH_NumericalMethods.git ./UH_NumericalMethods`
 
-### Visual Studio & CMake extensions
-Visual Studio Code for Ubuntu - installation instructions can be found for example here
-
-https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
-
-CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
-
-`sudo apt install cmake`
-
-With Visual Studio Code CMake tools are available as an extension module. From Visual Studio top menu, select *View - Extensions* and install extension named **CMake Tools**. For debugging you will also need extension **C/C++ Extension Pack** from Microsoft. 
-
-Once Visual Studio Code is installed, cd into the repository *UH_NumericalMethods* and run
-
-`code .`
-
-### C++
-During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler.
+cd into the repository root folder `/UH_NumericalMethods/` to run commands below.
 
 ### Python 3
-The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. The Docker container runs Python 3.8. If you have a Python version 3.8 or newer, it is safe to use the current version. 
+The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. If you have a Python version 3.8 or newer, it is safe to use the current version. 
 
 ### Pip3
 
-If you have *python3* but not the package manager *pip3*, run
+If you have `python3` but not the package manager `pip3`, run
 
 `sudo apt install python3-pip`
 
@@ -289,16 +284,6 @@ If you have *python3* but not the package manager *pip3*, run
 ### C++ libraries
 
 #### Eigen
-
-Install and extract the eigen archive file into the root of this repository. 
-
-`curl -o eigen-3.4.0.tar.bz2 https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2`
-
-`tar -xvjf eigen-3.4.0.tar.bz2`
-
-Eigen installation instructions are located in file `<repository root>/eigen-3.4.0/INSTALL`, you can run the steps of CMake users as follows:
-
-`mkdir eigen3`
 
 `cd eigen3`
 
@@ -328,7 +313,7 @@ Check out what the install location is for package 'eigenpy' with command
 
 `sudo find / -name "eigenpy" | grep cmake`
 
-If the location path starts with */opt/openrobots* everything should be fine. Otherwise consider editing the main *CMakeLists.txt* file in the repository root. The directives for setting *eigenpy* search path are the following:
+If the location path starts with `/opt/openrobots` everything should be fine. Otherwise consider editing the main `CMakeLists.txt` file in the repository root. The directives for setting `eigenpy` search path are the following:
 
 `cmake_policy(SET CMP0074 NEW)`
 
@@ -336,7 +321,7 @@ If the location path starts with */opt/openrobots* everything should be fine. Ot
 
 `find_package(eigenpy)`
 
-CMake is expecting to find file *eigenpyConfig.cmake* from one of the subdirectories.
+CMake is expecting to find file `eigenpyConfig.cmake` from one of the subdirectories.
 
 #### other math libraries used
 
@@ -348,4 +333,34 @@ Some of the exercises use these math libraries
 
 `sudo apt install liblapack-dev libblas-dev`
 
-If everything is working, running *Build* from the low frame icon of Visual Studio Code will place the target files into folders /build/excercise[nn].
+### Building with CMake
+
+CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
+
+`sudo apt install cmake`
+
+cd into the repository `UH_NumericalMethods` and run
+
+`cmake -S . -B ./build`
+
+`cmake --build ./build`
+
+### Creating a submission file structure (optional)
+
+Create the submission folder and four subfolders by running
+
+`./collect_cli.sh`
+
+`./collect_so.sh`
+
+`./collect_scripts`
+
+`./collect_answers`
+
+Create an index file inside the submission folder by running
+
+`./readme_to_index.sh README.md /submission/index.html`
+
+
+
+

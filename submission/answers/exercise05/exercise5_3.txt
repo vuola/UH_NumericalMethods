@@ -1,0 +1,27 @@
+****
+*
+* 05
+****
+
+Problem 3. Finding 2nd degree interpolating polynomial
+******************************************************
+
+vuola@nuc:~/matres/UH_NumericalMethods/exercise05$ python3 e5p3.py
+
+
+###
+Ex5 Prob3 (a) Lagrange method:
+###
+
+Lagrange polynomial:  x**2/10 - 3*x/5 + 1
+
+###
+Ex5 Prob3 (b) Newton method:
+###
+
+Zero degree polynomial:  1
+First degree polynomial:  1 - x/2
+First degree coefficient:  -1/2
+Second degree polynomial:  x*(x - 1)/10 - x/2 + 1
+Second degree coefficient:  1/10
+Newton polynomial:  x**2/10 - 3*x/5 + 1

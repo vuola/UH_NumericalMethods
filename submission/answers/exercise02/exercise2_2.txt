@@ -1,0 +1,27 @@
+****
+*
+* 02
+****
+
+Problem 2. Kahan summation
+**************************
+
+(B)
+***
+
+Result with harmonic() of previous excercise:
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise01$ ./harmonic 
+times of saturation: 997902849
+15.4037
+
+Result with harmonic_kahan(N):
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./harmonic_kahan 1000000000
+times of saturation: 994536834
+21.3005
+
+Comments
+********
+
+The output converges with both algorithms but is bigger with harmonic_kahan. The compensation of cumulative summation error in 
+Kahan method makes the algorithm progress further in adding small terms on the cumulative sum before it saturates completely. 
+( saturation here means that consecutive cumulative sums in the iteration loop are exactly equal ).

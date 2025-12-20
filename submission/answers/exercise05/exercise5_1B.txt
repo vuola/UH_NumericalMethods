@@ -1,0 +1,28 @@
+****
+*
+* 05
+****
+
+Problem 1. Testing broyden
+**************************
+
+(B)
+***
+
+The reference algorithm is Python scipy.optimize.broyden1
+
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise05$ python3 testBroyden.py
+
+Scipy solution:
+Roots:  [0.13511323 1.4356831 ]
+F:  [-8.32667268e-17  8.32667268e-17] 
+
+Own solution:
+Roots:  [1.4356831  0.13511323]
+F:  [-8.32667268e-17  1.11022302e-16] 
+
+Conclusion
+**********
+
+The roots found by the two implementations match with very good accuracy.

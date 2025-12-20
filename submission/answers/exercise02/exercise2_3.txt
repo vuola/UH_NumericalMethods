@@ -1,0 +1,138 @@
+****
+*
+* 02
+****
+
+Problem 3. Testing LAPACK function dgesv
+****************************************
+
+(A)
+***
+
+
+Compile commands using CMake (file: CMakeLists.txt)
+***************************************************
+
+find_package(LAPACK)
+add_executable(ex2_p3 ex2_p3.c)
+target_link_libraries(ex2_p3 LAPACK::LAPACK)
+
+Run command
+*********** 
+
+The command directs the text file into stdin of executable:
+
+./ex2_p3 < matrix6
+
+Added code for matrix A norm and condition number:
+**************************************************
+
+  double anorm = dlange_(&norm, &n, &n, A, &c1, work);
+
+  dgecon_(&norm, &n, A, &c1, &anorm, &rcond, work, iwork, &info);
+
+  printf("Norm: %lf\n", anorm);
+
+  if (info == 0) {
+      printf("Reciprocal condition number: %lf\n", rcond);
+  } else {
+      printf("Error occurred: info = %d\n", info);
+  }
+
+Testing with "matrix6"
+**********************
+
+n 6
+A
+  0.61611086    0.7106747   0.32931846   0.51194823   0.25304845   0.54417247 
+  0.03563731   0.08815959   0.30034593   0.14795998   0.46325326   0.27647871 
+  0.28538886   0.71970248   0.50220811   0.61753166   0.96837115   0.87984169 
+  0.37600851   0.74768132   0.44811806   0.17185755   0.64607608   0.11992062 
+  0.32336015   0.29026943   0.00099506   0.19949169    0.2208458    0.9813996 
+  0.97817445   0.31981957   0.94624835   0.63531208   0.53851491   0.72695738 
+
+b
+  0.66863006   0.94118035    0.7253744   0.54309487   0.21732061    0.4329184 
+x
+  -22.413899    12.990382    29.555568   -9.3848441   -21.079137    10.385575 
+
+Norm: 3.439999
+Reciprocal condition number: 0.002280
+
+
+Solution vector is x
+
+
+Testing with "matrix100"
+************************
+
+The following command re-directs the stdout of the exectable into file 'output.txt'
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix100 > output.txt
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ cat output.txt | grep Reciprocal
+Reciprocal condition number: 0.000003
+
+Comments
+********
+
+This is a fairly ill-conditioned matrix since the condition number is close to zero.
+
+
+(B) 
+***
+
+
+Testing what happens if two rows of A are the same:
+***************************************************
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix6singular1
+
+n 6
+A
+  0.61611086    0.7106747   0.32931846   0.51194823   0.25304845   0.54417247 
+  0.61611086    0.7106747   0.32931846   0.51194823   0.25304845   0.54417247 
+  0.28538886   0.71970248   0.50220811   0.61753166   0.96837115   0.87984169 
+  0.37600851   0.74768132   0.44811806   0.17185755   0.64607608   0.11992062 
+  0.32336015   0.29026943   0.00099506   0.19949169    0.2208458    0.9813996 
+  0.97817445   0.31981957   0.94624835   0.63531208   0.53851491   0.72695738 
+
+b
+  0.66863006   0.94118035    0.7253744   0.54309487   0.21732061    0.4329184 
+x
+2.9929028e+15 -1.6514997e+15 -3.9600231e+15 1.3304269e+15 2.8218544e+15 -1.3990926e+15 
+
+Norm: 3.864119
+Reciprocal condition number: 0.000000
+
+Comments
+********
+
+A is an ill-conditioned matrix, condition number is zero.
+
+Testing what happens if two columns of A are the same:
+******************************************************
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix6singular2
+
+n 6
+A
+  0.61611086   0.61611086   0.32931846   0.51194823   0.25304845   0.54417247 
+  0.03563731   0.03563731   0.30034593   0.14795998   0.46325326   0.27647871 
+  0.28538886   0.28538886   0.50220811   0.61753166   0.96837115   0.87984169 
+  0.37600851   0.37600851   0.44811806   0.17185755   0.64607608   0.11992062 
+  0.32336015   0.32336015   0.00099506   0.19949169    0.2208458    0.9813996 
+  0.97817445   0.97817445   0.94624835   0.63531208   0.53851491   0.72695738 
+
+b
+  0.66863006   0.66863006    0.7253744   0.54309487   0.21732061    0.4329184 
+x
+  0.66863006   0.66863006    0.7253744   0.54309487   0.21732061    0.4329184 
+
+Norm: 3.914439
+Reciprocal condition number: 0.000000
+
+Comments
+********
+
+A with two similar rows is an ill-conditioned matrix, condition number is zero.
