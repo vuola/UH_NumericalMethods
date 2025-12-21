@@ -20,14 +20,6 @@ find "$BUILD_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; 
         [[ "$f" == *.a  ]] && continue
         [[ "$f" == *.o  ]] && continue
 
-
-        # Copy all .txt files
-        if [[ "$f" == *.txt ]]; then
-            echo "    ✔ Found text file: $(basename "$f")"
-            cp "$f" "$OUT_DIR/"
-            continue
-        fi
-
         # Check if file is an ELF executable
         if file "$f" | grep -q "ELF.*executable"; then
             echo "    ✔ Found executable: $(basename "$f")"
@@ -36,6 +28,27 @@ find "$BUILD_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; 
 
     done
 done
+
+echo "▶ Collecting known input files per exercise"
+
+find "$ROOT_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; do
+    ex_name="$(basename "$ex_dir")"
+
+    echo "  ▶ $ex_name"
+
+    find "$ex_dir" -maxdepth 1 -type f \( \
+        -name "matrix6.txt" -o \
+        -name "matrix100.txt" -o \
+        -name "matrix6singular1.txt" -o \
+        -name "matrix6singular2.txt" \
+    \) ! -name "CMakeLists.txt" ! -name "CMakeCache.txt" | while read -r f; do
+        echo "    ✔ $(basename "$f")"
+        cp "$f" "$OUT_DIR/"
+    done
+done
+
+
+
 
 echo "✅ Done. Executables copied to submission/bin/"
 
