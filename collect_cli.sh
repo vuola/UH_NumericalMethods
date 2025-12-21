@@ -20,11 +20,20 @@ find "$BUILD_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; 
         [[ "$f" == *.a  ]] && continue
         [[ "$f" == *.o  ]] && continue
 
+
+        # Copy all .txt files
+        if [[ "$f" == *.txt ]]; then
+            echo "    ✔ Found text file: $(basename "$f")"
+            cp "$f" "$OUT_DIR/"
+            continue
+        fi
+
         # Check if file is an ELF executable
         if file "$f" | grep -q "ELF.*executable"; then
             echo "    ✔ Found executable: $(basename "$f")"
             cp "$f" "$OUT_DIR/"
         fi
+
     done
 done
 

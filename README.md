@@ -312,7 +312,15 @@ Activate the virtual environment by sourcing the `activate` script
 
 ### C++ libraries
 
+CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
+
+`sudo apt install cmake`
+
 #### Eigen
+
+`tar -xvf eigen-3.4.0.tar.bz2`
+
+`mkdir eigen3`
 
 `cd eigen3`
 
@@ -326,21 +334,25 @@ The following command will install all boost libraries (a lot more than just boo
 
 #### eigenpy
 
-`sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg' >> /etc/apt/sources.list.d/robotpkg.list"`
+Register the authentication certificate of robotpkg
 
-`curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -`
+`curl http://robotpkg.openrobots.org/packages/debian/robotpkg.asc | sudo tee /etc/apt/keyrings/robotpkg.asc`
+
+Add robotpkg as source repository to apt
+
+`sudo tee /etc/apt/sources.list.d/robotpkg.list <<EOF deb [arch=amd64 signed-by=/etc/apt/keyrings/robotpkg.asc] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg EOF`
 
 At this point you need to update package lists
 
 `sudo apt update`
 
-The following command is for Python 3.8, replace the version code with your Python version (without dot)
+The following command is for Python 3.12, replace the version code with your Python version (without dot)
 
-`sudo apt install robotpkg-py38-eigenpy`
+`sudo apt install robotpkg-py312-eigenpy`
 
 Check out what the install location is for package 'eigenpy' with command
 
-`sudo find / -name "eigenpy" | grep cmake`
+`sudo find /opt -name "eigenpy" | grep cmake`
 
 If the location path starts with `/opt/openrobots` everything should be fine. Otherwise consider editing the main `CMakeLists.txt` file in the repository root. The directives for setting `eigenpy` search path are the following:
 
@@ -360,13 +372,9 @@ Some of the exercises use these math libraries
 
 `sudo apt install libgsl-dev`
 
-`sudo apt install liblapack-dev libblas-dev`
+`sudo apt install liblapacke-dev libblas-dev`
 
 ### Building with CMake
-
-CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
-
-`sudo apt install cmake`
 
 cd into the repository `UH_NumericalMethods` and run
 
