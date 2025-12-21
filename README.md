@@ -8,7 +8,7 @@ These are personal excercise solutions. Do not re-distribute exercises or submit
   - [answers](answers) - Folder contains pen & paper results, essential C++ code, test results and plots.
   - [bin](bin) - For running executables, move to this folder and first evoke a help text by 
     `./program_name -h`
-    - [python](python) - Folder holds compiled python libraries
+  - [python](python) - Folder holds compiled python libraries
   - [scripts](scripts) - For running python scripts, move to this folder and evoke code by 
     `python3 ./scriptname.py`
 
@@ -246,6 +246,18 @@ Required dependencies and installation instructions are given below. The code ha
 
 This chapter contains instructions for installing the full development environment.
 
+### Pull the code repository
+
+If you don't have git installed (test with `git -v`)
+
+`sudo apt install git`
+
+Clone the repository
+
+`git clone https://github.com/vuola/UH_NumericalMethods.git ./UH_NumericalMethods`
+
+cd into the repository root folder `/UH_NumericalMethods/` to run commands below.
+
 ### C++
 
 During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:
@@ -254,32 +266,49 @@ During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C
 
 `sudo apt install build-essential`
 
-### Pull the code repository
-
-`git clone https://github.com/vuola/UH_NumericalMethods.git ./UH_NumericalMethods`
-
-cd into the repository root folder `/UH_NumericalMethods/` to run commands below.
-
 ### Python 3
+
+Check your python version and memorize it
+
+`python3 --version`
+
 The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. If you have a Python version 3.8 or newer, it is safe to use the current version. 
 
-### Pip3
+Make sure you have the full development environment
 
-If you have `python3` but not the package manager `pip3`, run
+`sudo apt install -y python3-full`
 
-`sudo apt install python3-pip`
+### Pip
 
-#### Python3 libraries
+Ensure you can run python package manager from the command line
 
-`pip3 install numpy`
+`python3 -m pip --version`
 
-`pip3 install matplotlib`
+Installing pip
 
-`pip3 install scipy`
+`sudo apt install -y python3-pip python3-pip-whl`
 
-`pip3 install mpmath`
+### Virtual environment for running python
 
-`pip3 install sympy`
+Create a separate virtual environment for the project (specifying .venv as the directory for it)
+
+`python3 -m venv .venv`
+
+Activate the virtual environment by sourcing the `activate` script
+
+`source .venv/bin/activate`
+
+#### Install Python libraries
+
+`pip install numpy`
+
+`pip install matplotlib`
+
+`pip install scipy`
+
+`pip install mpmath`
+
+`pip install sympy`
 
 ### C++ libraries
 
