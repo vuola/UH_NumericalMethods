@@ -13,7 +13,7 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
 # Find Eigen3
-find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(Eigen3 5.0 REQUIRED NO_MODULE)
 
 # The policy setting allows using <packagename>_ROOT variable
 cmake_policy(SET CMP0074 NEW)

@@ -1,0 +1,79 @@
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wshorten64to32 failed with the following output:
+Change Dir: /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_72de0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_72de0.dir/build.make CMakeFiles/cmTC_72de0.dir/build
+gmake[1]: Entering directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_72de0.dir/src.cxx.o
+/usr/bin/c++ -DCOMPILER_SUPPORT_Wshorten64to32  -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Werror   -Wshorten-64-to-32 -std=c++14 -o CMakeFiles/cmTC_72de0.dir/src.cxx.o -c /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command-line option '-Wshorten-64-to-32'
+gmake[1]: *** [CMakeFiles/cmTC_72de0.dir/build.make:78: CMakeFiles/cmTC_72de0.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_72de0/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wcpp11extensions failed with the following output:
+Change Dir: /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5a32d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5a32d.dir/build.make CMakeFiles/cmTC_5a32d.dir/build
+gmake[1]: Entering directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5a32d.dir/src.cxx.o
+/usr/bin/c++ -DCOMPILER_SUPPORT_Wcpp11extensions  -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Werror   -Wc++11-extensions -std=c++14 -o CMakeFiles/cmTC_5a32d.dir/src.cxx.o -c /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command-line option '-Wc++11-extensions'; did you mean '-fms-extensions'?
+gmake[1]: *** [CMakeFiles/cmTC_5a32d.dir/build.make:78: CMakeFiles/cmTC_5a32d.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5a32d/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_wd981 failed with the following output:
+Change Dir: /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b0b56/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b0b56.dir/build.make CMakeFiles/cmTC_b0b56.dir/build
+gmake[1]: Entering directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b0b56.dir/src.cxx.o
+/usr/bin/c++ -DCOMPILER_SUPPORT_wd981  -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Wdouble-promotion -Wshadow -Wno-psabi -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -Werror   -wd981 -std=c++14 -o CMakeFiles/cmTC_b0b56.dir/src.cxx.o -c /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command-line option '-wd981'
+gmake[1]: *** [CMakeFiles/cmTC_b0b56.dir/build.make:78: CMakeFiles/cmTC_b0b56.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_b0b56/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_wd2304 failed with the following output:
+Change Dir: /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9ccd7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9ccd7.dir/build.make CMakeFiles/cmTC_9ccd7.dir/build
+gmake[1]: Entering directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9ccd7.dir/src.cxx.o
+/usr/bin/c++ -DCOMPILER_SUPPORT_wd2304  -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Wdouble-promotion -Wshadow -Wno-psabi -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -Werror   -wd2304 -std=c++14 -o CMakeFiles/cmTC_9ccd7.dir/src.cxx.o -c /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command-line option '-wd2304'
+gmake[1]: *** [CMakeFiles/cmTC_9ccd7.dir/build.make:78: CMakeFiles/cmTC_9ccd7.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_9ccd7/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Determining if the Fortran sgemm exists failed with the following output:
+Change Dir: /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e9037/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e9037.dir/build.make CMakeFiles/cmTC_e9037.dir/build
+gmake[1]: Entering directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_e9037.dir/testFortranCompiler.f.o
+/usr/bin/f95    -c /home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_e9037.dir/testFortranCompiler.f.o
+Linking Fortran executable cmTC_e9037
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9037.dir/link.txt --verbose=1
+/usr/bin/f95 CMakeFiles/cmTC_e9037.dir/testFortranCompiler.f.o -o cmTC_e9037 
+/usr/bin/ld: CMakeFiles/cmTC_e9037.dir/testFortranCompiler.f.o: in function `MAIN__':
+testFortranCompiler.f:(.text+0xa): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_e9037.dir/build.make:99: cmTC_e9037] Error 1
+gmake[1]: Leaving directory '/home/vuola/matres/UH_NumericalMethods/eigen5/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_e9037/fast] Error 2
+
+
+

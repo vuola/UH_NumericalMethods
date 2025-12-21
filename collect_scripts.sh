@@ -28,4 +28,8 @@ find "$ROOT_DIR" -maxdepth 1 -type d -name "exercise*" | while read -r ex_dir; d
     done
 done
 
+echo "▶ Moving python requirements file to submission package root folder"
+
+cp "$ROOT_DIR/requirements.txt" "$ROOT_DIR/submission/"
+
 echo "✅ Done. Scripts copied to submission/scripts/"

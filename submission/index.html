@@ -49,9 +49,25 @@
 <pre><code>./program_name -h</code></pre>
 <ul>
 <li><a href="python">python</a> - Folder holds compiled python libraries</li>
-<li><a href="scripts">scripts</a> - For running python scripts, move to this folder and evoke code by </li>
+<li><a href="scripts">scripts</a> - For running python scripts: first complete section `Python environment` below, then move to this folder and evoke code by </li>
 </ul>
 <pre><code>python3 ./scriptname.py</code></pre>
+<h2>Python environment</h2>
+<h3>Pip</h3>
+<p>Ensure you can run python package manager from the command line</p>
+<pre><code>python3 -m pip --version</code></pre>
+<p>Installing pip</p>
+<pre><code>sudo apt install -y python3-pip python3-pip-whl</code></pre>
+<h3>Virtual environment for running python</h3>
+<p>Create a separate virtual environment for the project (specifying .venv as the directory for it)</p>
+<pre><code>python3 -m venv .venv</code></pre>
+<p>Activate the virtual environment by sourcing the `activate` script</p>
+<pre><code>source .venv/bin/activate</code></pre>
+<p>#### Install Python libraries</p>
+<p>move to extracted folder</p>
+<pre><code>cd submission/</code></pre>
+<p>run the following command</p>
+<pre><code>pip install -r requirements.txt</code></pre>
 <h2>Links to exercise Submittals</h2>
 <ul>
 <li>Exercise 1</li>
@@ -285,45 +301,59 @@
 <p>1. If the excercise does not require visualization, the C++ algorithm has been compiled into a command-line executable.</p>
 <p>2. If a visualization is required in the excercise, the C++ algorithm has also been compiled into a library binary in a format which can be called from Python. Visualization has been implemented using Python code and a Python script has been used as the entry point for running both the algorithm and visualization.</p>
 <p>3. Some of the algorithms are implemented with python only. </p>
-<p>Two interface libraries have been used to make Python and C++ interoperable. The first one is called `boost-python`. It is a well established, highly efficient C++ library which is intended for users wanting to call optimized C/C++ routines from Python scripts. </p>
+<p>Two interface libraries have been used to make Python and C++ interoperable.      </p>
+<p>`Eigen` is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms. The main purpose of using eigen is the matrix abstraction which is convenient, efficient and intuitive to use. </p>
 <p>The second interface library is called `eigenpy`. It creates a direct one-to-one linkage between eigen C++ data structures and Python/NumPy data structures, removing the need to pass data via files or to create duplicate copies of the data structures in memory.</p>
 <p>Required dependencies and installation instructions are given below. The code has been tested in MacOs and Ubuntu.</p>
 <h2>Installing a development stack and compiling in Ubuntu</h2>
 <p>This chapter contains instructions for installing the full development environment.</p>
-<h3>C++</h3>
-<p>During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:</p>
-<pre><code>sudo apt update</code></pre>
-<pre><code>sudo apt install build-essential</code></pre>
 <h3>Pull the code repository</h3>
+<p>If you don't have git installed (test with `git -v`)</p>
+<pre><code>sudo apt install git</code></pre>
+<p>Clone the repository</p>
 <pre><code>git clone https://github.com/vuola/UH_NumericalMethods.git ./UH_NumericalMethods</code></pre>
 <p>cd into the repository root folder `/UH_NumericalMethods/` to run commands below.</p>
+<h3>C++</h3>
+<p>During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 13.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:</p>
+<pre><code>sudo apt update</code></pre>
+<pre><code>sudo apt install build-essential</code></pre>
 <h3>Python 3</h3>
+<p>Check your python version and memorize it</p>
+<pre><code>python3 --version</code></pre>
 <p>The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. If you have a Python version 3.8 or newer, it is safe to use the current version. </p>
-<h3>Pip3</h3>
-<p>If you have `python3` but not the package manager `pip3`, run</p>
-<pre><code>sudo apt install python3-pip</code></pre>
-<p>#### Python3 libraries</p>
-<pre><code>pip3 install numpy</code></pre>
-<pre><code>pip3 install matplotlib</code></pre>
-<pre><code>pip3 install scipy</code></pre>
-<pre><code>pip3 install mpmath</code></pre>
-<pre><code>pip3 install sympy</code></pre>
+<p>Make sure you have the full development environment</p>
+<pre><code>sudo apt install -y python3-full</code></pre>
+<h3>Pip</h3>
+<p>Ensure you can run python package manager from the command line</p>
+<pre><code>python3 -m pip --version</code></pre>
+<p>Installing pip</p>
+<pre><code>sudo apt install -y python3-pip python3-pip-whl</code></pre>
+<h3>Virtual environment for running python</h3>
+<p>Create a separate virtual environment for the project (specifying .venv as the directory for it)</p>
+<pre><code>python3 -m venv .venv</code></pre>
+<p>Activate the virtual environment by sourcing the `activate` script</p>
+<pre><code>source .venv/bin/activate</code></pre>
+<p>#### Install Python libraries</p>
+<pre><code>pip install -r requirements.txt</code></pre>
 <h3>C++ libraries</h3>
+<p>CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:</p>
+<pre><code>sudo apt install cmake</code></pre>
 <p>#### Eigen</p>
-<pre><code>cd eigen3</code></pre>
-<pre><code>cmake ../eigen-3.4.0</code></pre>
-<p>#### boost</p>
-<p>The following command will install all boost libraries (a lot more than just boost-python). In Ubuntu 22.04 distribution with Python 3.10 included the boost-python binary is already included so boost installation is not required.</p>
-<pre><code>sudo apt install libboost-all-dev</code></pre>
+<pre><code>tar -xvf eigen-5.0.1.tar.bz2</code></pre>
+<pre><code>mkdir eigen5</code></pre>
+<pre><code>cd eigen5</code></pre>
+<pre><code>cmake ../eigen-5.0.1</code></pre>
 <p>#### eigenpy</p>
-<pre><code>sudo sh -c "echo 'deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg' &gt;&gt; /etc/apt/sources.list.d/robotpkg.list"</code></pre>
-<pre><code>curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -</code></pre>
+<p>Register the authentication certificate of robotpkg</p>
+<pre><code>curl http://robotpkg.openrobots.org/packages/debian/robotpkg.asc | sudo tee /etc/apt/keyrings/robotpkg.asc</code></pre>
+<p>Add robotpkg as source repository to apt</p>
+<pre><code>sudo tee /etc/apt/sources.list.d/robotpkg.list &lt;&lt;EOF deb [arch=amd64 signed-by=/etc/apt/keyrings/robotpkg.asc] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg EOF</code></pre>
 <p>At this point you need to update package lists</p>
 <pre><code>sudo apt update</code></pre>
-<p>The following command is for Python 3.8, replace the version code with your Python version (without dot)</p>
-<pre><code>sudo apt install robotpkg-py38-eigenpy</code></pre>
+<p>The following command is for Python 3.12, replace the version code with your Python version (without dot)</p>
+<pre><code>sudo apt install robotpkg-py312-eigenpy</code></pre>
 <p>Check out what the install location is for package 'eigenpy' with command</p>
-<pre><code>sudo find / -name "eigenpy" | grep cmake</code></pre>
+<pre><code>sudo find /opt -name "eigenpy" | grep cmake</code></pre>
 <p>If the location path starts with `/opt/openrobots` everything should be fine. Otherwise consider editing the main `CMakeLists.txt` file in the repository root. The directives for setting `eigenpy` search path are the following:</p>
 <pre><code>cmake_policy(SET CMP0074 NEW)</code></pre>
 <pre><code>set(eigenpy_ROOT /opt/openrobots)</code></pre>
@@ -333,10 +363,8 @@
 <p>Some of the exercises use these math libraries</p>
 <pre><code>sudo apt update</code></pre>
 <pre><code>sudo apt install libgsl-dev</code></pre>
-<pre><code>sudo apt install liblapack-dev libblas-dev</code></pre>
+<pre><code>sudo apt install liblapacke-dev libblas-dev</code></pre>
 <h3>Building with CMake</h3>
-<p>CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:</p>
-<pre><code>sudo apt install cmake</code></pre>
 <p>cd into the repository `UH_NumericalMethods` and run</p>
 <pre><code>cmake -S . -B ./build</code></pre>
 <pre><code>cmake --build ./build</code></pre>

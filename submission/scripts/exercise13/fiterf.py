@@ -1,4 +1,5 @@
 import numpy as np
+import math
 import matplotlib.pyplot as plt
 import os
 import sys
@@ -66,7 +67,7 @@ def plot_fiterf_results(num_param, model_type, num_points, output_filename = Non
 
     # Create an array of the fitting points x_i = (i-1)/10 and for i=1,...,11
     fitting_x = np.array([(i-1)/10 for i in range(1, 12)])
-    fitting_y = np.array([np.math.erf(xi) for xi in fitting_x])
+    fitting_y = np.array([math.erf(xi) for xi in fitting_x])
     plt.scatter(fitting_x, fitting_y, color='red', label='Fitting Points')
     plt.legend()
 

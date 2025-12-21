@@ -9,8 +9,40 @@ These are personal excercise solutions. Do not re-distribute exercises or submit
   - [bin](bin) - For running executables, move to this folder and first evoke a help text by 
     `./program_name -h`
   - [python](python) - Folder holds compiled python libraries
-  - [scripts](scripts) - For running python scripts, move to this folder and evoke code by 
+  - [scripts](scripts) - For running python scripts: first complete section `Python environment` below, then move to this folder and evoke code by 
     `python3 ./scriptname.py`
+
+## Python environment
+
+### Pip
+
+Ensure you can run python package manager from the command line
+
+`python3 -m pip --version`
+
+Installing pip
+
+`sudo apt install -y python3-pip python3-pip-whl`
+
+### Virtual environment for running python
+
+Create a separate virtual environment for the project (specifying .venv as the directory for it)
+
+`python3 -m venv .venv`
+
+Activate the virtual environment by sourcing the `activate` script
+
+`source .venv/bin/activate`
+
+#### Install Python libraries
+
+move to extracted folder
+
+`cd submission/`
+
+run the following command
+
+`pip install -r requirements.txt`
 
 
 ## Links to exercise Submittals
@@ -236,7 +268,9 @@ Since Python has a rich visualization library available with NumPy, the approach
 2. If a visualization is required in the excercise, the C++ algorithm has also been compiled into a library binary in a format which can be called from Python. Visualization has been implemented using Python code and a Python script has been used as the entry point for running both the algorithm and visualization.
 3. Some of the algorithms are implemented with python only. 
 
-Two interface libraries have been used to make Python and C++ interoperable. The first one is called `boost-python`. It is a well established, highly efficient C++ library which is intended for users wanting to call optimized C/C++ routines from Python scripts. 
+Two interface libraries have been used to make Python and C++ interoperable.      
+
+`Eigen` is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms. The main purpose of using eigen is the matrix abstraction which is convenient, efficient and intuitive to use. 
 
 The second interface library is called `eigenpy`. It creates a direct one-to-one linkage between eigen C++ data structures and Python/NumPy data structures, removing the need to pass data via files or to create duplicate copies of the data structures in memory.
 
@@ -260,7 +294,7 @@ cd into the repository root folder `/UH_NumericalMethods/` to run commands below
 
 ### C++
 
-During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 9.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:
+During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 13.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:
 
 `sudo apt update`
 
@@ -300,15 +334,7 @@ Activate the virtual environment by sourcing the `activate` script
 
 #### Install Python libraries
 
-`pip install numpy`
-
-`pip install matplotlib`
-
-`pip install scipy`
-
-`pip install mpmath`
-
-`pip install sympy`
+`pip install -r requirements.txt`
 
 ### C++ libraries
 
@@ -318,19 +344,13 @@ CMake has been used to package the code into transportable format  and to compil
 
 #### Eigen
 
-`tar -xvf eigen-3.4.0.tar.bz2`
+`tar -xvf eigen-5.0.1.tar.bz2`
 
-`mkdir eigen3`
+`mkdir eigen5`
 
-`cd eigen3`
+`cd eigen5`
 
-`cmake ../eigen-3.4.0`
-
-#### boost
-
-The following command will install all boost libraries (a lot more than just boost-python). In Ubuntu 22.04 distribution with Python 3.10 included the boost-python binary is already included so boost installation is not required.
-
-`sudo apt install libboost-all-dev`
+`cmake ../eigen-5.0.1`
 
 #### eigenpy
 
