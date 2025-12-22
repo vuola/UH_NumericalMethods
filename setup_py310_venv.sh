@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
-VENV_DIR="venv"
+VENV_DIR=".venv"
 PYTHON_VERSION="3.10"
 PYTHON_BIN="python${PYTHON_VERSION}"
 REQUIREMENTS_FILE="requirements.txt"
@@ -14,7 +14,7 @@ fi
 
 . /etc/os-release
 
-if [[ "${ID}" != "ubuntu" ]]; then
+if [[ "${ID:-}" != "ubuntu" ]]; then
     echo "ERROR: This script supports Ubuntu only."
     return 1
 fi
@@ -28,7 +28,7 @@ if ! command -v "${PYTHON_BIN}" >/dev/null 2>&1; then
     sudo apt update
     sudo apt install -y software-properties-common
 
-    # Add deadsnakes only if python3.10 is not in the repo
+    # Add deadsnakes PPA only if needed
     if ! apt-cache show "python${PYTHON_VERSION}" >/dev/null 2>&1; then
         echo ">>> Adding deadsnakes PPA"
         sudo add-apt-repository -y ppa:deadsnakes/ppa
@@ -72,4 +72,3 @@ echo ">>> SUCCESS"
 echo ">>> Python executable: $(which python)"
 echo ">>> Python version:    $(python --version)"
 echo ">>> Virtual env path:  ${VENV_DIR}"
-
