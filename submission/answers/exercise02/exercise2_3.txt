@@ -16,6 +16,7 @@ Compile commands using CMake (file: CMakeLists.txt)
 find_package(LAPACK)
 add_executable(ex2_p3 ex2_p3.c)
 target_link_libraries(ex2_p3 LAPACK::LAPACK)
+target_include_directories(ex2_p3 PRIVATE /usr/include/eigen3/Eigen/src/misc/)
 
 Run command
 *********** 
@@ -41,6 +42,8 @@ Added code for matrix A norm and condition number:
 
 Testing with "matrix6"
 **********************
+
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix6.txt
 
 n 6
 A
@@ -68,9 +71,9 @@ Testing with "matrix100"
 
 The following command re-directs the stdout of the exectable into file 'output.txt'
 
-vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix100 > output.txt
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./ex2_p3 < matrix100.txt > output.txt
 
-vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ cat output.txt | grep Reciprocal
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ cat output.txt | grep Reciprocal
 Reciprocal condition number: 0.000003
 
 Comments
@@ -86,7 +89,7 @@ This is a fairly ill-conditioned matrix since the condition number is close to z
 Testing what happens if two rows of A are the same:
 ***************************************************
 
-vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix6singular1
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./ex2_p3 < matrix6singular1.txt
 
 n 6
 A
@@ -113,9 +116,10 @@ A is an ill-conditioned matrix, condition number is zero.
 Testing what happens if two columns of A are the same:
 ******************************************************
 
-vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02/ex2_p3$ ./ex2_p3 < matrix6singular2
+vuola@nuc:~/matres/UH_NumericalMethods/build/exercise02$ ./ex2_p3 < matrix6singular2.txt
 
-n 6
+N
+  6
 A
   0.61611086   0.61611086   0.32931846   0.51194823   0.25304845   0.54417247 
   0.03563731   0.03563731   0.30034593   0.14795998   0.46325326   0.27647871 
@@ -123,13 +127,12 @@ A
   0.37600851   0.37600851   0.44811806   0.17185755   0.64607608   0.11992062 
   0.32336015   0.32336015   0.00099506   0.19949169    0.2208458    0.9813996 
   0.97817445   0.97817445   0.94624835   0.63531208   0.53851491   0.72695738 
-
 b
-  0.66863006   0.66863006    0.7253744   0.54309487   0.21732061    0.4329184 
+  0.66863006   0.94118035    0.7253744   0.54309487   0.21732061    0.4329184 
 x
-  0.66863006   0.66863006    0.7253744   0.54309487   0.21732061    0.4329184 
+5.2695273e+16 -5.2695273e+16    5.5863005   -4.1103957    -1.751963    3.5470816 
 
-Norm: 3.914439
+Norm: 3.393699
 Reciprocal condition number: 0.000000
 
 Comments
