@@ -28,9 +28,10 @@ if ! command -v "${PYTHON_BIN}" >/dev/null 2>&1; then
     sudo apt update
     sudo apt install -y software-properties-common
 
-    # Add deadsnakes PPA only if needed
-    if ! apt-cache show "python${PYTHON_VERSION}" >/dev/null 2>&1; then
-        echo ">>> Adding deadsnakes PPA"
+    UBUNTU_MAJOR="${VERSION_ID%%.*}"
+
+    if (( UBUNTU_MAJOR >= 24 )); then
+        echo ">>> Ubuntu ${VERSION_ID} detected — adding deadsnakes PPA"
         sudo add-apt-repository -y ppa:deadsnakes/ppa
         sudo apt update
     fi
