@@ -1,4 +1,0 @@
-# Target labels
- BuildOfficial
-# Source files and their labels
-/home/vuola/matres/UH_NumericalMethods/eigen-5.0.1/test/resize.cpp
