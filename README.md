@@ -342,6 +342,16 @@ CMake has been used to package the code into transportable format  and to compil
 
 `sudo apt install cmake`
 
+#### Standard mathematical libraries
+
+Some of the exercises use these libraries
+
+`sudo apt update`
+
+`sudo apt install libgsl-dev`
+
+`sudo apt install liblapacke-dev libblas-dev`
+
 #### Eigen
 
 `tar -xvf eigen-5.0.1.tar.bz2`
@@ -383,16 +393,6 @@ If the location path starts with `/opt/openrobots` everything should be fine. Ot
 `find_package(eigenpy)`
 
 CMake is expecting to find file `eigenpyConfig.cmake` from one of the subdirectories.
-
-#### other math libraries used
-
-Some of the exercises use these math libraries
-
-`sudo apt update`
-
-`sudo apt install libgsl-dev`
-
-`sudo apt install liblapacke-dev libblas-dev`
 
 ### Building with CMake
 
