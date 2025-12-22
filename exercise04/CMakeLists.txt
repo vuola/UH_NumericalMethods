@@ -22,3 +22,9 @@ target_link_libraries(myroots_lib eigenpy::eigenpy)
 set_target_properties(myroots_lib PROPERTIES OUTPUT_NAME "myroots")
 set_target_properties(myroots_lib PROPERTIES PREFIX "")
 set_target_properties(myroots_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+
+install(TARGETS bifurcation_lib
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS myroots_lib
+        LIBRARY DESTINATION runtime)

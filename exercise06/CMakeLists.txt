@@ -15,3 +15,5 @@ set_target_properties(cubicspline_lib PROPERTIES OUTPUT_NAME "cubicspline")
 set_target_properties(cubicspline_lib PROPERTIES PREFIX "")
 set_target_properties(cubicspline_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 
+install(TARGETS cubicspline_lib
+        LIBRARY DESTINATION runtime)

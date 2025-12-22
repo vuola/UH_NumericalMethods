@@ -41,3 +41,13 @@ set_target_properties(fds PROPERTIES OUTPUT_NAME "fds")
 set_target_properties(fds PROPERTIES PREFIX "")
 set_target_properties(fds PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 target_include_directories(fds PRIVATE ../exercise11)
+
+install(TARGETS rungeKutta
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS shooting
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS fds
+        LIBRARY DESTINATION runtime)
+

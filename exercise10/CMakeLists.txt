@@ -8,3 +8,5 @@ set_target_properties(clt PROPERTIES PREFIX "")
 set_target_properties(clt PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 target_include_directories(clt PRIVATE ../exercise10)
 
+install(TARGETS clt
+        LIBRARY DESTINATION runtime)

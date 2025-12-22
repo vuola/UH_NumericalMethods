@@ -13,3 +13,5 @@ set_target_properties(broyden_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 # myexp executable
 add_executable(exp exp.cpp expMain.cpp)
 
+install(TARGETS broyden_lib
+        LIBRARY DESTINATION runtime)

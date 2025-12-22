@@ -17,3 +17,10 @@ set_target_properties(fitpoly PROPERTIES OUTPUT_NAME "fitpoly")
 set_target_properties(fitpoly PROPERTIES PREFIX "")
 set_target_properties(fitpoly PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 target_include_directories(fitpoly PRIVATE ../exercise13)
+
+install(TARGETS fiterf
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS fitpoly
+        LIBRARY DESTINATION runtime)
+

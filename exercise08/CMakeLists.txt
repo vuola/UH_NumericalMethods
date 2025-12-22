@@ -24,3 +24,9 @@ set_target_properties(minimize_lib PROPERTIES OUTPUT_NAME "minimize")
 set_target_properties(minimize_lib PROPERTIES PREFIX "")
 set_target_properties(minimize_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX}) 
 target_include_directories(minimize_lib PRIVATE ../exercise08)
+
+install(TARGETS golden_lib
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS minimize_lib
+        LIBRARY DESTINATION runtime)

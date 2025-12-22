@@ -14,7 +14,7 @@ def add_solver_to_path(exercise_name):
 
     candidate_paths = [
         # Development layout:
-        os.path.join(current_dir, '..', 'build', exercise_name),
+        os.path.join(current_dir, '..', 'build', 'runtime'),
 
         # Submission layout:
         os.path.join(current_dir, '..', '..', 'python'),

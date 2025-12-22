@@ -12,3 +12,6 @@ target_link_libraries(funks_lib eigenpy::eigenpy)
 set_target_properties(funks_lib PROPERTIES OUTPUT_NAME "funks")
 set_target_properties(funks_lib PROPERTIES PREFIX "")
 set_target_properties(funks_lib PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
+
+install(TARGETS funks_lib
+        LIBRARY DESTINATION runtime)

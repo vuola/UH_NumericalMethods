@@ -37,3 +37,15 @@ set_target_properties(mypi PROPERTIES OUTPUT_NAME "mypi")
 set_target_properties(mypi PROPERTIES PREFIX "")
 set_target_properties(mypi PROPERTIES SUFFIX ${PYTHON_EXT_SUFFIX})
 target_include_directories(mypi PRIVATE ../exercise09)
+
+install(TARGETS inversecdf
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS gaussrng
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS moment
+        LIBRARY DESTINATION runtime)
+
+install(TARGETS mypi
+        LIBRARY DESTINATION runtime)

@@ -9,14 +9,6 @@ echo "▶ Preparing output directory"
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
 
-echo "▶ Searching for Python extension modules (*.so)..."
-
-find "$BUILD_DIR" -type f -name "*.so" | while read -r so; do
-    # Ensure this is a Python extension module (not a random shared lib)
-    if file "$so" | grep -q "ELF.*shared object"; then
-        echo "  ✔ Found .so: $so"
-        cp "$so" "$OUT_DIR/"
-    fi
-done
+cp -a "$ROOT_DIR/build/runtime/." "$ROOT_DIR/submission/python/"
 
 echo "✅ Done. Python modules copied to submission/python/"
