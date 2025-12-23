@@ -1,10 +1,22 @@
+# Build artifacts
 build/
+runtime/
+submission/
+
+# Python
+.venv/
+
+# Third-party sources (fetched automatically)
+external/
+
+# Archives
 eigen-3.4.0/
 eigen-3.4.0.tar.bz2
 eigen3/
 eigen-5.0.1/
 eigen5/
-README.old
 submission.tar
-submission/
 *.tar
+
+# Old backups
+README.old
