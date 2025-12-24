@@ -9,41 +9,8 @@ These are personal excercise solutions. Do not re-distribute exercises or submit
   - [bin](bin) - For running executables, move to this folder and first evoke a help text by 
     `./program_name -h`
   - [python](python) - Folder holds compiled python libraries
-  - [scripts](scripts) - For running python scripts: first complete section `Python environment` below, then move to this folder and evoke code by 
+  - [scripts](scripts) - For running python scripts: Complete section `Python environment` below, then move to this folder and evoke code by 
     `python3 ./scriptname.py`
-
-## Python environment
-
-### Pip
-
-Ensure you can run python package manager from the command line
-
-`python3 -m pip --version`
-
-Installing pip
-
-`sudo apt install -y python3-pip python3-pip-whl`
-
-### Virtual environment for running python
-
-Create a separate virtual environment for the project (specifying .venv as the directory for it)
-
-`python3 -m venv .venv`
-
-Activate the virtual environment by sourcing the `activate` script
-
-`source .venv/bin/activate`
-
-#### Install Python libraries
-
-move to extracted folder
-
-`cd submission/`
-
-run the following command
-
-`pip install -r requirements.txt`
-
 
 ## Links to exercise Submittals
 
@@ -257,10 +224,39 @@ run the following command
   - [Problem 4 plot d3 linear](exercise13/maxwell_boltzmann_linear_d3.png)
   - [Problem 4 plot d3 nonlinear](exercise13/maxwell_boltzmann_nonlinear_d3.png)
 
+## Python environment: in case you want to run the submitted Python scripts
 
-## Development Environment
+Extract the submission tar archive (you probably did this already)
 
-The algorithms are written with C++ using the Eigen mathemathical library. 
+`tar -xvf submission.tar`
+
+### Pip
+
+Ensure you can run python package manager from the command line
+
+`python3 -m pip --version`
+
+Install pip if not found
+
+`sudo apt install -y python3-pip python3-pip-whl`
+
+### Python 3.10 and virtual environment venv for isolating Python dependencies
+
+The codes work only on Python 3.10. A helper script checks if version 3.10 is present and installs it if not found. A venv environment is used for running Python 3.10 and for installing python libraries so that the current Python environment of the target machine is not disturbed.
+
+move to extracted folder
+
+`cd submission/`
+
+source the following script
+
+`source ./setup_py310_venv.sh`
+
+You can now run everything the submission package.
+
+## Overview of the code stack
+
+The algorithms are written with C++ using the Eigen mathemathical library.
 
 Since Python has a rich visualization library available with NumPy, the approach has been the following:
 
@@ -276,7 +272,7 @@ The second interface library is called `eigenpy`. It creates a direct one-to-one
 
 Required dependencies and installation instructions are given below. The code has been tested in MacOs and Ubuntu.
 
-## Installing a development stack and compiling in Ubuntu
+## Installing the full development stack and compiling in Ubuntu
 
 This chapter contains instructions for installing the full development environment.
 
@@ -286,57 +282,19 @@ If you don't have git installed (test with `git -v`)
 
 `sudo apt install git`
 
-Clone the repository
+Clone the development repository. Start by moving to a clear location outside of the submission folder.
 
 `git clone https://github.com/vuola/UH_NumericalMethods.git ./UH_NumericalMethods`
 
 cd into the repository root folder `/UH_NumericalMethods/` to run commands below.
 
-### C++
+### C++ and CMake
 
 During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 13.3.0 as the C++ compiler. The commands for installing GNU compilers and Make tools in Ubuntu:
 
 `sudo apt update`
 
 `sudo apt install build-essential`
-
-### Python 3
-
-Check your python version and memorize it
-
-`python3 --version`
-
-The Python version used during testing was 3.11. Eigenpy library requires at least Python version 3.5. If you have a Python version 3.8 or newer, it is safe to use the current version. 
-
-Make sure you have the full development environment
-
-`sudo apt install -y python3-full`
-
-### Pip
-
-Ensure you can run python package manager from the command line
-
-`python3 -m pip --version`
-
-Installing pip
-
-`sudo apt install -y python3-pip python3-pip-whl`
-
-### Virtual environment for running python
-
-Create a separate virtual environment for the project (specifying .venv as the directory for it)
-
-`python3 -m venv .venv`
-
-Activate the virtual environment by sourcing the `activate` script
-
-`source .venv/bin/activate`
-
-#### Install Python libraries
-
-`pip install -r requirements.txt`
-
-### C++ libraries
 
 CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
 
@@ -354,53 +312,29 @@ Some of the exercises use these libraries
 
 #### Eigen
 
-`tar -xvf eigen-5.0.1.tar.bz2`
+`tar -xvf eigen-3.4.0.tar.bz2`
 
-`mkdir eigen5`
+`mkdir eigen3`
 
-`cd eigen5`
+`cd eigen3`
 
-`cmake ../eigen-5.0.1`
+`cmake ../eigen-3.4.0`
 
-#### eigenpy
-
-Register the authentication certificate of robotpkg
-
-`curl http://robotpkg.openrobots.org/packages/debian/robotpkg.asc | sudo tee /etc/apt/keyrings/robotpkg.asc`
-
-Add robotpkg as source repository to apt
-
-`sudo tee /etc/apt/sources.list.d/robotpkg.list <<EOF deb [arch=amd64 signed-by=/etc/apt/keyrings/robotpkg.asc] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg EOF`
-
-At this point you need to update package lists
-
-`sudo apt update`
-
-The following command is for Python 3.12, replace the version code with your Python version (without dot)
-
-`sudo apt install robotpkg-py312-eigenpy`
-
-Check out what the install location is for package 'eigenpy' with command
-
-`sudo find /opt -name "eigenpy" | grep cmake`
-
-If the location path starts with `/opt/openrobots` everything should be fine. Otherwise consider editing the main `CMakeLists.txt` file in the repository root. The directives for setting `eigenpy` search path are the following:
-
-`cmake_policy(SET CMP0074 NEW)`
-
-`set(eigenpy_ROOT /opt/openrobots)`
-
-`find_package(eigenpy)`
-
-CMake is expecting to find file `eigenpyConfig.cmake` from one of the subdirectories.
-
-### Building with CMake
+### Building Eigenpy and excercise code
 
 cd into the repository `UH_NumericalMethods` and run
 
-`cmake -S . -B ./build`
+`cmake -S . -B build -G Ninja -DCMAKE_INSTALL_PREFIX=build`
 
-`cmake --build ./build`
+`cmake --build build --parallel`
+
+`cmake --install build`
+
+After this phase is completed all of the code should work either from the exercise folders or from the build folders. First make sure that the venv is visible in the command prompt. If not, activate it with
+
+`source submission/.venv/bin/activate`
+
+The venv was installed in chapter `Python environment` 
 
 ### Creating a submission file structure (optional)
 
@@ -417,6 +351,14 @@ Create the submission folder and four subfolders by running
 Create an index file inside the submission folder by running
 
 `./readme_to_index.sh README.md /submission/index.html`
+
+Copy the Python setup script to the submission package
+
+`cp ./setup_py310_venv.sh submission/`
+
+Create a tar archive of the submission
+
+`tar -cf submission.tar submission/` 
 
 
 
