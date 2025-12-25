@@ -36,6 +36,8 @@ import jacobi as j
 N = np.array([8, 9, 10, 11, 12], np.int32) 
 dq = np.array([0.008, 0.009, 0.01, 0.011, 0.012])
 
+print("This will take a while to compute, go get some coffee !")
+
 D = j.jacobiRange(N, dq, 100)
 
 np.set_printoptions(suppress='true')

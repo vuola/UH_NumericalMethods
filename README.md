@@ -224,6 +224,16 @@ These are personal excercise solutions. Do not re-distribute exercises or submit
   - [Problem 4 plot d3 linear](exercise13/maxwell_boltzmann_linear_d3.png)
   - [Problem 4 plot d3 nonlinear](exercise13/maxwell_boltzmann_nonlinear_d3.png)
 
+## Mathematical libraries used in programs and scripts
+
+These are required dependencies in some executables and scripts.
+
+`sudo apt update`
+
+`sudo apt install libgsl-dev`
+
+`sudo apt install libopenblas-dev liblapack-dev liblapacke-dev`
+
 ## Python environment: in case you want to run the submitted Python scripts
 
 Extract the submission tar archive (you probably did this already)
@@ -301,16 +311,6 @@ During testing MacOS was running Clang 13.1.6 and Ubuntu used gcc 13.3.0 as the 
 CMake has been used to package the code into transportable format  and to compile / link efficiently. First install cmake:
 
 `sudo apt install cmake`
-
-#### Standard mathematical libraries
-
-Some of the exercises use these libraries
-
-`sudo apt update`
-
-`sudo apt install libgsl-dev`
-
-`sudo apt install libopenblas-dev liblapack-dev liblapacke-dev`
 
 #### Eigen
 
