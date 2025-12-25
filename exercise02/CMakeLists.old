@@ -1,0 +1,31 @@
+# harmonic executable
+add_executable(harmonic_kahan harmonicMain.cpp harmonic_kahan.cpp)
+
+# residual executable
+add_executable(residual residualMain.cpp residual.cpp)
+target_link_libraries(residual Eigen3::Eigen)
+
+# ex2_p3 executable
+
+# Force non-MKL BLAS/LAPACK
+set(BLA_VENDOR OpenBLAS)
+#find_package(BLAS REQUIRED)
+find_package(LAPACK REQUIRED)
+
+add_executable(ex2_p3 ex2_p3.c)
+
+target_link_libraries(ex2_p3
+  LAPACK::LAPACK
+  BLAS::BLAS
+)
+
+# Check if the operating system is MacOS
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    message("Running on MacOS")
+    # Add your MacOS-specific flags, source files, etc.
+    target_include_directories(ex2_p3 PRIVATE /Users/vuola/MATRES_WORK/UH_NumericalMethods/eigen-3.4.0/Eigen/src/misc)
+else()
+    message("Running on a non-MacOS system")
+    # Add your Ubuntu-specific flags, source files, etc.
+    target_include_directories(ex2_p3 PRIVATE /usr/include/eigen3/Eigen/src/misc/)
+endif()

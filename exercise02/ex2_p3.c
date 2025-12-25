@@ -17,11 +17,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "lapacke.h"
+#include <lapacke.h>
 
 int main()
 {
-  int n,i,j,c1,c2,*pivot,ok;
+  int n,i,j,*pivot;
   double *A,*b;
   double rcond;
   
@@ -43,23 +43,44 @@ int main()
   printf("b\n");
   for (i=0;i<n;i++) printf("%12.8g ",b[i]);
   printf("\n");
-
-  c1=n;
-  c2=1;
-  double work[4*n];
-  int iwork[n];
-  int info;
-  char norm = '1';
   
-  dgesv_(&c1, &c2, A, &c1, pivot, b, &c1, &ok);      
+  int info = LAPACKE_dgesv(
+    LAPACK_COL_MAJOR,
+    n,          // matrix size
+    1,          // number of RHS
+    A, n,       // matrix A
+    pivot,      // pivot array
+    b, n        // RHS / solution
+  );
+
+  if (info != 0) {
+    printf("LAPACKE_dgesv failed: info = %d\n", info);
+    return 1;
+  }
   
   printf("x\n");
   for (i=0;i<n;i++) printf("%12.8g ", b[i]);	
   printf("\n\n");
 
-  double anorm = dlange_(&norm, &n, &n, A, &c1, work);
+  double anorm = LAPACKE_dlange(
+    LAPACK_COL_MAJOR,
+    '1',
+    n, n,
+    A, n
+  );
 
-  dgecon_(&norm, &n, A, &c1, &anorm, &rcond, work, iwork, &info);
+  info = LAPACKE_dgecon(
+    LAPACK_COL_MAJOR,
+    '1',
+    n,
+    A, n,
+    anorm,
+    &rcond
+  );
+
+  if (info != 0) {
+    printf("LAPACKE_dgecon failed: info = %d\n", info);
+  }
 
   printf("Norm: %lf\n", anorm);
 

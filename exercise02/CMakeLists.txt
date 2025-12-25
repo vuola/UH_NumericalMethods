@@ -5,18 +5,23 @@ add_executable(harmonic_kahan harmonicMain.cpp harmonic_kahan.cpp)
 add_executable(residual residualMain.cpp residual.cpp)
 target_link_libraries(residual Eigen3::Eigen)
 
-# ex2_p3 executable
-find_package(LAPACK)
-add_executable(ex2_p3 ex2_p3.c)
-target_link_libraries(ex2_p3 LAPACK::LAPACK)
+# ex2_p3 executable (pure LAPACK / BLAS)
+# Prefer open-source BLAS, not MKL
+set(BLA_VENDOR OpenBLAS)
 
-# Check if the operating system is MacOS
-if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    message("Running on MacOS")
-    # Add your MacOS-specific flags, source files, etc.
-    target_include_directories(ex2_p3 PRIVATE /Users/vuola/MATRES_WORK/UH_NumericalMethods/eigen-3.4.0/Eigen/src/misc)
-else()
-    message("Running on a non-MacOS system")
-    # Add your Ubuntu-specific flags, source files, etc.
-    target_include_directories(ex2_p3 PRIVATE /usr/include/eigen3/Eigen/src/misc/)
-endif()
+find_package(BLAS REQUIRED)
+find_package(LAPACK REQUIRED)
+
+add_executable(ex2_p3 ex2_p3.c)
+
+target_link_libraries(ex2_p3
+  LAPACK::LAPACK
+  BLAS::BLAS
+  lapacke
+)
+
+# LAPACK Fortran ABI requires libm
+target_link_libraries(ex2_p3 m)
+
+# Suppress implicit-function warnings
+target_compile_options(ex2_p3 PRIVATE -Wno-implicit-function-declaration)

@@ -82,15 +82,21 @@ message(STATUS "Using Boost.Python library: ${BOOST_PYTHON_REAL}")
 install(FILES ${BOOST_PYTHON_REAL}
         DESTINATION runtime/lib)
 
-
-
-
-# --- Bundle GSL ---
-install(FILES
+# Resolve real GSL shared libraries
+get_filename_component(GSL_REAL_LIB
   ${GSL_LIBRARY}
-  ${GSL_CBLAS_LIBRARY}
+  REALPATH
+)
+
+install(FILES
+  ${GSL_REAL_LIB}
   DESTINATION runtime/lib
 )
+
+install(CODE "
+  execute_process(COMMAND ln -sf libgsl.so.27.0.0 libgsl.so.27
+                  WORKING_DIRECTORY \${CMAKE_INSTALL_PREFIX}/runtime/lib)
+")
 
 # Check that suffix is defined, if not the later phases will fail.
 if(NOT PYTHON_EXT_SUFFIX)

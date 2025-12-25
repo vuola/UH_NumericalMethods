@@ -252,7 +252,9 @@ source the following script
 
 `source ./setup_py310_venv.sh`
 
-You can now run everything the submission package.
+You can now run everything the submission package. Sometimes the venv mode breaks after running the script and (.venv) prefix dissapears from the command prompt. You can always re-start the virtual environment from submission/ folder with
+
+`source .venv/bin/activate`
 
 ## Overview of the code stack
 
@@ -308,7 +310,7 @@ Some of the exercises use these libraries
 
 `sudo apt install libgsl-dev`
 
-`sudo apt install liblapacke-dev libblas-dev`
+`sudo apt install libopenblas-dev liblapack-dev liblapacke-dev`
 
 #### Eigen
 
@@ -320,7 +322,11 @@ Some of the exercises use these libraries
 
 `cmake ../eigen-3.4.0`
 
-### Building Eigenpy and excercise code
+#### Minimal Boost required by eigenpy
+
+`sudo apt install libboost-python-dev`
+
+### Building eigenpy and excercise code
 
 cd into the repository `UH_NumericalMethods` and run
 
@@ -350,7 +356,7 @@ Create the submission folder and four subfolders by running
 
 Create an index file inside the submission folder by running
 
-`./readme_to_index.sh README.md /submission/index.html`
+`./readme_to_index.sh README.md submission/index.html`
 
 Copy the Python setup script to the submission package
 
