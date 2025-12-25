@@ -312,6 +312,26 @@ CMake has been used to package the code into transportable format  and to compil
 
 `sudo apt install cmake`
 
+Another build helper
+
+`sudo apt install ninja-build`
+
+### Python3
+
+The eigenpy library will require a properly installed system python.
+
+`sudo apt install python3 python3-dev python3-venv python-is-python3`
+
+Python dependencies installed on top of a venv
+
+`python3 -m venv venv`
+
+`source venv/bin/activate`
+
+`pip install --upgrade pip`
+
+`pip install -r requirements.txt`
+
 #### Eigen
 
 `tar -xvf eigen-3.4.0.tar.bz2`
@@ -340,7 +360,11 @@ After this phase is completed all of the code should work either from the exerci
 
 `source submission/.venv/bin/activate`
 
-The venv was installed in chapter `Python environment` 
+The venv was installed in chapter `Python environment`
+
+You can deactivate venv with command
+
+`deactivate`
 
 ### Creating a submission file structure (optional)
 
