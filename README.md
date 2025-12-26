@@ -6,10 +6,10 @@ These are personal excercise solutions. Do not re-distribute exercises or submit
 ## Submission folder structure in tar archive
 
   - [answers](answers) - Folder contains pen & paper results, essential C++ code, test results and plots.
-  - [bin](bin) - For running executables, move to this folder and evoke a help text by 
+  - [bin](bin) - For running executables, complete section `Mathematical libraries` below, move to this folder and evoke a help text by 
     `./<program> -h`
   - [python](python) - Folder holds compiled python libraries
-  - [scripts](scripts) - For running python scripts: Complete section `Python environment` below, then move to this folder and evoke code by 
+  - [scripts](scripts) - For running python scripts complete sections `Mathematical libraries` and `Python environment` below, then move to this folder and evoke code by 
     `python3 ./<script>.py`
 
 ## Links to exercise Submittals
