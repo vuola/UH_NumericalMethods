@@ -255,9 +255,13 @@ Install pip if not found
 The submitted compiled libraries work only on Python 3.10. A helper script checks if version 3.10 is present and installs it if not found. A venv environment is used for running Python 3.10 and for installing python libraries.
 In case you want to run on top of python 3.12, jump to section `Installing the full development stack and compiling in Ubuntu`
 
-Pre-compiled libraries are good enough: move to extracted folder
+If pre-compiled libraries are ok: move to extracted folder
 
 `cd submission/`
+
+Install virtual environment tool venv
+
+`sudo apt install python3-venv`
 
 source the following script
 
@@ -287,7 +291,9 @@ Required dependencies and installation instructions are given below. The code ha
 
 ## Installing the full development stack and compiling in Ubuntu
 
-This chapter contains instructions for installing the full development environment. The build has been tested with both Ubuntu 22.04 / python 3.10 and Ubuntu 24.04 / python 3.12
+This chapter contains instructions for installing the full development environment. The build has been tested with both Ubuntu 22.04 / python 3.10 and Ubuntu 24.04 / python 3.12. 
+
+Before starting make sure that you have installed dependencies from chapter `Mathematical libraries used in programs and scripts`.
 
 ### Pull the code repository
 
@@ -355,7 +361,7 @@ cd into the repository `UH_NumericalMethods` and run
 
 `cmake -S . -B build -G Ninja \-DCMAKE_INSTALL_PREFIX=build \-DPython3_EXECUTABLE=$(which python)`
 
-If you are using multipass or other virtual machine, make sure you have at least 16GB memory allocated and preferrably 4 processor cores to speed up the build.
+If you are using multipass or other virtual machine, make sure you have at least 24GB memory allocated and preferrably 4 processor cores to speed up the build.
 
 `cmake --build build --parallel`
 
