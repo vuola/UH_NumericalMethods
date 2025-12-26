@@ -56,6 +56,10 @@ FetchContent_Declare(
   GIT_TAG v3.12.0   # pick a fixed, known version
 )
 
+# Disable eigenpy Python package installation
+set(EIGENPY_INSTALL_PYTHON OFF CACHE BOOL "" FORCE)
+set(EIGENPY_BUILD_PYTHON ON CACHE BOOL "" FORCE)
+
 FetchContent_MakeAvailable(eigenpy)
 
 # --- Bundle eigenpy ---

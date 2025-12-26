@@ -6,11 +6,11 @@ These are personal excercise solutions. Do not re-distribute exercises or submit
 ## Submission folder structure in tar archive
 
   - [answers](answers) - Folder contains pen & paper results, essential C++ code, test results and plots.
-  - [bin](bin) - For running executables, move to this folder and first evoke a help text by 
-    `./program_name -h`
+  - [bin](bin) - For running executables, move to this folder and evoke a help text by 
+    `./<program> -h`
   - [python](python) - Folder holds compiled python libraries
   - [scripts](scripts) - For running python scripts: Complete section `Python environment` below, then move to this folder and evoke code by 
-    `python3 ./scriptname.py`
+    `python3 ./<script>.py`
 
 ## Links to exercise Submittals
 
@@ -252,9 +252,10 @@ Install pip if not found
 
 ### Python 3.10 and virtual environment venv for isolating Python dependencies
 
-The codes work only on Python 3.10. A helper script checks if version 3.10 is present and installs it if not found. A venv environment is used for running Python 3.10 and for installing python libraries so that the current Python environment of the target machine is not disturbed.
+The submitted compiled libraries work only on Python 3.10. A helper script checks if version 3.10 is present and installs it if not found. A venv environment is used for running Python 3.10 and for installing python libraries.
+In case you want to run on top of python 3.12, jump to section `Installing the full development stack and compiling in Ubuntu`
 
-move to extracted folder
+Pre-compiled libraries are good enough: move to extracted folder
 
 `cd submission/`
 
@@ -262,7 +263,7 @@ source the following script
 
 `source ./setup_py310_venv.sh`
 
-You can now run everything the submission package. Sometimes the venv mode breaks after running the script and (.venv) prefix dissapears from the command prompt. You can always re-start the virtual environment from submission/ folder with
+You can now run everything in the submission package. Sometimes the venv mode breaks after an error and (.venv) prefix dissapears from the command prompt. You can always re-start the virtual environment from `submission/` folder with command
 
 `source .venv/bin/activate`
 
@@ -286,7 +287,7 @@ Required dependencies and installation instructions are given below. The code ha
 
 ## Installing the full development stack and compiling in Ubuntu
 
-This chapter contains instructions for installing the full development environment.
+This chapter contains instructions for installing the full development environment. The build has been tested with both Ubuntu 22.04 / python 3.10 and Ubuntu 24.04 / python 3.12
 
 ### Pull the code repository
 
@@ -318,15 +319,15 @@ Another build helper
 
 ### Python3
 
-The eigenpy library will require a properly installed system python.
+Building tools for python.
 
-`sudo apt install python3 python3-dev python3-venv python-is-python3`
+`sudo apt install python3-dev python3-venv`
 
-Python dependencies installed on top of a venv
+Python dependencies are installed on top of venv. Make sure that venv stays on. If the command prompt prefix (.venv) dissapears, re-activate it.
 
-`python3 -m venv venv`
+`python3 -m venv .venv`
 
-`source venv/bin/activate`
+`source .venv/bin/activate`
 
 `pip install --upgrade pip`
 
@@ -348,48 +349,29 @@ Python dependencies installed on top of a venv
 
 ### Building eigenpy and excercise code
 
+A successful build process should complete without intermediate errors. If there are issues, remove the build directory completely by `rm -rf build/` and start the build process from the beginning.
+
 cd into the repository `UH_NumericalMethods` and run
 
-`cmake -S . -B build -G Ninja -DCMAKE_INSTALL_PREFIX=build`
+`cmake -S . -B build -G Ninja \-DCMAKE_INSTALL_PREFIX=build \-DPython3_EXECUTABLE=$(which python)`
+
+If you are using multipass or other virtual machine, make sure you have at least 16GB memory allocated and preferrably 4 processor cores to speed up the build.
 
 `cmake --build build --parallel`
 
 `cmake --install build`
 
-After this phase is completed all of the code should work either from the exercise folders or from the build folders. First make sure that the venv is visible in the command prompt. If not, activate it with
+After this phase is completed all of the code should work either from the exercise folders, the build folders or from the optional submission folder (see next chapter) Make sure that (.venv) is visible in the command prompt, re-activate with 
 
-`source submission/.venv/bin/activate`
+`source .venv/bin/activate`
 
-The venv was installed in chapter `Python environment`
-
-You can deactivate venv with command
+ You can deactivate venv with command
 
 `deactivate`
 
 ### Creating a submission file structure (optional)
 
-Create the submission folder and four subfolders by running
-
-`./collect_cli.sh`
-
-`./collect_so.sh`
-
-`./collect_scripts`
-
-`./collect_answers`
-
-Create an index file inside the submission folder by running
-
-`./readme_to_index.sh README.md submission/index.html`
-
-Copy the Python setup script to the submission package
-
-`cp ./setup_py310_venv.sh submission/`
-
-Create a tar archive of the submission
-
-`tar -cf submission.tar submission/` 
-
+`./create_submission.sh`
 
 
 
